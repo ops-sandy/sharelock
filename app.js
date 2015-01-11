@@ -178,8 +178,8 @@ app.post('/create',
             return res.status(400).send('Missing payload.');
         if (typeof req.body.d !== 'string' || req.body.d.length === 0)
             return res.status(400).send('Missing data to secure. Use `d` parameter.');
-        if (req.body.d.length > 500)
-            return res.status(400).send('Data too large. Max 500 characters.');
+        if (req.body.d.length > 2000)
+            return res.status(400).send('Data too large. Max 2000 characters.');
         if (typeof req.body.a !== 'string' || req.body.a.length === 0)
             return res.status(400).send('Missing ACLs. Use `a` parameter.');
         if (req.body.a.length > 300)
