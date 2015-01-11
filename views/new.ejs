@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>sharelock</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="/js/spin.min.js"></script>
+    <script>
+      $(function () {
+        var spinner = new Spinner({
+          lines: 10, // The number of lines to draw
+          width: 3,
+          length: 3, // The length of each line
+          radius: 5, // The radius of the inner circle
+          trail: 30, // Afterglow percentage
+          top: '45%', // Top position relative to parent
+          left: '50%' // Left position relative to parent
+        });
+
+        var timer, spinner_on;
+        function on_change() {
+          if (!spinner_on) {
+            spinner_on = true;
+            spinner.spin(document.getElementById('spinner'));
+          }
+          if (timer)
+            clearTimeout(timer);
+          timer = setTimeout(function () {
+            timer = undefined;
+            get_preview();
+          }, 2000);
+        }
+
+        var last_preview_payload, ajax_in_progress, preview_pending;
+        function get_preview() {
+            if (ajax_in_progress) {
+              preview_pending = true;
+              return;
+            }
+
+            var payload = create_payload();
+            if (!payload) {
+              $('#url').val('');
+              return;
+            }
+            
+            if (last_preview_payload 
+              && last_preview_payload.a === payload.a
+              && last_preview_payload.d === payload.d)
+                return;
+
+            last_preview_payload = payload;
+            ajax_in_progress = true;
+
+            $.ajax({
+                contentType: 'application/json',
+                data: JSON.stringify(payload),
+                dataType: 'text',
+                type: 'POST',
+                url: '/create'
+            }).always(function () {
+              spinner_on = false;
+              spinner.stop();
+              ajax_in_progress = false;
+              if (preview_pending) {
+                preview_pending = false;
+                get_preview();
+              }
+            }).done(function (data) {
+              var url = window.location.origin + '/' + data
+              $('#urlv').html(url).attr('href', url);
+              $('#url').show();
+              $('#wait').hide();
+              $('#error').hide();
+            }).fail(function (xhr, status, error) {
+              $('#error').html(xhr.responseText || error).show();
+              $('#url').hide();
+              $('#wait').hide();
+            });
+        }
+
+        function create_payload() {
+          var payload = {
+            d: $('#data').val().trim(),
+            a: $('#acl').val().trim()
+          }
+          return (payload.d.length > 0 && payload.a.length > 0) ? payload : null;
+        }
+
+        $('#data').bind('input propertychange', on_change);
+        $('#acl').bind('input propertychange', on_change);
+      });
+    </script>
+  </head>
+  <body>
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1><b>{sharelock}</b> securely share data</h1>
+      </div>
+
+      <h2>data to share</h2>
+      <textarea id="data" class="form-control" rows="3" placeholder="Passwords, keys, URLs, any text up to 500 characters." maxlength="500"></textarea>
+      <span class="text-muted small">Need <a href="#" tabindex="-1">more space</a> or <a href="#" tabindex="-1">secure file sharing</a>?</span>
+
+      <h2>who to share it with</h2>
+      <textarea id="acl" class="form-control" rows="3" placeholder="Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)" maxlength="300"></textarea>
+      <span class="text-muted small">Need <a href="#" tabindex="-1">auditing</a>, <a href="#" tabindex="-1">enterprise credentials</a>, or <a href="#" tabindex="-1">time limits</a>?</span>
+
+      <h2>sharelocked data<div style="position: relative; display: inline-block; width: 1em; height: 1em; vertical-align: middle; margin-left: 0.25em;"><span id="spinner"></span></div></h2>
+      <p id="wait" class="text-muted">wait for it...</p>
+      <div id="url" style="display:none;">
+        <div class="bs-callout bs-callout-info">
+          <a href="#" id="urlv" style="word-wrap: break-word;"></a>
+        </div>
+        <p class="text-muted small">Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
+      </div>
+      <p id="error" class="text-danger" style="display:none;"></p>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">About</p>
+      </div>
+    </footer>
+  </body>
+</html>

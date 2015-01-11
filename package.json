@@ -1,0 +1,49 @@
+{
+  "name": "sharelock",
+  "author": {
+    "name": "Tomasz Janczuk <tomasz@janczuk.org>",
+    "url": "http://tomasz.janczuk.org",
+    "twitter": "tjanczuk"
+  },
+  "version": "0.1.0-pre",
+  "description": "Securely share data",
+  "tags": [
+    "nodejs",
+    "authentication",
+    "auth0",
+    "data",
+    "javascript",
+    "security",
+    "sharing"
+  ],
+  "engines": {
+    "node": ">= 0.10"
+  },
+  "licenses": [
+    {
+      "type": "Apache",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "dependencies": {
+    "async": "~0.9.0",
+    "body-parser": "~1.8.1",
+    "cookie-parser": "~1.3.3",
+    "ejs": "~0.8.5",
+    "express": "~4.9.0",
+    "express-session": "^1.9.3",
+    "passport": "^0.2.1",
+    "passport-auth0": "^0.2.0",
+    "serve-favicon": "~2.1.3",
+    "bunyan": "~1.2.3",
+    "dotenv": "^0.4.0"
+  },
+  "homepage": "http://github.com/tjanczuk/sharelock",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:tjanczuk/sharelock.git"
+  },
+  "bugs": {
+    "url": "http://github.com/tjanczuk/sharelock/issues"
+  }
+}
