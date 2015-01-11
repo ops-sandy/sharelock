@@ -61,6 +61,16 @@ app.use(function (req, res, next) {
     next();
 });
 
+if (process.env.FORCE_HTTPS === '1') {
+    logger.info('turning on HTTPS enforcement');
+    app.use(function (req, res, next) {
+        if (req.protocol === 'https' || req.headers['x-arr-ssl'])
+            next();
+        else
+            return res.redirect('https://' + req.host + req.url);
+    });
+}
+
 app.use(cookieParser());
 app.use(session({ secret: process.env.COOKIE_SECRET }));
 app.use(passport.initialize());
