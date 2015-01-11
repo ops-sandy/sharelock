@@ -1,5 +1,5 @@
 require('dotenv').load();
-['SIGNATURE_KEY', 'ENCRYPTION_KEY', 'AUTH0_DOMAIN', 'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'COOKIE_SECRET']
+['AUTH0_CALLBACK', 'SIGNATURE_KEY', 'ENCRYPTION_KEY', 'AUTH0_DOMAIN', 'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'COOKIE_SECRET']
     .forEach(function (v) { 
         require('assert').ok(process.env[v] !== undefined, v + ' environment variable not set.'); 
     });

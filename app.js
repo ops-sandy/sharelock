@@ -13,7 +13,7 @@ var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
     clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    callbackURL:  '/callback'
+    callbackURL: process.env.AUTH0_CALLBACK
 }, function(accessToken, refreshToken, extraParams, profile, done) {
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
@@ -64,9 +64,7 @@ app.use(function (req, res, next) {
 if (process.env.FORCE_HTTPS === '1') {
     logger.info('turning on HTTPS enforcement');
     app.use(function (req, res, next) {
-        if (req.headers['x-arr-ssl'])
-            req.protocol = 'https';
-        if (req.protocol === 'https')
+        if (req.protocol === 'https' || req.headers['x-arr-ssl'])
             next();
         else
             return res.redirect('https://' + req.host + req.url);
