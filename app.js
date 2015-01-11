@@ -105,7 +105,7 @@ app.get('/new', function (req, res, next) {
     res.render('new');
 });
 
-app.get('/:resource',
+app.get(/^\/(.+)$/,
     function (req, res, next) {
         if (!req.isAuthenticated()) {
             req.session.bookmark = req.originalUrl;
@@ -117,7 +117,8 @@ app.get('/:resource',
     function (req, res, next) {
         res.set('Cache-Control', 'no-cache');
 
-        var tokens = req.params.resource.split('.');
+        var resource = req.params[0].replace(/\//g, '');
+        var tokens = resource.split('.');
         if (tokens.length !== 2 || tokens[0].length === 0 || tokens[1].length === 0)
             return res.render('invalid', { details: 'The URL is malformed and cannot be processed.'});
 
@@ -178,12 +179,12 @@ app.post('/create',
             return res.status(400).send('Missing payload.');
         if (typeof req.body.d !== 'string' || req.body.d.length === 0)
             return res.status(400).send('Missing data to secure. Use `d` parameter.');
-        if (req.body.d.length > 100)
-            return res.status(400).send('Data too large. Max 100 characters.');
+        if (req.body.d.length > 300)
+            return res.status(400).send('Data too large. Max 300 characters.');
         if (typeof req.body.a !== 'string' || req.body.a.length === 0)
             return res.status(400).send('Missing ACLs. Use `a` parameter.');
-        if (req.body.a.length > 40)
-            return res.status(400).send('ACLs too long. Max 40 characters.');
+        if (req.body.a.length > 100)
+            return res.status(400).send('ACLs too long. Max 100 characters.');
 
         var resource = {
             d: req.body.d,
@@ -236,7 +237,14 @@ app.post('/create',
         var signature = crypto.createHmac('sha256', process.env.SIGNATURE_KEY).update(encrypted).digest('hex');
         var resource = signature + '.' + encrypted;
 
-        res.status(200).send(resource);
+        var split_resource = '';
+        for (var i = 0; i < resource.length; i++) {
+            split_resource += resource[i];
+            if (((i + 1) % 50) === 0)
+                split_resource += '/';
+        }
+
+        res.status(200).send(split_resource);
     });
 
 // catch 404 and forward to error handler
