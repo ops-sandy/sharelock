@@ -5,11 +5,15 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="//cdn.auth0.com/styleguide/latest/index.css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="/js/spin.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
     <script>
       $(function () {
+        var copy_client = new ZeroClipboard(document.getElementById('copy'));
+
         var spinner = new Spinner({
           lines: 10, // The number of lines to draw
           width: 3,
@@ -71,13 +75,15 @@
               }
             }).done(function (data) {
               var url = window.location.origin + '/' + data
-              $('#urlv').html(url).attr('href', url);
+              $('#urlv').html(url);
               $('#url').show();
+              $('#copy').attr('data-clipboard-text', url).show();
               $('#wait').hide();
               $('#error').hide();
             }).fail(function (xhr, status, error) {
               $('#error').html(xhr.responseText || error).show();
               $('#url').hide();
+              $('#copy').hide();
               $('#wait').hide();
             });
         }
@@ -98,32 +104,24 @@
   <body>
     <!-- Begin page content -->
     <div class="container">
-      <div class="page-header">
-        <h1><b>{sharelock}</b> securely share data</h1>
-      </div>
+      <h1><a href="/" style="text-decoration:none;color:inherit;">{sharelock} securely share data</a></h1>
 
       <h2>data to share</h2>
-      <textarea id="data" class="form-control" rows="3" placeholder="Passwords, keys, URLs, any text up to 500 characters." maxlength="500"></textarea>
+      <textarea id="data" class="form-control" rows="2" placeholder="Passwords, keys, URLs, any text up to 500 characters." maxlength="500"></textarea>
       <span class="text-muted small">Need <a href="#" tabindex="-1">more space</a> or <a href="#" tabindex="-1">secure file sharing</a>?</span>
 
       <h2>who to share it with</h2>
-      <textarea id="acl" class="form-control" rows="3" placeholder="Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)" maxlength="300"></textarea>
+      <textarea id="acl" class="form-control" rows="2" placeholder="Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)" maxlength="300"></textarea>
       <span class="text-muted small">Need <a href="#" tabindex="-1">auditing</a>, <a href="#" tabindex="-1">enterprise credentials</a>, or <a href="#" tabindex="-1">time limits</a>?</span>
 
-      <h2>sharelocked data<div style="position: relative; display: inline-block; width: 1em; height: 1em; vertical-align: middle; margin-left: 0.25em;"><span id="spinner"></span></div></h2>
-      <p id="wait" class="text-muted">wait for it...</p>
+      <h2><button id="copy" class="btn btn-primary" style="display:none; margin-right: 1em;">Copy</button>sharelocked data<div style="position: relative; display: inline-block; width: 1em; height: 1em; vertical-align: middle; margin-left: 0.25em;"><span id="spinner"></span></div></h2>
+      <p id="wait" class="bg-warning">specify secret data and who to share it with above...</p>
       <div id="url" style="display:none;">
-        <div class="bs-callout bs-callout-info">
-          <a href="#" id="urlv" style="word-wrap: break-word;"></a>
-        </div>
+        <p id="urlv" class="bg-primary" style="word-wrap: break-word;"></p>
         <p class="text-muted small">Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
       </div>
-      <p id="error" class="text-danger" style="display:none;"></p>
+      <p id="error" class="bg-danger" style="display:none;"></p>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <p class="text-muted">About</p>
-      </div>
-    </footer>
+    <% include footer.ejs %>
   </body>
 </html>

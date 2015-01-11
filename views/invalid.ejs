@@ -5,18 +5,18 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="//cdn.auth0.com/styleguide/latest/index.css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
   </head>
   <body>
     <!-- Begin page content -->
     <div class="container">
-      <div class="page-header">
-        <h1><b>{sharelock}</b> securely share data</h1>
-      </div>
+      <h1>{sharelock} securely share data</h1>
 
       <h2>invalid url</h2>
-      <p><%= details %></p>
+      <p class="bg-danger"><%= details %></p>
     </div>
+    <% include footer.ejs %>
   </body>
 </html>

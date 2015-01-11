@@ -5,19 +5,25 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link href="//cdn.auth0.com/styleguide/latest/index.css" rel="stylesheet" />
     <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
+    <script>
+      $(function () {
+        var copy_client = new ZeroClipboard(document.getElementById('copy'));
+      });
+    </script>
   </head>
   <body>
     <!-- Begin page content -->
     <div class="container">
-      <div class="page-header">
-        <h1><b>{sharelock}</b> securely share data</h1>
-      </div>
+      <h1><a href="#">{sharelock} securely share data</a></h1>
 
-      <h2>and your secret data is...</h2>
-      <p><%= data %></p>
-      <h2>thank you for using sharelock<h2>
+      <h2><button id="copy" class="btn btn-primary" style="margin-right: 1em;">Copy</button>your secret data</h2>
+      <p class="bg-primary"><%= data %></p>
+      <a href="/new">Create new sharelock</a>
     </div>
+    <% include footer.ejs %>
   </body>
 </html>
