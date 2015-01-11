@@ -26,9 +26,22 @@
 
         var timer, spinner_on;
         function on_change() {
-          if (!spinner_on) {
-            spinner_on = true;
-            spinner.spin(document.getElementById('spinner'));
+          $('#urlv').html('');
+          $('#url').hide();
+          $('#copy').attr('data-clipboard-text', '').hide();
+          $('#error').hide();
+          var payload = create_payload();
+          if (!payload) {
+            $('#wait').show();
+            $('#ajax').hide();
+          }
+          else {
+            $('#wait').hide();
+            $('#ajax').show();
+            if (!spinner_on) {
+              spinner_on = true;
+              spinner.spin(document.getElementById('spinner'));
+            }
           }
           if (timer)
             clearTimeout(timer);
@@ -46,10 +59,8 @@
             }
 
             var payload = create_payload();
-            if (!payload) {
-              $('#url').val('');
+            if (!payload) 
               return;
-            }
             
             if (last_preview_payload 
               && last_preview_payload.a === payload.a
@@ -79,12 +90,14 @@
               $('#url').show();
               $('#copy').attr('data-clipboard-text', url).show();
               $('#wait').hide();
+              $('#ajax').hide();
               $('#error').hide();
             }).fail(function (xhr, status, error) {
               $('#error').html(xhr.responseText || error).show();
               $('#url').hide();
               $('#copy').hide();
               $('#wait').hide();
+              $('#ajax').hide();
             });
         }
 
@@ -98,6 +111,7 @@
 
         $('#data').bind('input propertychange', on_change);
         $('#acl').bind('input propertychange', on_change);
+        $('#data').focus();
       });
     </script>
   </head>
@@ -115,7 +129,8 @@
       <span class="text-muted small">Need <a href="#" tabindex="-1">auditing</a>, <a href="#" tabindex="-1">enterprise credentials</a>, or <a href="#" tabindex="-1">time limits</a>?</span>
 
       <h2><button id="copy" class="btn btn-primary" style="display:none; margin-right: 1em;">Copy</button>sharelocked data<div style="position: relative; display: inline-block; width: 1em; height: 1em; vertical-align: middle; margin-left: 0.25em;"><span id="spinner"></span></div></h2>
-      <p id="wait" class="bg-warning">specify secret data and who to share it with above...</p>
+      <p id="ajax" style="display:none;">wait for it...</p>
+      <p id="wait" class="bg-info">specify secret data and who to share it with above...</p>
       <div id="url" style="display:none;">
         <p id="urlv" class="bg-primary" style="word-wrap: break-word;"></p>
         <p class="text-muted small">Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
