@@ -91,6 +91,10 @@ app.get('/callback',
     }
 );
 
+app.get('/privacy', function (req, res, next) {
+    res.render('privacy');
+});
+
 app.get('/logout',
     function (req, res, next) {
         req.session.destroy();
