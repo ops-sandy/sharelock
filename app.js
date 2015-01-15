@@ -10,6 +10,8 @@ var express = require('express')
     , crypto = require('crypto')
     , base64url = require('base64url');
 
+var keys = {};
+
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
@@ -33,7 +35,7 @@ passport.serializeUser(function(user, done) {
 
 passport.deserializeUser(function(user, done) {
   done(null, user);
-});    
+});
 
 var app = express();
 
@@ -53,7 +55,7 @@ app.use(function (req, res, next) {
             duration: Date.now() - req.start_time,
             path: req.path,
             method: req.method
-        }
+        };
         if (res.statusCode >= 400)
             logger.warn(meta, res.statusCode);
         else
@@ -73,18 +75,17 @@ if (process.env.FORCE_HTTPS === '1') {
 }
 
 app.use(cookieParser());
-app.use(session({ secret: process.env.COOKIE_SECRET }));
+app.use(session({ secret: process.env.COOKIE_SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/callback', 
+app.get('/callback',
     passport.authenticate('auth0', { failureRedirect: '/unauthorized' }),
     function (req, res, next) {
         if (!req.user)
             res.send(403);
         else {
-            logger.error({ url: req.session.bookmark }, 'getting bookmark');
             var url = req.session.bookmark || '/';
             delete req.session.bookmark;
             res.redirect(url);
@@ -110,9 +111,9 @@ app.get('/new', function (req, res, next) {
     res.render('new');
 });
 
-app.get(/^\/1\/(.+)$/,
+app.get(/^\/(\w{1,10})\/(.+)$/,
     ensure_authenticated(),
-    v1_get(process.env.SIGNATURE_KEY_1, process.env.ENCRYPTION_KEY_1));
+    v1_get());
 
 app.post('/create',
     bodyParser.json(),
@@ -164,9 +165,8 @@ function ensure_authenticated() {
 function current_create() {
 
     // current signature, encryption keys, and version
-    var encryption_key = new Buffer(process.env.ENCRYPTION_KEY_1, 'base64');
-    var signature_key = new Buffer(process.env.SIGNATURE_KEY_1, 'base64');
-    var version = '1';
+    var current_keys = ensure_key(process.env.CURRENT_KEY);
+    var version_prefix = '/' + process.env.CURRENT_KEY + '/';
 
     return function (req, res, next) {
         if (!req.body)
@@ -199,7 +199,7 @@ function current_create() {
                 continue;
             }
             
-            match = token.match(/^\@([^\.]+\..+)$/)
+            match = token.match(/^\@([^\.]+\..+)$/);
             if (match) {
                 // email domain
                 resource.a.push({
@@ -227,15 +227,15 @@ function current_create() {
 
         var plaintext = JSON.stringify(resource);
         var iv = crypto.randomBytes(16);
-        var cipher = crypto.createCipheriv('aes-256-ctr', encryption_key, iv);
+        var cipher = crypto.createCipheriv('aes-256-ctr', current_keys.encryption_key, iv);
         var encrypted = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final()]);
-        var signature = crypto.createHmac('sha256', signature_key).update(encrypted).update(iv).digest('base64');
+        var signature = crypto.createHmac('sha256', current_keys.signature_key).update(encrypted).update(iv).digest('base64');
         resource =
             base64url.fromBase64(signature)
             + '.' + base64url.fromBase64(encrypted.toString('base64'))
             + '.' + base64url.fromBase64(iv.toString('base64'));
 
-        var split_resource = '/' + version + '/';
+        var split_resource = version_prefix;
         for (var i = 0; i < resource.length; i++) {
             split_resource += resource[i];
             if (((i + 1) % 50) === 0)
@@ -246,13 +246,19 @@ function current_create() {
     };
 }
 
-function v1_get(signature_key, encryption_key) {
-    signature_key = new Buffer(signature_key, 'base64');
-    encryption_key = new Buffer(encryption_key, 'base64');
+function v1_get() {
     return function (req, res, next) {
         res.set('Cache-Control', 'no-cache');
 
-        var resource = req.params[0].replace(/\//g, '');
+        var request_keys;
+        try {
+            request_keys = ensure_key(req.params[0]);
+        }
+        catch (e) {
+            return res.render('invalid', { details: 'For security reasons this sharelock is no longer supported.'});
+        }
+
+        var resource = req.params[1].replace(/\//g, '');
         var tokens = resource.split('.');
         if (tokens.length !== 3 || tokens[0].length === 0 || tokens[1].length === 0 || tokens[2].length === 0)
             return res.render('invalid', { details: 'The URL is malformed and cannot be processed.'});
@@ -261,7 +267,7 @@ function v1_get(signature_key, encryption_key) {
             tokens[0] = base64url.toBase64(tokens[0]); // signature
             tokens[1] = new Buffer(base64url.toBase64(tokens[1]), 'base64'); // encrypted data
             tokens[2] = new Buffer(base64url.toBase64(tokens[2]), 'base64'); // iv
-            var signature = crypto.createHmac('sha256', signature_key).update(tokens[1]).update(tokens[2]).digest('base64');
+            var signature = crypto.createHmac('sha256', request_keys.signature_key).update(tokens[1]).update(tokens[2]).digest('base64');
             if (signature !== tokens[0])
                 throw null;
         }
@@ -270,7 +276,7 @@ function v1_get(signature_key, encryption_key) {
         }
 
         try {
-            var cipher = crypto.createDecipheriv('aes-256-ctr', encryption_key, tokens[2]);
+            var cipher = crypto.createDecipheriv('aes-256-ctr', request_keys.encryption_key, tokens[2]);
             var plaintext = cipher.update(tokens[1], 'base64', 'utf8') + cipher.final('utf8');
             resource = JSON.parse(plaintext);
             if (!resource || typeof resource !== 'object' || typeof resource.d !== 'string'
@@ -307,6 +313,18 @@ function v1_get(signature_key, encryption_key) {
         else
             res.render('not_authorized', { user: req.user, logout_url: '/logout?r=' + req.originalUrl });
     };
+}
+
+function ensure_key(key_name) {
+    if (!keys[key_name]) {
+        if (!process.env['SIGNATURE_KEY_' + key_name] || !process.env['ENCRYPTION_KEY_' + key_name])
+            throw new Error('Cryptographic credentials are not available.');
+        keys[key_name] = {
+            signature_key: new Buffer(process.env['SIGNATURE_KEY_' + process.env.CURRENT_KEY], 'base64'),
+            encryption_key: new Buffer(process.env['ENCRYPTION_KEY_' + process.env.CURRENT_KEY], 'base64')
+        };
+    }
+    return keys[key_name];
 }
 
 module.exports = app;
