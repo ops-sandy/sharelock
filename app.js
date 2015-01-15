@@ -187,7 +187,10 @@ function current_create() {
 
         var tokens = req.body.a.split(/[\ \n\,\r]/);
         for (var i in tokens) {
-            var token = tokens[i];
+            var token = tokens[i].trim();
+
+            if (token.length === 0)
+                continue;
 
             var match = token.match(/^\@([^\.]+)$/);
             if (match) {
