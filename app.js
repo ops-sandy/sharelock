@@ -7,7 +7,8 @@ var express = require('express')
     , passport = require('passport')
     , Auth0Strategy = require('passport-auth0')
     , logger = require('./logger')
-    , crypto = require('crypto');
+    , crypto = require('crypto')
+    , base64url = require('base64url');
 
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
@@ -111,16 +112,63 @@ app.get('/new', function (req, res, next) {
 
 app.get(/^\/1\/(.+)$/,
     ensure_authenticated(),
-    v1_get());
-
-app.get(/^\/(.+)$/,
-    ensure_authenticated(),
-    v1_get());
+    v1_get(process.env.SIGNATURE_KEY_1, process.env.ENCRYPTION_KEY_1));
 
 app.post('/create',
     bodyParser.json(),
     bodyParser.urlencoded({ extended: false }),
-    function (req, res, next) {
+    current_create());
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
+});
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
+});
+
+function ensure_authenticated() {
+    return function (req, res, next) {
+        if (!req.isAuthenticated()) {
+            req.session.bookmark = req.originalUrl;
+            passport.authenticate('auth0', { failureRedirect: '/unauthorized' })(req, res, next);
+        }
+        else
+            next();
+    };
+}
+
+function current_create() {
+
+    // current signature, encryption keys, and version
+    var encryption_key = new Buffer(process.env.ENCRYPTION_KEY_1, 'base64');
+    var signature_key = new Buffer(process.env.SIGNATURE_KEY_1, 'base64');
+    var version = '1';
+
+    return function (req, res, next) {
         if (!req.body)
             return res.status(400).send('Missing payload.');
         if (typeof req.body.d !== 'string' || req.body.d.length === 0)
@@ -172,18 +220,22 @@ app.post('/create',
             }
 
             return res.status(400).send('I don\'t understand what `' + token + '` means. You can say `@johnexample` for Twitter handle, `john@example.com` for e-mail address, or `@example.com` for e-mail domain.');
-        } 
+        }
 
         if (resource.a.length === 0)
-            return res.status(400).send('At least one person allowed to access the secret must be specified.')
+            return res.status(400).send('At least one person allowed to access the secret must be specified.');
 
-        var resource = JSON.stringify(resource);
-        var cipher = crypto.createCipher('aes-256-ctr', process.env.ENCRYPTION_KEY);
-        var encrypted = cipher.update(resource, 'utf8', 'hex') + cipher.final('hex');
-        var signature = crypto.createHmac('sha256', process.env.SIGNATURE_KEY).update(encrypted).digest('hex');
-        var resource = signature + '.' + encrypted;
+        var plaintext = JSON.stringify(resource);
+        var iv = crypto.randomBytes(16);
+        var cipher = crypto.createCipheriv('aes-256-ctr', encryption_key, iv);
+        var encrypted = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final()]);
+        var signature = crypto.createHmac('sha256', signature_key).update(encrypted).update(iv).digest('base64');
+        resource =
+            base64url.fromBase64(signature)
+            + '.' + base64url.fromBase64(encrypted.toString('base64'))
+            + '.' + base64url.fromBase64(iv.toString('base64'));
 
-        var split_resource = '/1/'; // version number
+        var split_resource = '/' + version + '/';
         for (var i = 0; i < resource.length; i++) {
             split_resource += resource[i];
             if (((i + 1) % 50) === 0)
@@ -191,75 +243,38 @@ app.post('/create',
         }
 
         res.status(200).send(split_resource);
-    });
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
-});
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
-
-function ensure_authenticated() {
-    return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            req.session.bookmark = req.originalUrl;
-            passport.authenticate('auth0', { failureRedirect: '/unauthorized' })(req, res, next);
-        }
-        else
-            next();
     };
 }
 
-function v1_get() {
+function v1_get(signature_key, encryption_key) {
+    signature_key = new Buffer(signature_key, 'base64');
+    encryption_key = new Buffer(encryption_key, 'base64');
     return function (req, res, next) {
         res.set('Cache-Control', 'no-cache');
 
         var resource = req.params[0].replace(/\//g, '');
         var tokens = resource.split('.');
-        if (tokens.length !== 2 || tokens[0].length === 0 || tokens[1].length === 0)
+        if (tokens.length !== 3 || tokens[0].length === 0 || tokens[1].length === 0 || tokens[2].length === 0)
             return res.render('invalid', { details: 'The URL is malformed and cannot be processed.'});
 
         try {
-            var signature = crypto.createHmac('sha256', process.env.SIGNATURE_KEY).update(tokens[1]).digest('hex');
+            tokens[0] = base64url.toBase64(tokens[0]); // signature
+            tokens[1] = new Buffer(base64url.toBase64(tokens[1]), 'base64'); // encrypted data
+            tokens[2] = new Buffer(base64url.toBase64(tokens[2]), 'base64'); // iv
+            var signature = crypto.createHmac('sha256', signature_key).update(tokens[1]).update(tokens[2]).digest('base64');
             if (signature !== tokens[0])
                 throw null;
         }
         catch (e) {
             return res.render('invalid', { details: 'Signature verification failed: the data could have been tampered with.'});
-        }            
+        }
 
-        var cipher = crypto.createDecipher('aes-256-ctr', process.env.ENCRYPTION_KEY);
-        var resource;
         try {
-            var plaintext = cipher.update(tokens[1], 'hex', 'utf8') + cipher.final('utf8');
+            var cipher = crypto.createDecipheriv('aes-256-ctr', encryption_key, tokens[2]);
+            var plaintext = cipher.update(tokens[1], 'base64', 'utf8') + cipher.final('utf8');
             resource = JSON.parse(plaintext);
-            if (!resource || typeof resource !== 'object' 
-                || typeof resource.d !== 'string' || !Array.isArray(resource.a))
+            if (!resource || typeof resource !== 'object' || typeof resource.d !== 'string'
+                || !Array.isArray(resource.a))
                 throw null;
         }
         catch (e) {

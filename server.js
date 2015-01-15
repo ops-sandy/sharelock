@@ -1,8 +1,16 @@
 require('dotenv').load();
-['AUTH0_CALLBACK', 'SIGNATURE_KEY', 'ENCRYPTION_KEY', 'AUTH0_DOMAIN', 'AUTH0_CLIENT_ID', 'AUTH0_CLIENT_SECRET', 'COOKIE_SECRET']
-    .forEach(function (v) { 
-        require('assert').ok(process.env[v] !== undefined, v + ' environment variable not set.'); 
-    });
+
+[
+'AUTH0_CALLBACK', 
+'SIGNATURE_KEY_1', 
+'ENCRYPTION_KEY_1', 
+'AUTH0_DOMAIN', 
+'AUTH0_CLIENT_ID', 
+'AUTH0_CLIENT_SECRET', 
+'COOKIE_SECRET'
+].forEach(function (v) { 
+    require('assert').ok(process.env[v] !== undefined, v + ' environment variable not set.'); 
+});
 
 var logger = require('./logger')
     , app = require('./app');
