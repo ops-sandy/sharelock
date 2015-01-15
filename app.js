@@ -109,71 +109,13 @@ app.get('/new', function (req, res, next) {
     res.render('new');
 });
 
+app.get(/^\/1\/(.+)$/,
+    ensure_authenticated(),
+    v1_get());
+
 app.get(/^\/(.+)$/,
-    function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            req.session.bookmark = req.originalUrl;
-            passport.authenticate('auth0', { failureRedirect: '/unauthorized' })(req, res, next);
-        }
-        else
-            next();
-    },
-    function (req, res, next) {
-        res.set('Cache-Control', 'no-cache');
-
-        var resource = req.params[0].replace(/\//g, '');
-        var tokens = resource.split('.');
-        if (tokens.length !== 2 || tokens[0].length === 0 || tokens[1].length === 0)
-            return res.render('invalid', { details: 'The URL is malformed and cannot be processed.'});
-
-        try {
-            var signature = crypto.createHmac('sha256', process.env.SIGNATURE_KEY).update(tokens[1]).digest('hex');
-            if (signature !== tokens[0])
-                throw null;
-        }
-        catch (e) {
-            return res.render('invalid', { details: 'Signature verification failed: the data could have been tampered with.'});
-        }            
-
-        var cipher = crypto.createDecipher('aes-256-ctr', process.env.ENCRYPTION_KEY);
-        var resource;
-        try {
-            var plaintext = cipher.update(tokens[1], 'hex', 'utf8') + cipher.final('utf8');
-            resource = JSON.parse(plaintext);
-            if (!resource || typeof resource !== 'object' 
-                || typeof resource.d !== 'string' || !Array.isArray(resource.a))
-                throw null;
-        }
-        catch (e) {
-            return res.render('invalid', { details: 'Encrypted data is malformed.' });
-        }
-
-        var allowed;
-        for (var i in resource.a) {
-            var acl = resource.a[i];
-            if (acl.k === 'e' || acl.k === 'd') {
-                if (Array.isArray(req.user.emails)) {
-                    for (var j in req.user.emails) {
-                        var email = req.user.emails[j].value;
-                        if (acl.k === 'e' && email === acl.v
-                            || acl.k === 'd' && email.indexOf(acl.v, email.length - acl.v.length) !== -1) {
-                            allowed = true;
-                            break;
-                        }
-                    }
-                }
-            }
-            else if (acl.k === 't' && req.user.provider === 'twitter' && req.user._json.screen_name === acl.v)
-                allowed = true;
-
-            if (allowed) break;
-        }
-
-        if (allowed)
-            res.render('data', { data: resource.d });
-        else
-            res.render('not_authorized', { user: req.user, logout_url: '/logout?r=' + req.originalUrl });
-    });
+    ensure_authenticated(),
+    v1_get());
 
 app.post('/create',
     bodyParser.json(),
@@ -241,7 +183,7 @@ app.post('/create',
         var signature = crypto.createHmac('sha256', process.env.SIGNATURE_KEY).update(encrypted).digest('hex');
         var resource = signature + '.' + encrypted;
 
-        var split_resource = '';
+        var split_resource = '/1/'; // version number
         for (var i = 0; i < resource.length; i++) {
             split_resource += resource[i];
             if (((i + 1) % 50) === 0)
@@ -281,5 +223,75 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+function ensure_authenticated() {
+    return function (req, res, next) {
+        if (!req.isAuthenticated()) {
+            req.session.bookmark = req.originalUrl;
+            passport.authenticate('auth0', { failureRedirect: '/unauthorized' })(req, res, next);
+        }
+        else
+            next();
+    };
+}
+
+function v1_get() {
+    return function (req, res, next) {
+        res.set('Cache-Control', 'no-cache');
+
+        var resource = req.params[0].replace(/\//g, '');
+        var tokens = resource.split('.');
+        if (tokens.length !== 2 || tokens[0].length === 0 || tokens[1].length === 0)
+            return res.render('invalid', { details: 'The URL is malformed and cannot be processed.'});
+
+        try {
+            var signature = crypto.createHmac('sha256', process.env.SIGNATURE_KEY).update(tokens[1]).digest('hex');
+            if (signature !== tokens[0])
+                throw null;
+        }
+        catch (e) {
+            return res.render('invalid', { details: 'Signature verification failed: the data could have been tampered with.'});
+        }            
+
+        var cipher = crypto.createDecipher('aes-256-ctr', process.env.ENCRYPTION_KEY);
+        var resource;
+        try {
+            var plaintext = cipher.update(tokens[1], 'hex', 'utf8') + cipher.final('utf8');
+            resource = JSON.parse(plaintext);
+            if (!resource || typeof resource !== 'object' 
+                || typeof resource.d !== 'string' || !Array.isArray(resource.a))
+                throw null;
+        }
+        catch (e) {
+            return res.render('invalid', { details: 'Encrypted data is malformed.' });
+        }
+
+        var allowed;
+        for (var i in resource.a) {
+            var acl = resource.a[i];
+            if (acl.k === 'e' || acl.k === 'd') {
+                if (Array.isArray(req.user.emails)) {
+                    for (var j in req.user.emails) {
+                        var email = req.user.emails[j].value;
+                        if (acl.k === 'e' && email === acl.v
+                            || acl.k === 'd' && email.indexOf(acl.v, email.length - acl.v.length) !== -1) {
+                            allowed = true;
+                            break;
+                        }
+                    }
+                }
+            }
+            else if (acl.k === 't' && req.user.provider === 'twitter' && req.user._json.screen_name === acl.v)
+                allowed = true;
+
+            if (allowed) break;
+        }
+
+        if (allowed)
+            res.render('data', { data: resource.d });
+        else
+            res.render('not_authorized', { user: req.user, logout_url: '/logout?r=' + req.originalUrl });
+    };
+}
 
 module.exports = app;

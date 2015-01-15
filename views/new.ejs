@@ -85,7 +85,7 @@
                 get_preview();
               }
             }).done(function (data) {
-              var url = window.location.origin + '/' + data
+              var url = window.location.origin + data
               $('#urlv').html(url);
               $('#url').show();
               $('#copy').attr('data-clipboard-text', url).show();
