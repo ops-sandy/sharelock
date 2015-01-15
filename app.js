@@ -91,8 +91,8 @@ app.get('/callback',
     }
 );
 
-app.get('/privacy', function (req, res, next) {
-    res.render('privacy');
+app.get('/about', function (req, res, next) {
+    res.render('about');
 });
 
 app.get('/logout',
