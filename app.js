@@ -12,6 +12,13 @@ var express = require('express')
 
 var keys = {};
 
+var provider_friendly_name = {
+    'facebook': 'Facebook',
+    'google-oauth2': 'Google',
+    'windowslive': 'Microsoft Account',
+    'twitter': 'Twitter'
+};
+
 var strategy = new Auth0Strategy({
     domain: process.env.AUTH0_DOMAIN,
     clientID: process.env.AUTH0_CLIENT_ID,
@@ -21,8 +28,6 @@ var strategy = new Auth0Strategy({
     // accessToken is the token to call Auth0 API (not needed in the most cases)
     // extraParams.id_token has the JSON Web Token
     // profile has all the information from the user
-    logger.warn(profile, 'user logged in');
-    logger.warn({ jwt: extraParams }, 'extra params');
     return done(null, profile);
 });
 
@@ -253,6 +258,8 @@ function v1_get() {
     return function (req, res, next) {
         res.set('Cache-Control', 'no-cache');
 
+        logger.info({ user: req.user._json }, 'sharelock access request');
+
         var request_keys;
         try {
             request_keys = ensure_key(req.params[0]);
@@ -291,31 +298,62 @@ function v1_get() {
         }
 
         var allowed;
+        var email = get_email(req.user);
+        var twitter;
+        var email_domains = {};
         for (var i in resource.a) {
             var acl = resource.a[i];
-            if (acl.k === 'e' || acl.k === 'd') {
-                if (Array.isArray(req.user.emails)) {
-                    for (var j in req.user.emails) {
-                        var email = req.user.emails[j].value;
-                        if (acl.k === 'e' && email === acl.v
-                            || acl.k === 'd' && email.indexOf(acl.v, email.length - acl.v.length) !== -1) {
-                            allowed = true;
-                            break;
-                        }
-                    }
-                }
+            if (acl.k === 'e') {
+                if (email === acl.v)
+                    allowed = true;
+                else
+                    email_domains[acl.v.substring(acl.v.indexOf('@'))] = 1;
             }
-            else if (acl.k === 't' && req.user.provider === 'twitter' && req.user._json.screen_name === acl.v)
-                allowed = true;
+            else if (acl.k === 'd') {
+                if (email.indexOf(acl.v, email.length - acl.v.length) !== -1)
+                    allowed = true;
+                else
+                    email_domains[acl.v] = 1;
+            }
+            else if (acl.k === 't') {
+                if (req.user.provider === 'twitter' && req.user._json.screen_name === acl.v)
+                    allowed = true;
+                else
+                    twitter = true;
+            }
 
             if (allowed) break;
         }
 
-        if (allowed)
-            res.render('data', { data: resource.d });
-        else
-            res.render('not_authorized', { user: req.user, logout_url: '/logout?r=' + req.originalUrl });
+        if (allowed) {
+            var model = {
+                data: resource.d,
+                user: req.user,
+                provider: provider_friendly_name[req.user.provider] || req.user.provider,
+                logout_url: '/logout'
+            };
+            res.render('data', model);
+        }
+        else {
+            var model = {
+                user: req.user,
+                email: get_email(req.user),
+                allow_twitter: twitter,
+                allow_domains: Object.getOwnPropertyNames(email_domains),
+                provider: provider_friendly_name[req.user.provider] || req.user.provider,
+                logout_url: '/logout?r=' + req.originalUrl
+            };
+
+            res.render('not_authorized', model);
+        }
     };
+}
+
+function get_email(user) {
+    if (user._json.email_verified)
+        return user._json.email;
+    else
+        return undefined;
 }
 
 function ensure_key(key_name) {
