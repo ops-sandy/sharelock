@@ -310,7 +310,7 @@ function v1_get() {
                     email_domains[acl.v.substring(acl.v.indexOf('@'))] = 1;
             }
             else if (acl.k === 'd') {
-                if (email.indexOf(acl.v, email.length - acl.v.length) !== -1)
+                if (email && email.indexOf(acl.v, email.length - acl.v.length) !== -1)
                     allowed = true;
                 else
                     email_domains[acl.v] = 1;
@@ -350,7 +350,7 @@ function v1_get() {
 }
 
 function get_email(user) {
-    if (user._json.email_verified)
+    if (user._json.email_verified || user.provider === 'windowslive')
         return user._json.email;
     else
         return undefined;

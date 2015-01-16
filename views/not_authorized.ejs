@@ -17,11 +17,7 @@
       <p class="bg-danger">You are not authorized to unlock the data.</p>
        <p>You are logged in as <strong><%= provider %></strong> user <strong><%= user.displayName %></strong><% if (email) { %> with e-mail address <strong><%= email %></strong><% }; %>.</p>
       <% if (allow_twitter || allow_domains.length > 0) { %>
-
       <p>The creator of the sharelock restricted access to the data to <% if (allow_twitter) { %><strong>select Twitter users</strong><%= (allow_domains.length > 0 ? ' and ' : '') %><% }; %><% if (allow_domains.length > 0) { %><strong>select people with e-mails</strong> ending with <% var count = allow_domains.length; var delim = ''; while (allow_domains.length > 0) { var domain = allow_domains.shift(); %><%= delim %><strong><%= domain %></strong><% delim = (allow_domains.length > 1 ? ', ' : ' or '); }}; %>.</p>
-
-
-
       <% }; %>
       <p><a href="<%- logout_url %>">Try with a different identity</a>&nbsp;|&nbsp;
       <a href="/logout">Logout</a></p>
