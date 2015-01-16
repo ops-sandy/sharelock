@@ -16,7 +16,8 @@ var provider_friendly_name = {
     'facebook': 'Facebook',
     'google-oauth2': 'Google',
     'windowslive': 'Microsoft Account',
-    'twitter': 'Twitter'
+    'twitter': 'Twitter',
+    'github': 'GitHub'
 };
 
 var strategy = new Auth0Strategy({
