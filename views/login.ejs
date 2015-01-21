@@ -38,7 +38,7 @@
       </div>
     </div>
     <% include footer.ejs %>
-    <script src="http://cdn.auth0.com/js/lock-6.min.js"></script>
+    <script src="https://cdn.auth0.com/js/lock-6.min.js"></script>
     <script>
       <% if (providers.preferred.length > 0) { %>
       var lock_primary = new Auth0Lock('<%- auth0_client_id %>', '<%- auth0_domain %>');
