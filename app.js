@@ -17,7 +17,8 @@ var provider_friendly_name = {
     'google-oauth2': 'Google',
     'windowslive': 'Microsoft Account',
     'twitter': 'Twitter',
-    'github': 'GitHub'
+    'github': 'GitHub',
+    'yahoo': 'Yahoo'
 };
 
 var strategy = new Auth0Strategy({
@@ -118,7 +119,6 @@ app.get('/new', function (req, res, next) {
 });
 
 app.get(/^\/(\w{1,10})\/(.+)$/,
-    ensure_authenticated(),
     v1_get());
 
 app.post('/create',
@@ -156,17 +156,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-function ensure_authenticated() {
-    return function (req, res, next) {
-        if (!req.isAuthenticated()) {
-            req.session.bookmark = req.originalUrl;
-            passport.authenticate('auth0', { failureRedirect: '/unauthorized' })(req, res, next);
-        }
-        else
-            next();
-    };
-}
 
 function current_create() {
 
@@ -259,7 +248,7 @@ function v1_get() {
     return function (req, res, next) {
         res.set('Cache-Control', 'no-cache');
 
-        logger.info({ user: req.user._json }, 'sharelock access request');
+        logger.info({ user: req.user ? req.user._json : undefined }, 'sharelock access request');
 
         var request_keys;
         try {
@@ -317,7 +306,7 @@ function v1_get() {
                     email_domains[acl.v] = 1;
             }
             else if (acl.k === 't') {
-                if (req.user.provider === 'twitter' && req.user._json.screen_name === acl.v)
+                if (req.user && req.user.provider === 'twitter' && req.user._json.screen_name === acl.v)
                     allowed = true;
                 else
                     twitter = true;
@@ -336,22 +325,64 @@ function v1_get() {
             res.render('data', model);
         }
         else {
+            email_domains = Object.getOwnPropertyNames(email_domains);
             var model = {
+                auth0_client_id: process.env.AUTH0_CLIENT_ID,
+                auth0_domain: process.env.AUTH0_DOMAIN,
+                auth0_callback: process.env.AUTH0_CALLBACK,
                 user: req.user,
-                email: get_email(req.user),
+                email: req.user ? get_email(req.user) : undefined,
+                providers: get_provider_config(twitter, email_domains, req.user ? req.user.provider : undefined),
                 allow_twitter: twitter,
-                allow_domains: Object.getOwnPropertyNames(email_domains),
-                provider: provider_friendly_name[req.user.provider] || req.user.provider,
+                allow_domains: email_domains,
+                provider: req.user ? (provider_friendly_name[req.user.provider] || req.user.provider) : undefined,
                 logout_url: '/logout?r=' + req.originalUrl
             };
 
-            res.render('not_authorized', model);
+            req.session.bookmark = req.originalUrl;
+            res.render('login', model);
         }
     };
 }
 
+var domain_provider_map = {
+    '@gmail.com': 'google-oauth2',
+    '@hotmail.com': 'windowslive',
+    '@live.com': 'windowslive',
+    '@outlook.com': 'windowslive',
+    '@msn.com': 'windowslive',
+    '@yahoo.com': 'yahoo'
+};
+
+function get_provider_config(twitter, email_domains, provider) {
+    var config = {
+        preferred: {},
+        other: []
+    };
+
+    if (twitter && provider !== 'twitter') 
+        config.preferred['twitter'] = 1;
+
+    email_domains.forEach(function (domain) {
+        var pref = domain_provider_map[domain.toLowerCase()];
+        if (pref && pref !== provider)
+            config.preferred[pref] = 1;
+    });
+
+    if (email_domains.length > 0) {
+        for (var other in provider_friendly_name) {
+            if (other !== provider && !config.preferred[other])
+                config.other.push(other);
+        }
+    }
+
+    config.preferred = Object.getOwnPropertyNames(config.preferred);
+
+    return config;
+}
+
 function get_email(user) {
-    if (user._json.email_verified || user.provider === 'windowslive')
+    if (user && (user._json.email_verified || user.provider === 'windowslive'))
         return user._json.email;
     else
         return undefined;

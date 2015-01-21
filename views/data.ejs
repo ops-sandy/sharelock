@@ -23,8 +23,7 @@
 
       <h2><button id="copy" class="btn btn-primary" style="margin-right: 1em;" data-clipboard-text="<%= data %>">Copy</button>your secret data</h2>
       <p class="bg-primary"><% data.split('\n').forEach(function (line) { %><%= line %><br><% }); %></p>
-      <p><a href="/new">Create new sharelock</a>&nbsp;|&nbsp;
-        <a href="/logout">Logout</a></p>
+      <p><a href="/new">Create new sharelock</a>&nbsp;|&nbsp;<a href="/logout">Logout</a></p>
     </div>
     <% include footer.ejs %>
   </body>

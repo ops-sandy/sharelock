@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>sharelock</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
+    <link href="//cdn.auth0.com/styleguide/latest/index.css" rel="stylesheet" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <% include analytics.ejs %>
+  </head>
+  <body>
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="row">
+        <h1><a href="/" class="auth0header">{sharelock} login</a></h1>
+        <% if (user) { %>
+        <p class="bg-danger">You are not authorized to unlock the data.</p>
+        <% }; %>
+      </div>
+      <div class="row">
+        <div class="col-xs-4">
+          <% if (user) { %>
+           <p>You are logged in as <strong><%= provider %></strong> user <strong><%= user.displayName %></strong><% if (email) { %> with e-mail address <strong><%= email %></strong><% }; %>.
+          <% }; %>
+          <% if (allow_twitter || allow_domains.length > 0) { %>
+          The creator of the sharelock restricted access to the data to <% if (allow_twitter) { %><strong>select Twitter users</strong><%= (allow_domains.length > 0 ? ' and ' : '') %><% }; %><% if (allow_domains.length > 0) { %><strong>select people with e-mails</strong> ending with <% var count = allow_domains.length; var delim = ''; while (allow_domains.length > 0) { var domain = allow_domains.shift(); %><%= delim %><strong><%= domain %></strong><% delim = (allow_domains.length > 1 ? ', ' : ' or '); }; %>. Please choose an identity provider with which you registered a matching e-mail address. <% }; %>
+          <% }; %>
+          </p>
+        </div>
+        <% if (providers.preferred.length > 0) { %>
+        <div id="login-container-primary" class="col-xs-4"></div>
+        <% }; %>
+        <% if (providers.other.length > 0) { %>
+        <div id="login-container-secondary" class="col-xs-4"></div>
+        <% }; %>
+      </div>
+    </div>
+    <% include footer.ejs %>
+    <script src="http://cdn.auth0.com/js/lock-6.min.js"></script>
+    <script>
+      <% if (providers.preferred.length > 0) { %>
+      var lock_primary = new Auth0Lock('<%- auth0_client_id %>', '<%- auth0_domain %>');
+      lock_primary.show({
+        callbackURL: '<%- auth0_callback %>',
+        container: 'login-container-primary',
+        connections: <%- JSON.stringify(providers.preferred) %>,
+        icon: 'https://auth0.com/boot/badge.png',
+        dict: {
+          signin: {
+            title: 'Suggested log in'
+          }
+        }
+      });
+      <% }; %>
+
+      <% if (providers.other.length > 0) { %>
+      var lock_secondary = new Auth0Lock('<%- auth0_client_id %>', '<%- auth0_domain %>');
+      lock_secondary.show({
+        callbackURL: '<%- auth0_callback %>',
+        container: 'login-container-secondary',
+        connections: <%- JSON.stringify(providers.other) %>,
+        icon: 'https://auth0.com/boot/badge.png',
+        dict: {
+          signin: {
+            title: '<%= providers.preferred.length > 0 ? 'You can also try' : 'Log in' %>'
+          }
+        }
+      });
+      <% }; %>
+    </script>
+  </body>
+</html>
