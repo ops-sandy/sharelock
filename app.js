@@ -164,8 +164,10 @@ function current_create() {
     var version_prefix = '/' + process.env.CURRENT_KEY + '/';
 
     return function (req, res, next) {
-        if (!req.body)
-            return res.status(400).send('Missing payload.');
+        if (!req.body.d)
+            req.body.d = req.query.d;
+        if (!req.body.a)
+            req.body.a = req.query.a;
         if (typeof req.body.d !== 'string' || req.body.d.length === 0)
             return res.status(400).send('Missing data to secure. Use `d` parameter.');
         if (req.body.d.length > 500)
