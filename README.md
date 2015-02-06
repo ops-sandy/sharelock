@@ -65,7 +65,7 @@ The service requires several environment variables to be set (all of them are re
 | ENCRYPTION_KEY_1 | A secret key that will be used to encrypt your sharelock. You can generate one with `openssl rand 32 | base64`. |
 | CURRENT_KEY | Specify `1`. More on this below. |
 | COOKIE_SECRET | A secret key to protect web application UI HTTP cookies with. You can generate one with `openssl rand 32 | base64`. |
-| FORCE_HTTPS | Specify 1 to redirect all requests to an HTTPS endpoint if the caller uses HTTP. It is recommended to use `1` for production deployment behind an HTTPS terminating proxy. The value of `0` is useful during development when there is no proxy. |
+| FORCE_HTTPS | Specify 1 to redirect all HTTP requests to corresponding HTTPS endpoints. It is recommended to use `1` for production deployment. The value of `0` is useful during development when there is no HTTPS terminating proxy. |
 | CURRENT_KEY | Specify `1`. More on this below. |
 | GA_PROPERTY_ID | Optional. Specify the Google Analytics property ID to hook up Google Analytics to the web UI. |
 | PORT | Optional. Specify the port to listen on. Specific hosting environments like Heroku or Windows Azure Web Sites will provide this envronment property for you. If not specified (e.g. during development), the default value is *3000*. |
@@ -88,7 +88,7 @@ ENCRYPTION_KEY_{N}={base64_encoded_encruption_key}
 
 Where *{N}* is an arbitrary literal (but we recommend using integers for brevity).
 
-At any point in time, Sharelock services uses *one* of these key pairs to sign and encrypt newly created sharelocks. This key pair is specified with the environment variable: 
+At any point in time, Sharelock service uses *one* of these key pairs to sign and encrypt newly created sharelocks. This key pair is specified with the environment variable: 
 
 ```
 CURRENT_KEY={N}
@@ -97,3 +97,5 @@ CURRENT_KEY={N}
 # Feedback
 
 At [Auth0](https://auth0.com), we welcome feedback and collaboration. You kow where to file issues and how to submit pull requests. You can contact us [here](https://auth0.com/support). 
+
+This project is licensed under MIT.
