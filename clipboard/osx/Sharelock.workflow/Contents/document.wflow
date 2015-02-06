@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>381</string>
+	<key>AMApplicationVersion</key>
+	<string>2.4</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>on encode_text(this_text)	set the standard_characters to "abcdefghijklmnopqrstuvwxyz0123456789.-_:"	set the encoded_text to ""	repeat with this_char in this_text		if this_char is in the standard_characters then			set the encoded_text to (the encoded_text &amp; this_char)		else			set the encoded_text to (the encoded_text &amp; encode_char(this_char)) as string		end if	end repeat	return the encoded_textend encode_texton encode_char(this_char)	set the ASCII_num to (the ASCII number this_char)	set the hex_list to {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"}	set x to item ((ASCII_num div 16) + 1) of the hex_list	set y to item ((ASCII_num mod 16) + 1) of the hex_list	return ("%" &amp; x &amp; y) as stringend encode_charon run {input, parameters}		try		set plaintext to the clipboard as string	on error		display dialog "Sharelock supports only text secrets. Your clipboard does not contain any text." buttons {"Cancel"} default button 1	end try		if length of plaintext &gt; 500 then		display dialog "Sharelock only supports secrets up to 500 characters. Your clipboard contains text that is " &amp; (length of plaintext as string) &amp; " characters long." buttons {"Cancel"} default button 1	end if		display dialog "Who do you want to share clipboard data with?You can provide email addresses (e.g. support@auth0.com), email domain names (e.g. @auth0.com), or Twitter handles (e.g. @auth0)." default answer "" default button 2	set acls to text returned of result	if length of acls &gt; 200 then		display dialog "Sharelock can only accept a list of recipients up to 200 characters in length. Your list is " &amp; (length of acls as string) &amp; " characters long." buttons {"Cancel"} default button 1	end if	if length of acls = 0 then		display dialog "Sharelock requires at least one recipient." buttons {"Cancel"} default button 1	end if		set sharelockurl to "https://sharelock.io/create?d=" &amp; encode_text(plaintext) &amp; "\\&amp;a=" &amp; encode_text(acls)	try		do shell script "curl -s -f -m 5 --data-binary '' " &amp; sharelockurl		set response to result	on error msg		display dialog "Unable to create a sharelock. Communication with the https://sharelock.io service was unsuccessful:" &amp; msg buttons {"Cancel"} default button 1	end try		if response does not start with "/" then		display dialog "Unable to create a sharelock:	" &amp; (characters 1 through 140 of response as string) buttons {"Cancel"} default button 1	end if		set sharelock to "https://sharelock.io" &amp; response	set the clipboard to sharelock	display dialog "Your sharelocked secret is now in the clipboard. Paste it into application of your choice.Powered by auth0.com" buttons {"OK"} default button 1		return inputend run</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>C645FFC1-FF53-4C22-9FD5-14AB2F9922AC</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>810DF861-4D10-4BE4-91B4-A84F98462401</string>
+				<key>UUID</key>
+				<string>AE5388E4-3262-4EA6-B984-2D8DCDE81C89</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<true/>
+				<key>location</key>
+				<string>309.500000:381.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/English.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<true/>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>serviceInputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceOutputTypeIdentifier</key>
+		<string>com.apple.Automator.nothing</string>
+		<key>serviceProcessesInput</key>
+		<integer>0</integer>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.servicesMenu</string>
+	</dict>
+</dict>
+</plist>
