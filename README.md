@@ -1,37 +1,33 @@
 Sharelock: securely share data
 ===
 
-# Auth0 presents: Sharelock
+Sharelock is a web service created by [Auth0](https://auth0.com) and hosted *pro publico bono* at https://sharelock.io. It lets you simply and securely share secret information with people you trust. You can also host your own version of Sharelock using code from this repository. 
 
-Sharelock is web service created by [Auth0](https://auth0.com) and hosted *pro publico bono* at https://sharelock.io. It lets you simply and securely share secret information with people you trust. You can also host your own version of Sharelock using code from this repository. 
-
-Secret data you provide is encrypted, and only people you specify can access it. Sharelock restricts access to your data by requiring recipients to authenticate themselves first. If their proven identity matches your expectations, they will be allowed to view the secret. You can specify people who should have access to the secret using their e-mail address, e-mail address domain, or a Twitter handle. 
+Secret data you provide is encrypted, and only people you specify can access it. Sharelock restricts access to your data by requiring recipients to authenticate themselves first. If their proven identity matches your expectations, they will be allowed to view the secret. You can specify people who should have access to the secret using their e-mail addresses, e-mail address domains, or Twitter handles. 
 
 ![sharelockio](https://cloud.githubusercontent.com/assets/822369/6075236/8073adf6-ad83-11e4-9dc0-9006b61c3934.png)
 
-Sharelock service does not store your secrets. Your secret data is stored in an encrypted and signed form in a rather long URL we call a "sharelock". It is up to you how you transmit the sharelock to your intended recipients: you can send it by e-mail, tweet it, or publish in The New York Times. Regardless who intercepts your sharelock in transmission, only the people you specified will be able to access the secret within it. 
+Sharelock service does not store your secret data. Your secret data is stored in an encrypted and signed form in a rather long URL we call a "sharelock". It is up to you how you transmit the sharelock URL to your intended recipients: you can send it by e-mail, tweet it, or publish it in The New York Times. Regardless who intercepts your sharelock in transmission, only the people you specified will be able to access the secret within it. 
 
-# Why would I want to host my own Sharelock service
+# Host your own
 
 The https://sharelock.io service Auth0 provides controls signing and encryption keys that protect your secret data. If you want to be in control of singing and encryption keys, you must host your own version of the Sharelock service. 
 
-# I want to host my own Sharelock service, what do I do?
+# Getting started
 
 ## Hosting
 
-Sharelock service is an HTTP service that exposes both HTTP APIs and a web application UI. The service sets up an HTTP listener. To make sure your deployment is secure, you must host it behind an HTTPS terminating proxy, for example in Heroku or Windows Azure Web Sites. 
+Sharelock service is an HTTP service that exposes both web APIs and the web application UI. The service sets up an HTTP listener. To make sure your deployment is secure, you must host it behind an HTTPS terminating proxy, for example in Heroku or Windows Azure Web Sites. 
 
 ## Auth0 application
 
-Sharelock service uses [Auth0](https://auth0.com) to authenticate recipients of a sharelock. You must create an account with Auth0, and register an application. In that process, you will be given three pieces of infromation:
+Sharelock service uses [Auth0](https://auth0.com) to authenticate recipients of a sharelock. You must create an account with Auth0, and register an application. In that process, you will be given three pieces of information, which you will need to host your own Sharelock service:
 
 * Auth0 domain (e.g. *example27.auth0.com*)  
 * Auth0 client ID
 * Auth0 client secret
 
-You will need this information to run a Sharelock service. 
-
-Furthermore, your application must be configured to enable the following *Connections* (connections represent identity providers):
+Furthermore, your application must be configured to enable the following *connections* (connections represent identity providers):
 
 * Facebook  
 * GitHub  
@@ -46,7 +42,7 @@ Lastly, in your application settings at Auth0, remember to specify the callback 
 http://localhost:3000/callback,https://sharelock.io/callback
 ```
 
-NOTE: the *http://localhost:3000/callback* URL is useful to specify to enable running your service on a developer machine. 
+NOTE: the *http://localhost:3000/callback* URL is useful during development. 
 
 ## 
 
@@ -58,9 +54,9 @@ node server.js
 
 The service requires several environment variables to be set (all of them are required unless specified otherwise):
 
----
+
 | Environment variable | Value |
----
+| ------------- | ----------- |
 | AUTH0_DOMAIN | The Auth0 domain obtained from [Auth0](https://auth0.com) |
 | AUTH0_CLIENT_ID | The Auth0 client ID obtained from [Auth0](https://auth0.com) |
 | AUTH0_CLIENT_SECRET| The Auth0 client secret obtained from [Auth0](https://auth0.com) |
