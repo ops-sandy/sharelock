@@ -69,7 +69,8 @@ The service requires several environment variables to be set (all of them are re
 | CURRENT_KEY | Specify `1`. More on this below. |
 | GA_PROPERTY_ID | Optional. Specify the Google Analytics property ID to hook up Google Analytics to the web UI. |
 | PORT | Optional. Specify the port to listen on. Specific hosting environments like Heroku or Windows Azure Web Sites will provide this envronment property for you. If not specified (e.g. during development), the default value is *3000*. |
----
+
+During development, you can provide all these environment variables through an `.env` file at the root of our enlistment.
 
 ## Key management
 
