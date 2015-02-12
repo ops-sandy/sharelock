@@ -116,6 +116,11 @@ app.get('/', function (req, res, next) {
     res.render('landing');
 });
 
+app.post('/create',
+    bodyParser.json(),
+    bodyParser.urlencoded({ extended: false }),
+    current_create());
+
 app.get(/^\/(\w{1,10})\/(.+)$/,
     v1_get());
 
@@ -149,6 +154,95 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
+
+function current_create() {
+
+    // current signature, encryption keys, and version
+    var current_keys = ensure_key(process.env.CURRENT_KEY);
+    var version_prefix = '/' + process.env.CURRENT_KEY + '/';
+
+    return function (req, res, next) {
+        if (!req.body.d)
+            req.body.d = req.query.d;
+        if (!req.body.a)
+            req.body.a = req.query.a;
+        if (typeof req.body.d !== 'string' || req.body.d.length === 0)
+            return res.status(400).send('Missing data to secure. Use `d` parameter.');
+        if (req.body.d.length > 500)
+            return res.status(400).send('Data too large. Max 500 characters.');
+        if (typeof req.body.a !== 'string' || req.body.a.length === 0)
+            return res.status(400).send('Missing ACLs. Use `a` parameter.');
+        if (req.body.a.length > 200)
+            return res.status(400).send('ACLs too long. Max 200 characters.');
+
+        var resource = {
+            d: req.body.d,
+            a: []
+        };
+
+        var tokens = req.body.a.split(/[\ \n\,\r]/);
+        for (var i in tokens) {
+            var token = tokens[i].trim();
+
+            if (token.length === 0)
+                continue;
+
+            var match = token.match(/^\@([^\.]+)$/);
+            if (match) {
+                // twitter
+                resource.a.push({
+                    k: 't',
+                    v: match[1]
+                });
+                continue;
+            }
+
+            match = token.match(/^\@([^\.]+\..+)$/);
+            if (match) {
+                // email domain
+                resource.a.push({
+                    k: 'd',
+                    v: token
+                });
+                continue;
+            }
+
+            match = token.match(/^[^\@]+\@[^\.]+\..+$/);
+            if (match) {
+                // email
+                resource.a.push({
+                    k: 'e',
+                    v: token
+                });
+                continue;
+            }
+
+            return res.status(400).send('I don\'t understand what `' + token + '` means. You can say `@johnexample` for Twitter handle, `john@example.com` for e-mail address, or `@example.com` for e-mail domain.');
+        }
+
+        if (resource.a.length === 0)
+            return res.status(400).send('At least one person allowed to access the secret must be specified.');
+
+        var plaintext = JSON.stringify(resource);
+        var iv = crypto.randomBytes(16);
+        var cipher = crypto.createCipheriv('aes-256-ctr', current_keys.encryption_key, iv);
+        var encrypted = Buffer.concat([cipher.update(plaintext, 'utf8'), cipher.final()]);
+        var signature = crypto.createHmac('sha256', current_keys.signature_key).update(encrypted).update(iv).digest('base64');
+        resource =
+            base64url.fromBase64(signature)
+            + '.' + base64url.fromBase64(encrypted.toString('base64'))
+            + '.' + base64url.fromBase64(iv.toString('base64'));
+
+        var split_resource = version_prefix;
+        for (var i = 0; i < resource.length; i++) {
+            split_resource += resource[i];
+            if (((i + 1) % 50) === 0)
+                split_resource += '/';
+        }
+
+        res.status(200).send(split_resource);
+    };
+}
 
 function v1_get() {
     return function (req, res, next) {
