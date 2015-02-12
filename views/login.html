@@ -8,7 +8,7 @@
       You are logged in as <strong>{{ provider }}</strong> user <strong>{{ user.displayName }}</strong>{% if (email) %} with e-mail address <strong>{{ email }}</strong>{% endif %}
     {% endif %}
     {% if (allow_twitter || allow_domains.length > 0) %}
-    The creator of the sharelock restricted access to the data to {% if (allow_twitter) %}<strong>select Twitter users</strong><% if (allow_domains.length > 0) %} and{% endif %}{% if (allow_domains.length > 0) %}<strong>select people with e-mails</strong> ending with {% if allow_domains.length == 2 %} {{allow_domains | join(' or ')}} {% else %} {{allow_domains | join(',')}} {% endif %}. Please choose an identity provider with which you registered a matching e-mail address. {% endif %}
+    The creator of the sharelock restricted access to the data to {% if (allow_twitter) %}<strong>select Twitter users</strong><% if (allow_domains.length > 0) %} and{% endif %}{% if (allow_domains.length > 0) %}<strong>select people with e-mails</strong> ending with <strong>{% if allow_domains.length == 2 %} {{allow_domains | join(' or ')}} {% else %} {{allow_domains | join(',')}} {% endif %}.</strong> Please choose an identity provider with which you registered a matching e-mail address. {% endif %}
     {% endif %}
     </p>
     <h2>Sign In</h2>
