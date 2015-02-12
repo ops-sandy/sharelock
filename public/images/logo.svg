@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="124px" height="23px" viewBox="0 0 124 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
+    <title>{sharelock}</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="2---Secret-Data" sketch:type="MSArtboardGroup" transform="translate(-49.000000, -72.000000)" font-size="26" font-family="Proxima Nova" fill="#FFFFFF" font-weight="normal">
+            <text id="{sharelock}" sketch:type="MSTextLayer">
+                <tspan x="49" y="90">{sharelock}</tspan>
+            </text>
+        </g>
+    </g>
+</svg>
