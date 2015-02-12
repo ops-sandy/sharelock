@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="content">
+  <div class="data">
+    <h3>YOUR SECRET DATA</h3>
+    <div class="mobile-con">
+      <p>{{ data | replace('\n', '<br />', 'g') }}</p>
+      <a id="copy-link-mobile" class="copy-link scale waves-effect waves-light btn" href="#"></a>
+      <a class="plus waves-effect waves-light btn hide" href="#"></a>
+    </div>
+    <p class="text">{{data | replace('\n', '<br />', 'g') }}</p>
+    <div class="sharelocked-date">
+      <h2>SHARELOCKED DATA</h2>
+      <a class="link sharelock" target="_blank" href="#"></a>
+      <p class="share">share this sharelock on <a target="_blank" class="link twitter waves-effect waves-light" href="#"></a><a target="_blank" class="link facebook waves-effect waves-light" href="#"></a><a target="_blank" class="link mail waves-effect waves-light" href="#"></a></p>
+      <p class="clipboard">copy to clipboard <a id="copy-link" data-clipboard-text="{{ data }}" class="copy-link waves-effect waves-light" href="#"></a></p>
+    </div>
+  </div>
+</div>
+<!-- / content -->
+{% endblock %}
+
+{% block scripts %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
+<script type="text/javascript">
+$(function () {
+  var copy_client = new ZeroClipboard(document.getElementById('copy-link'));
+  var copy_client2 = new ZeroClipboard(document.getElementById('copy-link-mobile'));
+
+  $('.link.sharelock').attr('href', location.href);
+  $('.link.sharelock').text(location.href);
+  $('.link.facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u='
+    + encodeURIComponent(location.href));
+  $('.link.twitter').attr('href', 'https://twitter.com/share?text=Check%20my%20sharelock%20secret&url='
+    + encodeURIComponent(location.href));
+  $('.link.mail').attr('href', 'mailto:some@email.com?subject=Check%20my%20sharelock%20secret&body=Check%20my%20sharelock%20'
+    + encodeURIComponent(location.href));
+
+});
+</script>
+{% endblock %}
