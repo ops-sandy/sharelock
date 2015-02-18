@@ -121,12 +121,12 @@ app.post('/create',
     bodyParser.urlencoded({ extended: false }),
     current_create());
 
-app.get('/test/500', function(req, res, next) {
-    if (app.get('env') === 'development') {
-        throw new Error('Internal Server Error');
-    }
-    next();
-});
+// app.get('/test/500', function(req, res, next) {
+//     if (app.get('env') === 'development') {
+//         throw new Error('Internal Server Error');
+//     }
+//     next();
+// });
 
 app.get(/^\/(\w{1,10})\/(.+)$/,
     v1_get());
