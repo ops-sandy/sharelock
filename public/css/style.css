@@ -251,6 +251,42 @@ a:hover {
   left: 49px;
 }
 
+
+/* error
+------------------------------------------------------------------------------*/
+
+.error {
+  min-height: 100%;
+}
+
+.error .home-link {
+  position: absolute;
+  top: 194px;
+  right: 113px;
+    background: #44c7f4 url(../images/ico_home.svg) no-repeat 50% 47%;
+    height: 56px;
+    width: 56px;
+    border-radius: 100px;
+    padding: 0;
+}
+
+.error h2 {
+  font-size: 300px;
+  color: #EB5424;
+  line-height: 360px;
+  font-weight: 900;
+  text-align: center;
+  padding: 85px 0 0 0;
+  margin-bottom: -53px;
+}
+
+.error h3 {
+  font-size: 50px;
+  color: #9B9B9B;
+  line-height: 60px;
+  text-align: center;
+}
+
 /* Content
 ------------------------------------------------------------------------------*/
 
@@ -656,5 +692,24 @@ a.zeroclipboard-is-hover{
     margin-right: -5px;
   }
 
+
+  .error .home-link {
+    position: absolute;
+    top: auto;
+    bottom: 16px;
+    right: 15px;
+  }
+  
+  .error h2 {
+    font-size: 132px;
+    line-height: 150px;
+    padding: 72px 0 0 0;
+    margin-bottom: -20px;
+  }
+  
+  .error h3 {
+    font-size: 21px;
+    line-height: 25px;
+  }
 
 }
