@@ -1,0 +1,52 @@
+{
+  "name": "Sharelock",
+  "description": "Send and receive secret data securely",
+  "logo": "https://cdn.auth0.com/img/sharelock-256x256.png",
+  "repository": "https://github.com/auth0/sharelock",
+  "keywords": ["sharelock", "node", "security", "encryption", "dataroom"],
+  "env": {
+    "AUTH0_CALLBACK": {
+      "description": "The sharelock callback URL that Auth0 will callback after user login. For production use HTTPS.",
+      "required": true,
+      "value": "http://yourapp.herokuapp.com/callback"
+    },
+    "AUTH0_CLIENT_ID": {
+      "description": "The Auth0 client ID.",
+      "required": true
+    },
+    "AUTH0_CLIENT_SECRET": {
+      "description": "The Auth0 client secret.",
+      "required": true
+    },
+    "AUTH0_DOMAIN": {
+      "description": "The Auth0 domain",
+      "required": true,
+      "value": "youraccount.auth0.com"
+    },
+    "COOKIE_SECRET": {
+      "description": "A secret used to sign cookies",
+      "required": true,
+      "generator": "secret"
+    },
+    "CURRENT_KEY": {
+      "description": "The key to use (it will be used together with ENCRYPTION_KEY_{CURRENT_KEY}). This is useful for key rotation.",
+      "required": true,
+      "value": "1"
+    },
+    "ENCRYPTION_KEY_1": {
+      "description": "The key used to encrypt (32 bytes in hex)",
+      "required": true,
+      "generator": "secret"
+    },
+    "SIGNATURE_KEY_1": {
+      "description": "The key used to sign (32 bytes in hex)",
+      "required": true,
+      "generator": "secret"
+    },
+    "FORCE_HTTPS": {
+      "description": "Force HTTPS (set to 1 for production)",
+      "required": true,
+      "value": "0"
+    }
+  }
+}

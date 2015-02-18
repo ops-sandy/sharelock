@@ -11,6 +11,8 @@ Sharelock service does not store your secret data. Your secret data is stored in
 
 # Host your own
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+
 The https://sharelock.io service Auth0 provides controls signing and encryption keys that protect your secret data. If you want to be in control of singing and encryption keys, you must host your own version of the Sharelock service. 
 
 # Getting started
