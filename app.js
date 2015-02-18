@@ -121,7 +121,7 @@ app.post('/create',
     bodyParser.urlencoded({ extended: false }),
     current_create());
 
-app.get('/test/500', function() {
+app.get('/test/500', function(req, res, next) {
     if (app.get('env') === 'development') {
         throw new Error('Internal Server Error');
     }
