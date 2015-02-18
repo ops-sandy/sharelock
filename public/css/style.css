@@ -141,7 +141,8 @@ textarea {
 ------------------------------------------------------------------------------*/
 
 body {
-  font: 16px/24px proxima-nova, sans-serif;
+  font-family: 'Whitney SSm A', 'Whitney SSm B'; 
+  font-style: normal;
   color: #9B9B9B;
   background: #f1f1f1;
 }
