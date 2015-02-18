@@ -93,8 +93,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 app.get('/callback',
     passport.authenticate('auth0', { failureRedirect: '/unauthorized' }),
     function (req, res, next) {
@@ -127,24 +125,12 @@ app.get(/^\/(\w{1,10})\/(.+)$/,
     v1_get());
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next){
-  res.status(404);
-
-  // respond with html page
-  if (req.accepts('html')) {
-    res.render('404', { url: req.url });
-    return;
-  }
-
-  // respond with json
-  if (req.accepts('json')) {
-    res.send({ error: 'Not found' });
-    return;
-  }
-
-  // default to plain-text. send()
-  res.type('txt').send('Not found');
+app.use(function(req, res, next) {
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
+
 // error handlers
 
 // development error handler
@@ -168,8 +154,6 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-
 
 function current_create() {
 
