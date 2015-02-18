@@ -269,10 +269,11 @@ a:hover {
 
 .log-in p{
   line-height: 1.5;
+  padding-bottom: 75px;
 }
 
-.log-in p {
-  padding-bottom: 75px;
+.log-in p strong {
+  color: #666;
 }
 
 .log-in h2 {
