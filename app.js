@@ -121,17 +121,22 @@ app.post('/create',
     bodyParser.urlencoded({ extended: false }),
     current_create());
 
+app.get('/test/500', function() {
+    if (app.get('env') === 'development') {
+        throw new Error('Internal Server Error');
+    }
+    next();
+});
+
 app.get(/^\/(\w{1,10})\/(.+)$/,
     v1_get());
 
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    res.render('404', {
-        message: err.message,
-        error: {}
-    });
+    res.status(404);
+    res.render('404');
 });
 
 // error handlers
@@ -141,7 +146,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.render('500', {
             message: err.message,
             error: err
         });
@@ -152,7 +157,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('500', {
         message: err.message,
         error: {}
     });

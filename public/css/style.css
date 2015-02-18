@@ -287,6 +287,38 @@ a:hover {
   text-align: center;
 }
 
+.error-404 {
+  min-height: 100%;
+}
+
+.error-404 h2 {
+  font-size: 300px;
+  color: #EB5424;
+  line-height: 360px;
+  font-weight: 900;
+  text-align: center;
+  padding: 85px 0 0 0;
+  margin-bottom: -53px;
+}
+
+.error-404 h3 {
+  font-size: 50px;
+  color: #9B9B9B;
+  line-height: 60px;
+  text-align: center;
+}
+
+.invalid{
+  margin-top: 20px;
+}
+
+.invalid h2{
+  font-weight: 100;
+  font-size: 2em;
+  color: black;
+  margin-bottom: 20px;
+}
+
 /* Content
 ------------------------------------------------------------------------------*/
 
