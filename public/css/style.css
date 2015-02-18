@@ -241,7 +241,7 @@ a:hover {
 
 #logo {
   width: 147px;
-  height: 29px;
+  height: 36px;
   display: block;
   cursor: pointer;
   text-indent: -9999em;
@@ -267,6 +267,10 @@ a:hover {
   padding: 128px 153px 139px 147px;
 }
 
+.log-in p{
+  line-height: 1.5;
+}
+
 .log-in p {
   padding-bottom: 75px;
 }
@@ -290,7 +294,6 @@ a:hover {
   text-align: center;
   display: block;
   font-size: 14px;
-  font-family: 'Roboto', sans-serif;
   position: relative;
 }
 
@@ -603,7 +606,6 @@ a.zeroclipboard-is-hover{
   }
 
   .mobile-con {
-    font-family: Roboto-Regular;
     font-size: 16px;
     color: #000000;
     padding-bottom: 50px;
@@ -623,7 +625,6 @@ a.zeroclipboard-is-hover{
     padding-bottom: 7px;
     font-size: 12px;
     line-height: 16px;
-    font-family: 'Roboto', sans-serif;
   }
 
   .data .sharelocked-date,
