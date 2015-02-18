@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="124px" height="23px" viewBox="0 0 124 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="146px" height="25px" viewBox="0 0 146 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
-    <title>{sharelock}</title>
+    <title>Group 3 + sharelock</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="2---Secret-Data" sketch:type="MSArtboardGroup" transform="translate(-49.000000, -72.000000)" font-size="26" font-family="Proxima Nova" fill="#FFFFFF" font-weight="normal">
-            <text id="{sharelock}" sketch:type="MSTextLayer">
-                <tspan x="49" y="90">{sharelock}</tspan>
-            </text>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="2---Secret-Data" sketch:type="MSArtboardGroup" transform="translate(-49.000000, -69.000000)" fill="#FFFFFF">
+            <g id="Group-3-+-sharelock" sketch:type="MSLayerGroup" transform="translate(49.000000, 67.000000)">
+                <g id="Group-3" transform="translate(0.000000, 2.000000)" sketch:type="MSShapeGroup">
+                    <path d="M25.4672139,12.8685082 C25.4672139,6.21711748 19.9725647,0.825099971 13.1945714,0.825099971 C6.41657817,0.825099971 0.921928979,6.21711748 0.921928979,12.8685082 C0.921928979,19.5198988 6.41657817,24.9119163 13.1945714,24.9119163 C19.9725647,24.9119163 25.4672139,19.5198988 25.4672139,12.8685082 Z M3.15331852,12.8685082 C3.15331852,7.42646124 7.64894058,3.01481055 13.1945714,3.01481055 C18.7402023,3.01481055 23.2358244,7.42646124 23.2358244,12.8685082 C23.2358244,18.3105551 18.7402023,22.7222058 13.1945714,22.7222058 C7.64894058,22.7222058 3.15331852,18.3105551 3.15331852,12.8685082 Z" id="Oval-1"></path>
+                    <path d="M18.0292488,12.8685082 C18.0292488,10.2482633 15.86469,8.12413523 13.1945714,8.12413523 C10.5244529,8.12413523 8.3598941,10.2482633 8.3598941,12.8685082 C8.3598941,15.488753 10.5244529,17.6128811 13.1945714,17.6128811 C15.86469,17.6128811 18.0292488,15.488753 18.0292488,12.8685082 Z M10.5912836,12.8685082 C10.5912836,11.4576071 11.7568153,10.3138458 13.1945714,10.3138458 C14.6323276,10.3138458 15.7978592,11.4576071 15.7978592,12.8685082 C15.7978592,14.2794092 14.6323276,15.4231705 13.1945714,15.4231705 C11.7568153,15.4231705 10.5912836,14.2794092 10.5912836,12.8685082 Z" id="Oval-2"></path>
+                    <path d="M27.9921202,13.9633634 C28.5693805,13.9633634 29.0373425,13.47318 29.0373425,12.8685082 C29.0373425,12.2638363 28.5693805,11.7736529 27.9921202,11.7736529 L16.8430816,11.7736529 C16.2658212,11.7736529 15.7978592,12.2638363 15.7978592,12.8685082 C15.7978592,13.47318 16.2658212,13.9633634 16.8430816,13.9633634 L27.9921202,13.9633634 Z" id="Line"></path>
+                </g>
+                <text id="sharelock" sketch:type="MSTextLayer" font-family="Proxima Nova" font-size="24" font-weight="normal">
+                    <tspan x="46" y="24">share</tspan>
+                    <tspan x="104.512" y="24" font-style="condensed" font-weight="260">lock</tspan>
+                </text>
+            </g>
         </g>
     </g>
 </svg>
