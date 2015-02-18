@@ -192,12 +192,12 @@ a:hover {
 }
 
 #header .menu-trigger {
-  background: url(../images/ico_more.svg);
-  width: 4px;
-  height: 16px;
+  background: url(../images/ico_more.svg) center no-repeat;
+  width: 30px;
+  height: 30px;
   display: block;
   float: right;
-  top: 74px;
+  top: 67px;
   right: 54px;
   position: absolute;
   cursor: pointer;
@@ -212,6 +212,7 @@ a:hover {
   background: #fff;
   display: none;
   z-index: 999;
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
 }
 
 #header .menu.active {
@@ -231,6 +232,10 @@ a:hover {
   padding: 0 20px;
   display: block;
   line-height: 50px;
+}
+
+#header .menu a:hover{
+  background: #ededed;
 }
 
 #logo {
@@ -327,6 +332,7 @@ a:hover {
   color: #000000;
   line-height: 43px;
   padding-bottom: 55px;
+  word-wrap: break-word;
 }
 
 .data .sharelocked-date {
@@ -522,6 +528,8 @@ a.zeroclipboard-is-hover{
   #content {
     margin-bottom: 20px;
   }
+
+  
 
 }
 
