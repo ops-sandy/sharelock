@@ -34,12 +34,12 @@
       "value": "1"
     },
     "ENCRYPTION_KEY_1": {
-      "description": "The key used to encrypt",
+      "description": "The key used to encrypt (32 bytes in hex)",
       "required": true,
       "generator": "secret"
     },
     "SIGNATURE_KEY_1": {
-      "description": "The key used to sign",
+      "description": "The key used to sign (32 bytes in hex)",
       "required": true,
       "generator": "secret"
     },

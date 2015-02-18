@@ -393,8 +393,8 @@ function ensure_key(key_name) {
         if (!process.env['SIGNATURE_KEY_' + key_name] || !process.env['ENCRYPTION_KEY_' + key_name])
             throw new Error('Cryptographic credentials are not available.');
         keys[key_name] = {
-            signature_key: new Buffer(process.env['SIGNATURE_KEY_' + process.env.CURRENT_KEY], 'base64'),
-            encryption_key: new Buffer(process.env['ENCRYPTION_KEY_' + process.env.CURRENT_KEY], 'base64')
+            signature_key: new Buffer(process.env['SIGNATURE_KEY_' + process.env.CURRENT_KEY], 'hex'),
+            encryption_key: new Buffer(process.env['ENCRYPTION_KEY_' + process.env.CURRENT_KEY], 'hex')
         };
     }
     return keys[key_name];
