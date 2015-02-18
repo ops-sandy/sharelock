@@ -128,7 +128,10 @@ app.get(/^\/(\w{1,10})\/(.+)$/,
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
-    next(err);
+    res.render('404', {
+        message: err.message,
+        error: {}
+    });
 });
 
 // error handlers
