@@ -21,11 +21,12 @@ input, textarea, select, button {
 }
 
 .card-panel{
-  padding: 0;
+  padding: 60px;
 }
 
-.inner-padding{
-  padding: 60px;
+.card-panel h2:first-child{
+  /*margin-top: 0;*/
+  /*margin-bottom: 60px;*/
 }
 
 img{
@@ -40,7 +41,6 @@ img{
   margin: 0 auto;
   padding: 0;
 }
-
 
 /* Header
 ------------------------------------------------------------------------------*/
@@ -233,10 +233,6 @@ img{
   background: rgba(0,0,0,0.10) url(../images/ico_googleplus.svg) no-repeat 50% 50%;
 }
 
-.data {
-  padding: 60px 35px 0 60px;
-}
-
 .data h3 {
   font-size: 12px;
   color: #EB5424;
@@ -249,7 +245,6 @@ img{
   font-size: 36px;
   color: #000000;
   line-height: 43px;
-  padding-bottom: 55px;
   word-wrap: break-word;
 }
 
@@ -479,7 +474,7 @@ a.zeroclipboard-is-hover{
     margin: 100px 0 0 0;
   }
 
-  .inner-padding{
+  .card-panel{
     padding: 0px;
   }
 
