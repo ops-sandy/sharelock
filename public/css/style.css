@@ -417,7 +417,9 @@ a.zeroclipboard-is-hover{
 }
 
 #footer .design img {
-  margin-left: 2px;
+  margin-left: 3px;
+  position: relative;
+  top: 6px;
 }
 
 #footer .social {
