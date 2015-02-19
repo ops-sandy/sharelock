@@ -30,15 +30,21 @@
     <div class="container">
       <a href="/" id="logo" title="securelysharedata">securelysharedata</a>
       <h1>securely share data</h1>
-      <div class="menu-trigger"></div>
-      <div class="menu">
-        <ul>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Privacy</a></li>
-          <li><a href="#">Cookies</a></li>
-          <li><a href="#">Feedback</a></li>
+
+      <div class="dropdown">
+
+        <a class="menu-trigger dropdown-button" href="#!" data-activates="dropdown1"></a>
+       
+        <ul class="dropdown-content" id="dropdown1">
+          <li><a href="/about">About</a></li>
+          <li><a href="/privacy">Privacy</a></li>
+          <li><a href="/cookies">Cookies</a></li>
+          <li><a href="mailto:info@auth0.com?subject=Sharelock">Feedback</a></li>
         </ul>
+        
       </div>
+
+
     </div>
     <!-- / container -->
   </header>

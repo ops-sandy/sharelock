@@ -93,6 +93,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/about', function(req,res,next){
+    res.render('about.html');
+})
+
+app.get('/privacy', function(req,res,next){
+    res.render('privacy.html');
+})
+
+app.get('/cookies', function(req,res,next){
+    res.render('cookies.html');
+})
+
 app.get('/callback',
     passport.authenticate('auth0', { failureRedirect: '/unauthorized' }),
     function (req, res, next) {

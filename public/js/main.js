@@ -5,11 +5,7 @@ $(document).ready(function() {
 
 	var event = (navigator.userAgent.match(/(iPad|iPhone|iPod)/g)) ? "touchstart" : "click";
 
-	$(document).on(event, function (e) {
-		if ( $(e.target).closest('.menu-trigger').length === 0 ) {
-			$(".menu").removeClass("active");
-		}
-	});
+	$('.dropdown-button').dropdown({hover: false, alignment: 'right',constrain_width: false});
 
 	function getScrollbarWidth() {
 		var div = $('<div style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"><div style="height:100px;"></div></div>'); 
