@@ -23,7 +23,7 @@ $(document).ready(function() {
 			$("body > .container").removeAttr("style");
 			// $("body").css({ minHeight: $(window).height() });
 		} else {
-			$("body > .container").css({ minHeight: $(window).height()  - $("#header").height() });
+			// $("body > .container").css({ minHeight: $(window).height()  - $("#header").height() });
 		}
 	};
 
