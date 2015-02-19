@@ -75,14 +75,14 @@ img{
 }
 
 #logo {
-  width: 147px;
-  height: 36px;
+  width: 180px;
+  height: 60px;
   display: block;
   cursor: pointer;
   text-indent: -9999em;
   background: url(../images/logo.svg) no-repeat;
   position: absolute;
-  top: 69px;
+  top: 63px;
   left: 49px;
 }
 
