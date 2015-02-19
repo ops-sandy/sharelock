@@ -25,7 +25,7 @@ $(document).ready(function() {
 		var winWidth = $(window).width();
 		if (winWidth<767-getScrollbarWidth()) {
 			$("body > .container").removeAttr("style");
-			$("body").css({ minHeight: $(window).height() });
+			// $("body").css({ minHeight: $(window).height() });
 		} else {
 			$("body > .container").css({ minHeight: $(window).height()  - $("#header").height() });
 		}

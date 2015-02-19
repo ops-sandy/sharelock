@@ -588,6 +588,7 @@ a.zeroclipboard-is-hover{
     margin-right: -5px;
     padding: 0;
     margin-bottom: 11px;
+    display: none;
   }
 
   .data .plus {
@@ -599,6 +600,7 @@ a.zeroclipboard-is-hover{
     border-radius: 100px;
     padding: 0;
     margin-right: -5px;
+    display: none;
   }
 
 
