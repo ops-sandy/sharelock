@@ -63,10 +63,10 @@ The service requires several environment variables to be set (all of them are re
 | AUTH0_CLIENT_ID | The Auth0 client ID obtained from [Auth0](https://auth0.com) |
 | AUTH0_CLIENT_SECRET| The Auth0 client secret obtained from [Auth0](https://auth0.com) |
 | AUTH0_CALLBACK | The callback URL specified when creating the [Auth0](https://auth0.com) application. In production it may look like *https://sharelock.io/callback*. In development it may be *http://localhost:3000/callback*. |
-| SIGNATURE_KEY_1 | A secret key that will be used to sign your sharelock. You can generate one with `openssl rand 32 | base64`. |
-| ENCRYPTION_KEY_1 | A secret key that will be used to encrypt your sharelock. You can generate one with `openssl rand 32 | base64`. |
+| SIGNATURE_KEY_1 | A secret key that will be used to sign your sharelock. You can generate one with `openssl rand 32 -hex`. |
+| ENCRYPTION_KEY_1 | A secret key that will be used to encrypt your sharelock. You can generate one with `openssl rand 32 -hex`. |
 | CURRENT_KEY | Specify `1`. More on this below. |
-| COOKIE_SECRET | A secret key to protect web application UI HTTP cookies with. You can generate one with `openssl rand 32 | base64`. |
+| COOKIE_SECRET | A secret key to protect web application UI HTTP cookies with. You can generate one with `openssl rand 32 -hex`. |
 | FORCE_HTTPS | Specify 1 to redirect all HTTP requests to corresponding HTTPS endpoints. It is recommended to use `1` for production deployment. The value of `0` is useful during development when there is no HTTPS terminating proxy. |
 | CURRENT_KEY | Specify `1`. More on this below. |
 | GA_PROPERTY_ID | Optional. Specify the Google Analytics property ID to hook up Google Analytics to the web UI. |
@@ -85,8 +85,8 @@ openssl rand 32 | base64
 The Sharelock service supports decrypting and signature verification with any number of historical signing and encryption key pairs. This allows you to revoke a specific key pair in case it had been compromised. Each signing and encryption key pair is specified with a pair of environment variables: 
 
 ```
-SIGNATURE_KEY_{N}={base64_encoded_signature_key}
-ENCRYPTION_KEY_{N}={base64_encoded_encruption_key}
+SIGNATURE_KEY_{N}={hex_encoded_signature_key}
+ENCRYPTION_KEY_{N}={hex_encoded_encruption_key}
 ```
 
 Where *{N}* is an arbitrary literal (but we recommend using integers for brevity).
