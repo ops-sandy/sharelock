@@ -79,7 +79,7 @@ During development, you can provide all these environment variables through the 
 Sharelocks created by the service are signed and encrypted with a pair of keys (one for signing, another for encryption). These need to be 256 bit keys and are best generated with:
 
 ```
-openssl rand 32 | base64
+openssl rand 32 -hex
 ```
 
 The Sharelock service supports decrypting and signature verification with any number of historical signing and encryption key pairs. This allows you to revoke a specific key pair in case it had been compromised. Each signing and encryption key pair is specified with a pair of environment variables: 
