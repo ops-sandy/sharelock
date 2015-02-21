@@ -80,7 +80,7 @@ app.use(function (req, res, next) {
 if (process.env.FORCE_HTTPS === '1') {
     logger.info('turning on HTTPS enforcement');
     app.use(function (req, res, next) {
-        if (req.protocol === 'https' || req.headers['x-arr-ssl'])
+        if (req.protocol === 'https' || req.headers['x-arr-ssl'] || req.headers['x-forwarded-proto'] === 'https')
             next();
         else
             return res.redirect('https://' + req.host + req.url);
@@ -131,6 +131,10 @@ app.get('/logout',
 
 app.get('/', function (req, res, next) {
     res.render('landing');
+});
+
+app.get('/new', function (req, res, next) {
+    res.render('new');
 });
 
 app.post('/create',
