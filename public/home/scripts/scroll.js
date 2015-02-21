@@ -29,16 +29,16 @@ $(document).ready(function(){
 function scene0(){
 
     var timeline = new TimelineMax()
-        .add(TweenMax.from('.phone.p1', 0.5, {
+        .add(TweenMax.from('.phone.p1', 0.7, {
             opacity: 0
         }))
-        .add(TweenMax.from('.phone.p2', 0.5, {
+        .add(TweenMax.from('.phone.p2', 0.7, {
             opacity: 0
         }))
-        .add(TweenMax.from('.text', 0.5, {
+        .add(TweenMax.from('.text', 0.7, {
             opacity: 0
         }))
-        .add(TweenMax.from('.stores', 0.5, {
+        .add(TweenMax.from('.stores', 0.7, {
             opacity: 0
         }))
 }
@@ -85,7 +85,7 @@ function scene1(){
 
         var tween_text = TweenMax.to('.text', 1, {
             marginLeft: 0,
-            left: '65%'
+            left: '62%'
         });
 
         var tween_stores_1 = TweenMax.to('.stores-1', 1, {
@@ -113,7 +113,7 @@ function scene1(){
             opacity: 0
         }, {
             opacity: 1,
-            marginTop: -120
+            marginTop: -150
         }, 2)
 
     var scene = new ScrollScene({
@@ -202,7 +202,7 @@ function scene3(){
             opacity: 0
         }, {
             opacity: 1,
-            marginTop: -120
+            marginTop: -150
         }, 0)
         .to('.phone.p1 .app.a1', 1,{
             marginTop: '-35%'
@@ -274,7 +274,7 @@ function scene4(){
             opacity: 0
         }, {
             opacity: 1,
-            marginTop: -100
+            marginTop: -150
         }, 0)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s2b');

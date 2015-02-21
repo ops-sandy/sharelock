@@ -1,6 +1,7 @@
 /*===============================
 =            General            =
 ===============================*/
+
 body {
   background-color: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -8,11 +9,13 @@ body {
   height: 6000px;
   -webkit-font-smoothing: antialiased;
   opacity: 0;
-  color: #5c666f;
+  color: #5C666F;
 }
-body.loaded {
+
+body.loaded{
   opacity: 1;
 }
+
 a {
   text-decoration: none;
 }
@@ -20,15 +23,23 @@ section {
   height: 13000px;
   position: relative;
 }
+
+
 /*-----  End of General  ------*/
+
+
+
 /*==============================
 =            Header            =
 ==============================*/
+
+
 .logo {
   position: fixed;
   top: 50px;
   left: 50px;
 }
+
 .navbar {
   position: fixed;
   top: 65px;
@@ -43,16 +54,19 @@ section {
 .navbar a.twitter {
   background-image: url("../img/twitter-icon.png");
 }
-.navbar .menu {
+
+.navbar .menu{
   float: right;
 }
-.navbar .menu span {
+
+.navbar .menu span{
   height: 2px;
-  background: #5c666f;
+  background: #5C666F;
   width: 20px;
   margin-bottom: 3px;
   display: block;
 }
+
 .menu-overlay {
   position: fixed;
   width: 100%;
@@ -89,31 +103,41 @@ section {
 .menu-overlay ul li:hover a {
   color: #eb5424;
 }
+
 /*-----  End of Header  ------*/
+
+
 /*==============================
 =            Footer            =
 ==============================*/
+
 .main-footer {
   position: fixed;
   bottom: 40px;
   left: 50px;
   font-size: 13px;
-  z-index: 10;
+  z-index: 10
+  
 }
-.main-footer a {
-  color: #999;
-  margin-right: 20px;
-}
-.main-footer a:hover {
-  color: #000;
-}
-.poweredby img {
-  height: 24px;
-  position: relative;
-  top: 9px;
-  margin-left: 4px;
-}
+
+.main-footer 
+  a
+    color: #999;
+    margin-right: 20px;
+    &:hover 
+      color: black;
+
+
+.poweredby
+  img
+    height: 24px
+    position: relative;
+    top: 9px;
+    margin-left: 4px
+
+
 /*-----  End of Footer  ------*/
+
 .phone {
   width: 746px;
   height: 628px;
@@ -254,6 +278,7 @@ section {
   color: #eb5424;
   font-size: 14px;
 }
+
 .text h2 {
   color: #000;
   font-size: 35px;
@@ -271,13 +296,16 @@ section {
   z-index: 200;
   margin-top: 30px;
 }
-.stores-1 a {
+
+.stores-1 a{
   margin-right: 10px;
 }
-.stores-2 a {
+
+.stores-2 a{
   margin-left: 10px;
 }
-.stores-2 {
+
+.stores-2{
   position: fixed;
   bottom: 30px;
   right: 60px;
@@ -681,13 +709,12 @@ section {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -696,13 +723,12 @@ section {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -711,73 +737,12 @@ section {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-moz-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-webkit-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-o-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-ms-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -786,13 +751,12 @@ section {
   }
 }
 @keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
