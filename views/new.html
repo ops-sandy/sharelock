@@ -1,0 +1,179 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div id="content" class="">
+  <div class="data card-panel">
+     <div class="input-field">
+       <label for="data">TYPE YOUR SECRET</label>
+       <textarea id="data" class="materialize-textarea" rows="2" placeholder="Passwords, keys, URLs, any text up to 500 characters." maxlength="500"></textarea>
+     </div>
+     <div class="input-field col s12">
+       <label for="acl">WHO TO SHARE WITH</label>
+       <textarea id="acl" class="materialize-textarea" rows="2" placeholder="Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)" maxlength="200"></textarea>
+      </div>
+  </div>
+  <div class="data card-panel">
+    <div class="preloader-wrapper big spinner">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="url" style="display:none;">
+      <div>
+        <span id="urlv" class="blue-text text-darken-2" style="word-wrap: break-word;"></span>
+      </div>
+      <p>Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
+    </div>
+    <a id="copy" class="copy-link scale waves-effect waves-light btn" href="#" style="display:none;"></a>
+    <p id="error" class="bg-danger" style="display:none;"></p>
+  </div>
+</div>
+<!-- / content -->
+{% endblock %}
+
+{% block scripts %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
+<script type="text/javascript">
+$(function () {
+  var copy_client = new ZeroClipboard(document.getElementById('copy'));
+
+  $('.link.sharelock').attr('href', location.href);
+  $('.link.sharelock').text(location.href);
+  $('.link.facebook').attr('href', 'https://www.facebook.com/sharer/sharer.php?u='
+    + encodeURIComponent(location.href));
+  $('.link.twitter').attr('href', 'https://twitter.com/share?text=Check%20my%20sharelock%20secret&url='
+    + encodeURIComponent(location.href));
+  $('.link.mail').attr('href', 'mailto:some@email.com?subject=Check%20my%20sharelock%20secret&body=Check%20my%20sharelock%20'
+    + encodeURIComponent(location.href));
+
+  var timer, spinner_on;
+  function on_change() {
+    $('#urlv').html('');
+    $('#url').hide();
+    $('#copy').attr('data-clipboard-text', '').hide();
+    $('#error').hide();
+    var payload = create_payload();
+    if (!payload) {
+      $('#wait').show();
+      $('#ajax').hide();
+    }
+    else {
+      $('#wait').hide();
+      $('#ajax').show();
+      if (!spinner_on) {
+        spinner_on = true;
+        $('.spinner').addClass('active');
+      }
+    }
+    if (timer)
+      clearTimeout(timer);
+    timer = setTimeout(function () {
+      timer = undefined;
+      get_preview();
+    }, 2000);
+  }
+
+  var last_preview_payload, ajax_in_progress, preview_pending;
+  function get_preview() {
+      if (ajax_in_progress) {
+        preview_pending = true;
+        return;
+      }
+
+      var payload = create_payload();
+      if (!payload) 
+        return;
+      
+      if (last_preview_payload 
+        && last_preview_payload.a === payload.a
+        && last_preview_payload.d === payload.d)
+          return;
+
+      last_preview_payload = payload;
+      ajax_in_progress = true;
+
+      $.ajax({
+          contentType: 'application/json',
+          data: JSON.stringify(payload),
+          dataType: 'text',
+          type: 'POST',
+          url: '/create'
+      }).always(function () {
+        spinner_on = false;
+        $('.spinner').removeClass('active');
+        ajax_in_progress = false;
+        if (preview_pending) {
+          preview_pending = false;
+          get_preview();
+        }
+      }).done(function (data) {
+        var url = window.location.origin + data
+        $('#urlv').html(url);
+        $('#url').show();
+        $('#copy').attr('data-clipboard-text', url).show();
+        $('#wait').hide();
+        $('#ajax').hide();
+        $('#error').hide();
+        $('#copy').show();
+      }).fail(function (xhr, status, error) {
+        $('#error').html(xhr.responseText || error || status).show();
+        $('#url').hide();
+        $('#copy').hide();
+        $('#wait').hide();
+        $('#ajax').hide();
+        $('#copy').hide();
+      });
+  }
+
+  function create_payload() {
+    var payload = {
+      d: $('#data').val().trim(),
+      a: $('#acl').val().trim()
+    }
+    return (payload.d.length > 0 && payload.a.length > 0) ? payload : null;
+  }
+
+  $('#data').bind('input propertychange', on_change);
+  $('#acl').bind('input propertychange', on_change);
+  $('#data').focus();
+});
+</script>
+{% endblock %}

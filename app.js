@@ -133,6 +133,10 @@ app.get('/', function (req, res, next) {
     res.render('landing');
 });
 
+app.get('/new', function (req, res, next) {
+    res.render('new');
+});
+
 app.post('/create',
     bodyParser.json(),
     bodyParser.urlencoded({ extended: false }),
