@@ -113,7 +113,7 @@ function scene1(){
             opacity: 0
         }, {
             opacity: 1,
-            marginTop: -100
+            marginTop: -120
         }, 2)
 
     var scene = new ScrollScene({
@@ -202,7 +202,7 @@ function scene3(){
             opacity: 0
         }, {
             opacity: 1,
-            marginTop: -100
+            marginTop: -120
         }, 0)
         .to('.phone.p1 .app.a1', 1,{
             marginTop: '-35%'

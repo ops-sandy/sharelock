@@ -1,12 +1,16 @@
 $(document).ready(function(){
 
-    $('body').addClass('loaded');
 
 
     $('.navbar a.menu').click(openMenu);
     $('.menu-overlay a.close').click(closeMenu);
 
 });
+
+$(window).load(function() {
+    $('body').addClass('loaded');
+});
+
 
 function openMenu(){
     $('.menu-overlay').fadeIn();
