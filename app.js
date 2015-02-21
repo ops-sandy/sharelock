@@ -93,6 +93,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.get('/home', function(req,res,next){
+    res.render('home.html');
+})
+
 app.get('/about', function(req,res,next){
     res.render('about.html');
 })

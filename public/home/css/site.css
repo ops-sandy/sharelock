@@ -1,0 +1,701 @@
+body {
+  background-color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  height: 6000px;
+  -webkit-font-smoothing: antialiased;
+}
+a {
+  text-decoration: none;
+}
+section {
+  height: 13000px;
+  position: relative;
+}
+.logo {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+}
+.poweredby {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+}
+.menu {
+  position: fixed;
+  top: 65px;
+  right: 50px;
+  list-style: none;
+  width: 160px;
+  z-index: 600;
+}
+.menu a {
+  color: #fff;
+  height: 20px;
+  padding-right: 30px;
+  background-repeat: no-repeat;
+  background-position: center right;
+  width: 100px;
+}
+.menu a.twitter {
+  background-image: url("../img/twitter-icon.png");
+}
+.menu a.menu {
+  background-image: url("../img/menu-icon.png");
+  width: 0;
+}
+.menu-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33,33,33,0.8);
+  z-index: 1000;
+  display: none;
+}
+.menu-overlay .close {
+  position: fixed;
+  right: 50px;
+  top: 65px;
+  width: 20px;
+  height: 20px;
+  background-image: url("../img/close-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.menu-overlay ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+  font-size: 80px;
+  font-weight: bold;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  margin-top: -194px;
+}
+.menu-overlay ul li a {
+  color: #fff;
+}
+.menu-overlay ul li:hover a {
+  color: #eb5424;
+}
+.phone {
+  width: 746px;
+  height: 628px;
+  position: fixed;
+  background-image: url("../img/nexus6-shadow.png");
+  background-size: 710px auto;
+  background-position: 13px 5px;
+  background-repeat: no-repeat;
+}
+.phone .screen {
+  width: 360px;
+  height: 640px;
+  background: #eb5424;
+  position: relative;
+  top: -50px;
+  left: 142px;
+  overflow: hidden;
+  transform: scale(0.71);
+  -webkit-transform: scale(0.71);
+}
+.phone .screen .status-bar {
+  height: 24px;
+  background-image: url("../img/status-bar.png");
+}
+.phone .screen .nav-bar {
+  height: 48px;
+  width: 362px;
+  position: absolute;
+  z-index: 200;
+  background-image: url("../img/nav-bar.png");
+  top: 100%;
+  margin-top: -46px;
+}
+.phone.p1 {
+  left: 50%;
+  top: 50%;
+  margin-left: -453px;
+  margin-top: -273px;
+  z-index: 100;
+}
+.phone.p2 {
+  left: 50%;
+  top: 50%;
+  margin-left: -683px;
+  margin-top: -273px;
+  z-index: 50;
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+}
+.phone.p3 {
+  left: 50%;
+  top: 50%;
+  margin-top: -200px;
+  margin-left: -320px;
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  opacity: 0;
+}
+.phone.p3 .screen {
+  background-color: #000;
+}
+.phone .content.c1 p,
+.phone .content.c2 p {
+  color: #808080;
+  font-size: 14px;
+}
+.phone .content.c1 p > a,
+.phone .content.c2 p > a {
+  color: #000;
+  text-decoration: underline;
+  font-weight: bold;
+}
+.phone .content.c1 .login,
+.phone .content.c2 .login {
+  border-radius: 2px;
+  color: #fff;
+  display: block;
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  text-decoration: none;
+  padding-left: 56px;
+  background-position: -1px center;
+  background-repeat: repeat-y;
+  overflow: hidden;
+}
+.phone .content.c1 .login.fb,
+.phone .content.c2 .login.fb {
+  background-color: #4a90e2;
+  background-image: url("../img/facebook-bg.png");
+}
+.phone .content.c1 .login.gplus,
+.phone .content.c2 .login.gplus {
+  background-color: #f44336;
+  background-image: url("../img/gplus-login.png");
+}
+.phone .keyboard {
+  height: 184px;
+  width: 101%;
+  background-image: url("../img/keyboard.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: #263238;
+  position: absolute;
+  bottom: 46px;
+  z-index: 100;
+}
+.laptop {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 400px;
+  margin-left: -100px;
+  margin-top: -200px;
+  background-image: url("../img/laptop.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.text {
+  width: 302px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -100px;
+  margin-left: 100px;
+  z-index: 200;
+  opacity: 0;
+}
+.text.t1 {
+  opacity: 1;
+}
+.text.t5 {
+  left: 15%;
+}
+.text span {
+  color: #eb5424;
+  font-size: 14px;
+}
+
+.text h2 {
+  color: #000;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 0;
+}
+.text p {
+  color: #8b9090;
+  font-size: 14px;
+  line-height: 1.8;
+}
+.stores {
+  height: 60px;
+  width: 302px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: 100px;
+  margin-top: 100px;
+  z-index: 200;
+}
+.stores .store {
+  width: 148px;
+  height: 52px;
+  display: block;
+  background-image: url("../img/stores2.png");
+  background-size: 307px auto;
+}
+.stores .store.google {
+  float: left;
+}
+.stores .store.apple {
+  background-position: 148px center;
+  float: right;
+}
+.app {
+  position: absolute;
+  height: 570px;
+  width: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  opacity: 0;
+}
+.app.browser .browser-address {
+  width: 100%;
+  height: auto;
+}
+.app.browser .header {
+  height: 200px;
+}
+.app.browser .loading {
+  background-position: center 126px;
+}
+.app.a1 {
+  opacity: 1;
+}
+.app.a3 {
+  background-image: url("../img/whatsapp-contactos.png");
+  background-size: cover;
+}
+.app.a4 {
+  background-image: url("../img/whatsapp-user.png");
+  background-size: cover;
+}
+.app .header {
+  background-color: #eb5424;
+  height: 256px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
+}
+.app .header .title {
+  display: block;
+  position: absolute;
+  left: 31px;
+  bottom: 25px;
+  color: #fff;
+  font-size: 24px;
+  font-weight: 100;
+}
+.app .header .menu-button {
+  display: block;
+  height: 24px;
+  width: 12px;
+  background-image: url("../img/ico_more.svg");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  float: right;
+}
+.app .content {
+  background-color: #fff;
+  overflow: hidden;
+  padding: 30px;
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  opacity: 0;
+  height: 314px;
+}
+.app .content p {
+  font-family: 'Open Sans';
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 24px;
+  margin: 0 0 30px 0;
+}
+.app .content .field.icon {
+  padding-left: 40px;
+  background-image: url("../img/field-icons.png");
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+.app .content .field.icon.who {
+  background-position: left -72px;
+}
+.app .content .field.icon.sharelocked {
+  background-position: left -143px;
+}
+.app .content .field .label {
+  color: #eb5424;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+.app .content .field .text-input {
+  background: transparent;
+  border-bottom: 1px solid #9b9b9b;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.app .content .field .text-input.check {
+  background-image: url("../img/check-icon.png");
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+.app .content .field .tip {
+  color: #000;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+}
+.app .content .field .value {
+  display: block;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+.app .content .field .value a {
+  color: #000;
+  word-wrap: break-word;
+  text-decoration: underline;
+}
+.app .content .float-buttons {
+  width: 60px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  float: right;
+}
+.app .content .float-buttons .btn-floating.white i.mdi-content-add {
+  color: #000;
+}
+.app .content .float-buttons .skyblue {
+  background-color: #87dffe;
+}
+.app .content .float-buttons a {
+  margin-top: 0;
+}
+.app .content.c1 {
+  left: 0;
+  opacity: 1;
+}
+.app .dialog {
+  color: #fff;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  background-color: #212121;
+  padding: 24px;
+  position: absolute;
+  bottom: -100px;
+  width: 100%;
+}
+.app .dialog .button {
+  height: 25px;
+  line-height: 25px;
+  color: #eb5424;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 500;
+  float: right;
+}
+.app .share-menu {
+  background-image: url("../img/share-menu.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: -240px;
+  width: 100%;
+  height: 240px;
+  z-index: 200;
+}
+.app .share-menu .whatsapp {
+  width: 100px;
+  height: 100px;
+  display: block;
+  position: relative;
+  top: 27px;
+  left: 130px;
+}
+.app .button-bar {
+  display: block;
+  padding: 20px 30px;
+  background-color: #fafafa;
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.app .button-bar a.next {
+  line-height: 24px;
+  color: #9b9b9b;
+  font-family: 'Open Sans';
+  font-size: 12px;
+  font-weight: 500;
+  background-image: url("../img/right-arrow.png");
+  background-position: 52px center;
+  background-repeat: no-repeat;
+  padding-right: 30px;
+  height: 30px;
+  display: block;
+  width: 70px;
+  float: right;
+  line-height: 30px;
+  text-decoration: none;
+}
+.app .loading {
+  height: 100%;
+  background-color: #eb5424;
+  background-image: url("../img/lock.png");
+  background-repeat: no-repeat;
+  background-position: center 176px;
+  overflow: hidden;
+}
+.app .loading .loading-text {
+  text-align: center;
+  color: #fff;
+  font-family: 'Open Sans';
+  font-size: 22px;
+  font-weight: 400;
+  margin-top: 340px;
+}
+.app .loading .preloader {
+  display: inline;
+  position: relative;
+  top: 10px;
+  margin-right: 20px;
+}
+.app .loading .preloader .spinner-layer {
+  border-color: #fff;
+}
+.arrow {
+  width: 200px;
+  height: 40px;
+  background-image: url("../img/orange-arrow.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: fixed;
+  top: 50%;
+  left: 40%;
+  margin-left: -146px;
+  opacity: 0;
+}
+.step-bar {
+  background-image: url("../img/step-bar.svg");
+  background-repeat: no-repeat;
+  width: 257px;
+  height: 53px;
+  position: fixed;
+  top: 50%;
+  left: 23%;
+  margin-left: -200px;
+  margin-top: -26px;
+  opacity: 0;
+}
+.step-bar.s1a {
+  background-position: 0 0px;
+}
+.step-bar.s1b {
+  background-position: 0 -79.9px;
+}
+.step-bar.s2a {
+  background-position: 0 -159.8px;
+}
+.step-bar.s2b {
+  background-position: 0 -239.70000000000002px;
+}
+.step-bar.s3a {
+  background-position: 0 -319.6px;
+}
+.step-bar.s3b {
+  background-position: 0 -399.5px;
+}
+.step-bar.s3c {
+  background-position: 0 -479.40000000000003px;
+}
+.step-bar.s3d {
+  background-position: 0 -559.3000000000001px;
+}
+.ripple {
+  position: relative;
+  overflow: hidden;
+}
+.ripple.click .ink {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0;
+  height: 0;
+  background-color: #000;
+  border-radius: 100%;
+  animation-name: ripple;
+  animation-duration: 1s;
+  -webkit-animation-name: ripple;
+  -webkit-animation-duration: 1s;
+}
+.ripple.click.light .ink {
+  background-color: #fff;
+}
+@media (max-width: 950px) {
+  .logo {
+    top: 15px;
+    left: 15px;
+  }
+  .poweredby {
+    display: none;
+  }
+  .menu {
+    top: 30px;
+    right: 30px;
+  }
+  .menu .twitter {
+    display: none;
+  }
+  .menu-overlay ul {
+    font-size: 50px;
+    margin-top: -122px;
+  }
+  .menu-overlay .close {
+    top: 30px;
+    right: 30px;
+  }
+  .phone.p1,
+  .phone.p2 {
+    margin-top: 0;
+    top: 140px;
+  }
+  .phone.p1 {
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    margin-left: -293px;
+  }
+  .phone.p2 {
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    margin-left: -413px;
+  }
+  .phone.p3 {
+    transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    margin-left: -293px;
+    z-index: 200;
+  }
+  .text {
+    top: 170px;
+    left: 0;
+    margin: 0;
+    margin-top: -100px;
+    padding: 20px;
+    width: auto;
+  }
+  .text.t5 {
+    left: 0;
+  }
+  .stores,
+  .step-bar {
+    position: fixed;
+    bottom: 10px;
+    left: 50%;
+    top: 100%;
+    margin-left: -151px;
+    margin-top: -100px;
+  }
+  .step-bar {
+    margin-left: -128px;
+  }
+  .step-bar .store {
+    margin: 0;
+  }
+  .arrow {
+    background-image: url("../img/arrow-orange-mobile.png");
+    width: 66px;
+    height: 57px;
+    margin-left: 40px;
+    margin-top: -150px;
+  }
+  .laptop {
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    margin-left: -400px;
+    margin-top: -300px;
+  }
+}
+@-moz-keyframes ripple {
+  from {
+    width: 0%;
+    height: 0;
+    opacity: 0.3;
+  }
+  to {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+}
+@-webkit-keyframes ripple {
+  from {
+    width: 0%;
+    height: 0;
+    opacity: 0.3;
+  }
+  to {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+}
+@-o-keyframes ripple {
+  from {
+    width: 0%;
+    height: 0;
+    opacity: 0.3;
+  }
+  to {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+}
+@keyframes ripple {
+  from {
+    width: 0%;
+    height: 0;
+    opacity: 0.3;
+  }
+  to {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+}
