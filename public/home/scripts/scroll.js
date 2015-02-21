@@ -72,7 +72,7 @@ function scene1(){
 
     if(isMobile()){
         
-        timeline.to('.stores', 1, {
+        timeline.to('.stores-1', 1, {
             opacity: 0
         })
     }
@@ -88,15 +88,19 @@ function scene1(){
             left: '65%'
         });
 
-        var tween_stores = TweenMax.to('.stores', 1, {
-            top: '100%',
-            left: '100%',
-            marginLeft: -352,
-            marginTop: -105
+        var tween_stores_1 = TweenMax.to('.stores-1', 1, {
+            opacity: 0
         });
 
+
+        var tween_stores_2 = TweenMax.to('.stores-2', 1, {
+            display: 'block'
+        });
+
+
         timeline.add(tween_text, 0)
-        timeline.add(tween_stores, 0)
+        timeline.add(tween_stores_1, 0)
+        timeline.add(tween_stores_2, 1)
     }
 
     timeline

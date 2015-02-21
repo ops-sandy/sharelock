@@ -4,7 +4,14 @@ body {
   margin: 0;
   height: 6000px;
   -webkit-font-smoothing: antialiased;
+  opacity: 0;
+  color: #5C666F;
 }
+
+body.loaded{
+  opacity: 1;
+}
+
 a {
   text-decoration: none;
 }
@@ -22,7 +29,7 @@ section {
   bottom: 50px;
   left: 50px;
 }
-.menu {
+.navbar {
   position: fixed;
   top: 65px;
   right: 50px;
@@ -30,21 +37,25 @@ section {
   width: 160px;
   z-index: 600;
 }
-.menu a {
-  color: #fff;
-  height: 20px;
-  padding-right: 30px;
-  background-repeat: no-repeat;
-  background-position: center right;
-  width: 100px;
+.navbar a {
+  color: #000;
 }
-.menu a.twitter {
+.navbar a.twitter {
   background-image: url("../img/twitter-icon.png");
 }
-.menu a.menu {
-  background-image: url("../img/menu-icon.png");
-  width: 0;
+
+.navbar .menu{
+  float: right;
 }
+
+.navbar .menu span{
+  height: 2px;
+  background: #5C666F;
+  width: 20px;
+  margin-bottom: 3px;
+  display: block;
+}
+
 .menu-overlay {
   position: fixed;
   width: 100%;
@@ -202,11 +213,11 @@ section {
   background-repeat: no-repeat;
 }
 .text {
-  width: 302px;
+  width: 350px;
   position: fixed;
   left: 50%;
   top: 50%;
-  margin-top: -100px;
+  margin-top: -150px;
   margin-left: 100px;
   z-index: 200;
   opacity: 0;
@@ -224,9 +235,9 @@ section {
 
 .text h2 {
   color: #000;
-  font-size: 24px;
+  font-size: 35px;
   font-weight: 100;
-  line-height: 0;
+  margin-bottom: 20px;
 }
 .text p {
   color: #8b9090;
@@ -235,26 +246,34 @@ section {
 }
 .stores {
   height: 60px;
-  width: 302px;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-left: 100px;
-  margin-top: 100px;
+  width: 322px;
   z-index: 200;
+  margin-top: 30px;
+}
+
+.stores-1 a{
+  margin-right: 10px;
+}
+
+.stores-2 a{
+  margin-left: 10px;
+}
+
+.stores-2{
+  position: fixed;
+  bottom: 30px;
+  right: 60px;
+  display: none;
 }
 .stores .store {
   width: 148px;
   height: 52px;
   display: block;
-  background-image: url("../img/stores2.png");
-  background-size: 307px auto;
 }
 .stores .store.google {
   float: left;
 }
 .stores .store.apple {
-  background-position: 148px center;
   float: right;
 }
 .app {
