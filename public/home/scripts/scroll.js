@@ -585,7 +585,7 @@ function scene11(){
     }
 
     var scene = new ScrollScene({
-        duration: 1400,
+        duration: 500,
         offset: 10000
     })
     .setTween(timeline)

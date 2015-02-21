@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   color: #5C666F;
+  overflow: hidden;
 }
 
 body.loaded{
@@ -142,6 +143,7 @@ section {
   width: 746px;
   height: 628px;
   position: fixed;
+  z-index: 1
   background-image: url("../img/nexus6-shadow.png");
   background-size: 710px auto;
   background-position: 13px 5px;
@@ -258,19 +260,29 @@ section {
   background-size: contain;
   background-repeat: no-repeat;
 }
-.text {
+.text 
   width: 350px;
   position: fixed;
   left: 50%;
   top: 50%;
   margin-top: -150px;
   margin-left: 100px;
-  z-index: 200;
-  opacity: 0;
-}
-.text.t1 {
+  opacity: 0
+  
+.text.t1 
   opacity: 1;
-}
+  z-index: 10000;
+  
+  .how-it-works
+    padding: 8px 20px 10px 20px;
+    border-radius: 100px;
+    border: 1px solid #EB5424;
+    margin-top: 20px;
+    display: inline-block;
+    font-weight: bold;
+    color: #EB5424;
+    
+
 .text.t5 {
   left: 15%;
 }
