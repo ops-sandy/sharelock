@@ -29,17 +29,14 @@ $(document).ready(function(){
 function scene0(){
 
     var timeline = new TimelineMax()
-        .add(TweenMax.from('.phone.p1', 0.7, {
+
+        .add(TweenMax.from('.home', 1, {
             opacity: 0
         }))
-        .add(TweenMax.from('.phone.p2', 0.7, {
-            opacity: 0
-        }))
-        .add(TweenMax.from('.text', 0.7, {
-            opacity: 0
-        }))
-        .add(TweenMax.from('.stores', 0.7, {
-            opacity: 0
+
+        .add(TweenMax.from('.main-footer, .navbar, .logo', 1, {
+            opacity: 0,
+            delay: 1
         }))
 }
 
