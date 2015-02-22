@@ -30,7 +30,7 @@ function scene0(){
 
     var timeline = new TimelineMax()
 
-        .add(TweenMax.from('.home', 1, {
+        .add(TweenMax.from('.home', 1.5, {
             opacity: 0
         }))
 
