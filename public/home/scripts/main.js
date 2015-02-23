@@ -1,11 +1,11 @@
 $(document).ready(function(){
-    $('.navbar a.menu').click(openMenu);
-    $('.menu-overlay a.close').click(closeMenu);
+  $('.navbar a.menu').click(openMenu);
+  $('.menu-overlay a.close').click(closeMenu);
 });
 
 $(window).load(onload);
 
-function onload() {
+function onload () {
   $('body').addClass('loaded');
 
   $('a.how-it-works').click(function(){
@@ -15,12 +15,12 @@ function onload() {
   });
 }
 
-function openMenu(){
+function openMenu () {
   $('.menu-overlay').fadeIn();
   return false;
 }
 
-function closeMenu(){
+function closeMenu () {
   $('.menu-overlay').fadeOut();
   return false;
 }

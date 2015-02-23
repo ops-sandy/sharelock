@@ -1,12 +1,5 @@
 
-var controller;
 var scenes = {};
-
-window.onload = function(){
-    setTimeout(function(){
-        window.scrollTo(0,0);
-    }, 0);
-}
 
 $(document).ready(function(){
     scene0();
@@ -27,24 +20,21 @@ function startHomeScenes() {
     scenes['s1'].resume();
 }
 
-function scene0() {
+function scene0 () {
 
-    var timeline = new TimelineMax({ onComplete: function () {
-        console.log('hello end scene 0');
-    }})
+    var timeline = new TimelineMax();
 
+    timeline
     .add(TweenMax.from('.home', 1.5, {
         opacity: 0
     }))
-
     .add(TweenMax.from('.main-footer, .navbar, .logo', 1, {
         opacity: 0,
         delay: 1
     }))
-
 }
 
-function scene1(){
+function scene1 () {
 
     var tween_p1 = TweenMax.to('.phone.p1', 1, {
         marginLeft: -345
@@ -116,17 +106,10 @@ function scene1(){
         }, 2)
 
     timeline.pause();
-
     return timeline;
-    // var scene = new ScrollScene({
-    //     duration: 1000
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene2 (){
+function scene2 () {
 
     var tween_app = TweenMax.to('.phone.p1 .app.a1', 1,{
         marginTop: '-35%'
@@ -174,19 +157,10 @@ function scene2 (){
         }), 4.5)
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 1000,
-    //     offset: 1100
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene3(){
+function scene3 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s4') });
 
@@ -247,19 +221,10 @@ function scene3(){
         }), 4.5);
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 1000,
-    //     offset: 2200
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene4(){
+function scene4 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s5') });
 
@@ -294,19 +259,10 @@ function scene4(){
         }), 0.1);
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 400,
-    //     offset: 3300
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene5 (){
+function scene5 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s6') });
 
@@ -366,19 +322,10 @@ function scene5 (){
         }), 1);
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 1000,
-    //     offset: 4200
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene6 (){
+function scene6 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s7') });
 
@@ -405,19 +352,10 @@ function scene6 (){
         }), 0.1);
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 400,
-    //     offset: 5300
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene7(){
+function scene7 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s8') });
 
@@ -441,19 +379,10 @@ function scene7(){
         }), 0.1);
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 400,
-    //     offset: 6000
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene8(){
+function scene8 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s9') });
 
@@ -505,20 +434,10 @@ function scene8(){
     }
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 1000,
-    //     offset: 7000
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
-
 }
 
-function scene9(){
+function scene9 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s10') });
 
@@ -536,19 +455,10 @@ function scene9(){
         }, 0);
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 400,
-    //     offset: 8400
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene10(){
+function scene10 () {
 
     var timeline = new TimelineMax({ onComplete: nextScene('s11') });
 
@@ -566,19 +476,10 @@ function scene10(){
         }, 0);
 
     timeline.pause();
-
     return timeline;
-
-    // var scene = new ScrollScene({
-    //     duration: 400,
-    //     offset: 9400
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
-
 }
 
-function scene11(){
+function scene11 () {
 
     var timeline = new TimelineMax({ onComplete: homeScenesComplete });
 
@@ -623,17 +524,7 @@ function scene11(){
     }
 
     timeline.pause();
-
     return timeline;
-
-    // timeline.pause();
-
-    // var scene = new ScrollScene({
-    //     duration: 500,
-    //     offset: 10000
-    // })
-    // .setTween(timeline)
-    // .addTo(controller);
 
 }
 
