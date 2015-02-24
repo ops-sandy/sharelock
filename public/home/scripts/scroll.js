@@ -14,6 +14,7 @@ $(document).ready(function(){
     scenes['s9'] = scene9();
     scenes['s10'] = scene10();
     scenes['s11'] = scene11();
+    scenes['s12'] = scene12();
 });
 
 function startHomeScenes() {
@@ -146,15 +147,15 @@ function scene2 () {
         .add(tween_keyboard, 0)
         .add(rm_check, 0.99)
         .add(typing, 1)
-        .add(add_check, 1)
-        .add(tween_app2, 4)
-        .add(tween_keyboard2, 4)
+        .add(add_check, 2.9)
+        .add(tween_app2, 3)
+        .add(tween_keyboard2, 3)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .content.c2 .next').removeClass('click');
-        }), 2.9)
+        }), 2.5)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .content.c2 .next').addClass('click');
-        }), 4.5)
+        }), 3.5)
 
     timeline.pause();
     return timeline;
@@ -305,15 +306,15 @@ function scene5 () {
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .content.c1 .ripple.share').addClass('click');
         }), 1.1)
-        .to('.phone.p1 .app.a1 .share-menu', 3, {
+        .to('.phone.p1 .app.a1 .share-menu', 1.2, {
             bottom: 0
         })
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a1 .share-menu .whatsapp').removeClass('click');
-        }), 2.9)
+        }), 2)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a1 .share-menu .whatsapp').addClass('click');
-        }), 3)
+        }), 2)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3a');
         }), 0.9)
@@ -336,7 +337,7 @@ function scene6 () {
         .to('.phone.p1 .screen', 1, {
             backgroundColor: "#273636"
         }, 0)
-        .fromTo('.phone.p1 .app.a3', 1, {
+        .fromTo('.phone.p1 .app.a3', 1.5, {
             left: 0,
             transform: 'scale(0.8)',
             opacity: 0
@@ -481,7 +482,7 @@ function scene10 () {
 
 function scene11 () {
 
-    var timeline = new TimelineMax({ onComplete: homeScenesComplete });
+    var timeline = new TimelineMax({ onComplete: waitForVideo });
 
     timeline
         .to('.text.t4, .arrow', 1, {
@@ -528,6 +529,31 @@ function scene11 () {
 
 }
 
+function waitForVideo () {
+    // and then call
+    setTimeout(function () {
+        nextScene('s12')();
+    }, 4000);
+}
+
+function scene12 () {
+
+    var timeline = new TimelineMax({ onComplete: homeScenesComplete });
+
+    timeline
+        .to('.text.t5, .laptop', 1, {
+            opacity: 0
+        }, 0)
+        .from('.step-dw', 4, {
+            opacity: 0,
+            marginBottom: -100
+        }, 1);
+
+
+    timeline.pause();
+    return timeline;
+
+}
 function isMobile(){
     return window.innerWidth < 950;
 }
