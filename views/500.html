@@ -6,6 +6,9 @@
     <a class="home-link waves-effect waves-light btn" href="/"></a>
     <h2>500</h2>
     <h3>Internal Server Error</h3>
+    {% if (message) %}
+    <pre><code>{{ mesage }}</code></pre>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

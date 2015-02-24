@@ -5,65 +5,48 @@
   <div class="data card-panel">
      <div class="input-field">
        <label for="data">TYPE YOUR SECRET</label>
-       <textarea id="data" class="materialize-textarea" rows="2" placeholder="Passwords, keys, URLs, any text up to 500 characters." maxlength="500"></textarea>
+       <!-- placeholder="Passwords, keys, URLs, any text up to 500 characters." -->
+       <textarea id="data" class="materialize-textarea" rows="2" maxlength="500"></textarea>
+       <span class="help-text">
+        Passwords, keys, URLs, any text up to 500 characters.
+       </span>
      </div>
      <div class="input-field col s12">
        <label for="acl">WHO TO SHARE WITH</label>
-       <textarea id="acl" class="materialize-textarea" rows="2" placeholder="Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)" maxlength="200"></textarea>
+       <!-- placeholder="Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)" -->
+       <textarea id="acl" class="materialize-textarea" rows="2" maxlength="200"></textarea>
+       <span class="help-text">
+         Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)
+       </span>
       </div>
-  </div>
-  <div class="data card-panel">
-    <div class="preloader-wrapper big spinner">
-      <div class="spinner-layer spinner-blue">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
+
+      <div id="panel-attachment" class="data">
+        <div class="preloader-wrapper big spinner">
+
+          <div class="spinner-layer spinner-red">
+            <div class="circle-clipper left">
+              <div class="circle"></div>
+            </div><div class="gap-patch">
+              <div class="circle"></div>
+            </div><div class="circle-clipper right">
+              <div class="circle"></div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="display-area">
+          <div id="url" style="display:none;">
+            <div>
+              <span id="urlv" style="word-wrap: break-word;"></span>
+            </div>
+            <p>Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
+          </div>
+          <a id="copy" class="copy-link" href="javascript:;" style="display:none;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="images/ico_scale.svg" alt=""></span></a>
+          <p id="error" class="bg-danger" style="display:none;"></p>
         </div>
       </div>
-
-      <div class="spinner-layer spinner-red">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-yellow">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-
-      <div class="spinner-layer spinner-green">
-        <div class="circle-clipper left">
-          <div class="circle"></div>
-        </div><div class="gap-patch">
-          <div class="circle"></div>
-        </div><div class="circle-clipper right">
-          <div class="circle"></div>
-        </div>
-      </div>
-    </div>
-
-
-    <div id="url" style="display:none;">
-      <div>
-        <span id="urlv" class="blue-text text-darken-2" style="word-wrap: break-word;"></span>
-      </div>
-      <p>Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
-    </div>
-    <a id="copy" class="copy-link scale waves-effect waves-light btn" href="#" style="display:none;"></a>
-    <p id="error" class="bg-danger" style="display:none;"></p>
   </div>
 </div>
 <!-- / content -->
@@ -86,8 +69,10 @@ $(function () {
 
   var timer, spinner_on;
   function on_change() {
+    $('#panel-attachment .display-area').removeClass('active');
     $('#urlv').html('');
     $('#url').hide();
+    $('#copy .copy_text').text('Copy to clipboard');
     $('#copy').attr('data-clipboard-text', '').hide();
     $('#error').hide();
     var payload = create_payload();
@@ -153,6 +138,7 @@ $(function () {
         $('#ajax').hide();
         $('#error').hide();
         $('#copy').show();
+        $('#panel-attachment .display-area').addClass('active');
       }).fail(function (xhr, status, error) {
         $('#error').html(xhr.responseText || error || status).show();
         $('#url').hide();
@@ -160,6 +146,7 @@ $(function () {
         $('#wait').hide();
         $('#ajax').hide();
         $('#copy').hide();
+        $('#panel-attachment .display-area').addClass('active');
       });
   }
 
@@ -173,6 +160,17 @@ $(function () {
 
   $('#data').bind('input propertychange', on_change);
   $('#acl').bind('input propertychange', on_change);
+  $('textarea').on('blur', function() {
+    if($(this).val() === '') {
+      $(this).removeAttr('style');
+    }
+  });
+
+  copy_client.on( "ready", function( readyEvent ) {
+    copy_client.on( "aftercopy", function( event ) {
+      $(event.target).find('.copy_text').text('Copied');
+    } );
+  } );
   $('#data').focus();
 });
 </script>
