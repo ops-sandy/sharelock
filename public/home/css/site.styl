@@ -695,7 +695,7 @@ h1,h2,h3,h4,h5
   opacity: 0;
 }
 .step-bar {
-  background-image: url("../img/step-bar.svg");
+  background-image: url("../img/steps.svg");
   background-repeat: no-repeat;
   width: 257px;
   height: 53px;
@@ -705,31 +705,147 @@ h1,h2,h3,h4,h5
   margin-left: -200px;
   margin-top: -26px;
   opacity: 0;
+  
+  .step-animate {
+    position: absolute
+    
+    .circle {
+      stroke-dasharray: 160 160
+      stroke-dashoffset: 160
+      transition: all .5s ease-in-out
+      
+      &.s2 {
+        -webkit-transform: rotate(180deg) translate(117px, 79px)
+      }
+      &.s3 {
+        -webkit-transform: rotate(180deg) translate(-87px, 79px)
+      }
+    }
+    
+    .line {
+      stroke-dasharray: 52 52
+      stroke-dashoffset: 156
+      transition: all .5s ease-in-out
+    }
+  }
+  
+  .step-numbers {
+    margin: 0
+    
+    li {
+      width: calc(100% / 3)
+      float: left
+      text-align: center
+      font-size: 24px
+      color: #4A4A4A
+      line-height: 2.1
+      transition: color 1.5s
+      
+      &:first-child {
+        text-align: left
+        padding-left: 20px
+      }
+      
+      &:last-child {
+        text-align: right
+        padding-right: 20px
+      }
+    }
+  }
 }
-.step-bar.s1a {
-  background-position: 0 0px;
+.step-bar, .step-bar.s1a {
+  .step-animate .circle.s1 {
+    stroke-dashoffset: 200
+  }
 }
 .step-bar.s1b {
-  background-position: 0 -79.9px;
+  .step-animate .circle.s1 {
+    stroke-dashoffset: 320
+  }
+  .step-animate .line.s1 {
+    stroke-dashoffset: 130
+    transition-delay: .5s
+  }
+  
+  .number-one {
+    color: #EB5424
+  }
 }
 .step-bar.s2a {
-  background-position: 0 -159.8px;
+  @extend .step-bar.s1b
+  .step-animate .line.s1 {
+    stroke-dashoffset: 104
+    transition-delay: 0s
+  }
+  .step-animate .circle.s2 {
+    stroke-dashoffset: 200
+    transition-delay: .5s
+  }
 }
 .step-bar.s2b {
-  background-position: 0 -239.70000000000002px;
+  @extend .step-bar.s1b
+  @extend .step-bar.s2a
+  .step-animate .circle.s2 {
+    stroke-dashoffset: 320
+    transition-delay: 0s
+  }
+  .step-animate .line.s2 {
+    stroke-dashoffset: 130
+    transition-delay: .5s
+  }
+  
+  .number-two {
+    color: #EB5424
+  }
 }
 .step-bar.s3a {
-  background-position: 0 -319.6px;
+  @extend .step-bar.s1b
+  @extend .step-bar.s2a
+  @extend .step-bar.s2b
+  .step-animate .line.s2 {
+    stroke-dashoffset: 104
+    transition-delay: 0s
+  }
+  .step-animate .circle.s3 {
+    stroke-dashoffset: 200
+    transition-delay: .5s
+  }
 }
 .step-bar.s3b {
-  background-position: 0 -399.5px;
+  @extend .step-bar.s1b
+  @extend .step-bar.s2a
+  @extend .step-bar.s2b
+  @extend .step-bar.s3a
+  .step-animate .circle.s3 {
+    stroke-dashoffset: 242
+    transition-delay: 0s
+  }
 }
 .step-bar.s3c {
-  background-position: 0 -479.40000000000003px;
+  @extend .step-bar.s1b
+  @extend .step-bar.s2a
+  @extend .step-bar.s2b
+  @extend .step-bar.s3a
+  @extend .step-bar.s3b
+  .step-animate .circle.s3 {
+    stroke-dashoffset: 280
+  }
 }
 .step-bar.s3d {
-  background-position: 0 -559.3000000000001px;
+  @extend .step-bar.s1b
+  @extend .step-bar.s2a
+  @extend .step-bar.s2b
+  @extend .step-bar.s3a
+  @extend .step-bar.s3c
+  .step-animate .circle.s3 {
+    stroke-dashoffset: 320
+  }
+  
+  .number-three {
+    color: #EB5424
+  }
 }
+
 .ripple {
   position: relative;
   overflow: hidden;

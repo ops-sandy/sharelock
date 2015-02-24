@@ -359,12 +359,10 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
-
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -663,7 +661,7 @@ h5 {
   opacity: 0;
 }
 .step-bar {
-  background-image: url("../img/step-bar.svg");
+  background-image: url("../img/steps.svg");
   background-repeat: no-repeat;
   width: 257px;
   height: 53px;
@@ -674,29 +672,147 @@ h5 {
   margin-top: -26px;
   opacity: 0;
 }
-.step-bar.s1a {
-  background-position: 0 0px;
+.step-bar .step-animate {
+  position: absolute;
 }
-.step-bar.s1b {
-  background-position: 0 -79.9px;
+.step-bar .step-animate .circle {
+  stroke-dasharray: 160 160;
+  stroke-dashoffset: 160;
+  transition: all 0.5s ease-in-out;
 }
-.step-bar.s2a {
-  background-position: 0 -159.8px;
+.step-bar .step-animate .circle.s2 {
+  -webkit-transform: rotate(180deg) translate(117px, 79px);
 }
-.step-bar.s2b {
-  background-position: 0 -239.70000000000002px;
+.step-bar .step-animate .circle.s3 {
+  -webkit-transform: rotate(180deg) translate(-87px, 79px);
 }
-.step-bar.s3a {
-  background-position: 0 -319.6px;
+.step-bar .step-animate .line {
+  stroke-dasharray: 52 52;
+  stroke-dashoffset: 156;
+  transition: all 0.5s ease-in-out;
 }
-.step-bar.s3b {
-  background-position: 0 -399.5px;
+.step-bar .step-numbers {
+  margin: 0;
 }
-.step-bar.s3c {
-  background-position: 0 -479.40000000000003px;
+.step-bar .step-numbers li {
+  width: calc(100% / 3);
+  float: left;
+  text-align: center;
+  font-size: 24px;
+  color: #4a4a4a;
+  line-height: 2.1;
+  transition: color 1.5s;
 }
-.step-bar.s3d {
-  background-position: 0 -559.3000000000001px;
+.step-bar .step-numbers li:first-child {
+  text-align: left;
+  padding-left: 20px;
+}
+.step-bar .step-numbers li:last-child {
+  text-align: right;
+  padding-right: 20px;
+}
+.step-bar .step-animate .circle.s1,
+.step-bar.s1a .step-animate .circle.s1 {
+  stroke-dashoffset: 200;
+}
+.step-bar.s1b .step-animate .circle.s1,
+.step-bar.s2a .step-animate .circle.s1,
+.step-bar.s2b .step-animate .circle.s1,
+.step-bar.s3a .step-animate .circle.s1,
+.step-bar.s3b .step-animate .circle.s1,
+.step-bar.s3c .step-animate .circle.s1,
+.step-bar.s3d .step-animate .circle.s1 {
+  stroke-dashoffset: 320;
+}
+.step-bar.s1b .step-animate .line.s1,
+.step-bar.s2a .step-animate .line.s1,
+.step-bar.s2b .step-animate .line.s1,
+.step-bar.s3a .step-animate .line.s1,
+.step-bar.s3b .step-animate .line.s1,
+.step-bar.s3c .step-animate .line.s1,
+.step-bar.s3d .step-animate .line.s1 {
+  stroke-dashoffset: 130;
+  transition-delay: 0.5s;
+}
+.step-bar.s1b .number-one,
+.step-bar.s2a .number-one,
+.step-bar.s2b .number-one,
+.step-bar.s3a .number-one,
+.step-bar.s3b .number-one,
+.step-bar.s3c .number-one,
+.step-bar.s3d .number-one {
+  color: #eb5424;
+}
+.step-bar.s2a .step-animate .line.s1,
+.step-bar.s2b .step-animate .line.s1,
+.step-bar.s3a .step-animate .line.s1,
+.step-bar.s3b .step-animate .line.s1,
+.step-bar.s3c .step-animate .line.s1,
+.step-bar.s3d .step-animate .line.s1 {
+  stroke-dashoffset: 104;
+  transition-delay: 0s;
+}
+.step-bar.s2a .step-animate .circle.s2,
+.step-bar.s2b .step-animate .circle.s2,
+.step-bar.s3a .step-animate .circle.s2,
+.step-bar.s3b .step-animate .circle.s2,
+.step-bar.s3c .step-animate .circle.s2,
+.step-bar.s3d .step-animate .circle.s2 {
+  stroke-dashoffset: 200;
+  transition-delay: 0.5s;
+}
+.step-bar.s2b .step-animate .circle.s2,
+.step-bar.s3a .step-animate .circle.s2,
+.step-bar.s3b .step-animate .circle.s2,
+.step-bar.s3c .step-animate .circle.s2,
+.step-bar.s3d .step-animate .circle.s2 {
+  stroke-dashoffset: 320;
+  transition-delay: 0s;
+}
+.step-bar.s2b .step-animate .line.s2,
+.step-bar.s3a .step-animate .line.s2,
+.step-bar.s3b .step-animate .line.s2,
+.step-bar.s3c .step-animate .line.s2,
+.step-bar.s3d .step-animate .line.s2 {
+  stroke-dashoffset: 130;
+  transition-delay: 0.5s;
+}
+.step-bar.s2b .number-two,
+.step-bar.s3a .number-two,
+.step-bar.s3b .number-two,
+.step-bar.s3c .number-two,
+.step-bar.s3d .number-two {
+  color: #eb5424;
+}
+.step-bar.s3a .step-animate .line.s2,
+.step-bar.s3b .step-animate .line.s2,
+.step-bar.s3c .step-animate .line.s2,
+.step-bar.s3d .step-animate .line.s2 {
+  stroke-dashoffset: 104;
+  transition-delay: 0s;
+}
+.step-bar.s3a .step-animate .circle.s3,
+.step-bar.s3b .step-animate .circle.s3,
+.step-bar.s3c .step-animate .circle.s3,
+.step-bar.s3d .step-animate .circle.s3 {
+  stroke-dashoffset: 200;
+  transition-delay: 0.5s;
+}
+.step-bar.s3b .step-animate .circle.s3,
+.step-bar.s3c .step-animate .circle.s3,
+.step-bar.s3d .step-animate .circle.s3 {
+  stroke-dashoffset: 242;
+  transition-delay: 0s;
+}
+.step-bar.s3c .step-animate .circle.s3,
+.step-bar.s3d .step-animate .circle.s3 {
+  stroke-dashoffset: 280;
+}
+.step-bar.s3d .step-animate .circle.s3 {
+  stroke-dashoffset: 320;
+}
+.step-bar.s3d .number-three {
+  color: #eb5424;
 }
 .ripple {
   position: relative;
@@ -803,13 +919,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -818,13 +933,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -833,13 +947,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -848,13 +961,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -863,13 +975,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -878,28 +989,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-ms-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -908,13 +1003,12 @@ h5 {
   }
 }
 @keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
