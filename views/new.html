@@ -39,7 +39,7 @@
         <div class="display-area">
           <div id="url" style="display:none;">
             <div>
-              <span id="urlv" style="word-wrap: break-word;"></span>
+              <a id="urlv" href="" style="word-wrap: break-word;"></a>
             </div>
             <p>Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
           </div>
@@ -70,7 +70,7 @@ $(function () {
   var timer, spinner_on;
   function on_change() {
     $('#panel-attachment .display-area').removeClass('active');
-    $('#urlv').html('');
+    $('#urlv').html('').removeAttr('href');
     $('#url').hide();
     $('#copy .copy_text').text('Copy to clipboard');
     $('#copy').attr('data-clipboard-text', '').hide();
@@ -131,7 +131,7 @@ $(function () {
         }
       }).done(function (data) {
         var url = window.location.origin + data
-        $('#urlv').html(url);
+        $('#urlv').html(url).attr('href', url);
         $('#url').show();
         $('#copy').attr('data-clipboard-text', url).show();
         $('#wait').hide();
@@ -160,6 +160,7 @@ $(function () {
 
   $('#data').bind('input propertychange', on_change);
   $('#acl').bind('input propertychange', on_change);
+
   $('textarea').on('blur', function() {
     if($(this).val() === '') {
       $(this).removeAttr('style');

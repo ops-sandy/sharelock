@@ -331,13 +331,13 @@ function scene6 () {
     var timeline = new TimelineMax({ onComplete: nextScene('s7') });
 
     timeline
-        .to('.phone.p1 .app.a1', 1, {
+        .to('.phone.p1 .app.a1', 1.5, {
             opacity: 0
         }, 0)
         .to('.phone.p1 .screen', 1, {
             backgroundColor: "#273636"
         }, 0)
-        .fromTo('.phone.p1 .app.a3', 1.5, {
+        .fromTo('.phone.p1 .app.a3', 1, {
             left: 0,
             transform: 'scale(0.8)',
             opacity: 0
@@ -345,6 +345,12 @@ function scene6 () {
             transform: 'scale(1)',
             opacity: 1
         }, 0)
+        .add(TweenMax.delayedCall(0, function(){
+            $('.phone.p1 .app.a3 .ripple.contact').removeClass('click');
+        }), 1)
+        .add(TweenMax.delayedCall(0, function(){
+            $('.phone.p1 .app.a3 .ripple.contact').addClass('click');
+        }), 1.1)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3b');
         }), 0)
