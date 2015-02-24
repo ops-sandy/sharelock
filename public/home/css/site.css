@@ -9,6 +9,7 @@ body {
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   color: #5c666f;
+  overflow: hidden;
 }
 body.loaded {
   opacity: 1;
@@ -632,6 +633,9 @@ section {
   margin-top: -26px;
   opacity: 0;
 }
+.step-bar .step-animate {
+  position: absolute;
+}
 .step-bar .step-animate .circle {
   stroke-dasharray: 160 160;
   stroke-dashoffset: 160;
@@ -646,7 +650,27 @@ section {
 .step-bar .step-animate .line {
   stroke-dasharray: 52 52;
   stroke-dashoffset: 156;
-  transition: all 0.5s ease-out;
+  transition: all 0.5s ease-in-out;
+}
+.step-bar .step-numbers {
+  margin: 0;
+}
+.step-bar .step-numbers li {
+  width: calc(100% / 3);
+  float: left;
+  text-align: center;
+  font-size: 24px;
+  color: #4a4a4a;
+  line-height: 2.1;
+  transition: color 1.5s;
+}
+.step-bar .step-numbers li:first-child {
+  text-align: left;
+  padding-left: 20px;
+}
+.step-bar .step-numbers li:last-child {
+  text-align: right;
+  padding-right: 20px;
 }
 .step-bar .step-animate .circle.s1,
 .step-bar.s1a .step-animate .circle.s1 {
@@ -670,6 +694,15 @@ section {
 .step-bar.s3d .step-animate .line.s1 {
   stroke-dashoffset: 130;
   transition-delay: 0.5s;
+}
+.step-bar.s1b .number-one,
+.step-bar.s2a .number-one,
+.step-bar.s2b .number-one,
+.step-bar.s3a .number-one,
+.step-bar.s3b .number-one,
+.step-bar.s3c .number-one,
+.step-bar.s3d .number-one {
+  color: #eb5424;
 }
 .step-bar.s2a .step-animate .line.s1,
 .step-bar.s2b .step-animate .line.s1,
@@ -705,6 +738,13 @@ section {
   stroke-dashoffset: 130;
   transition-delay: 0.5s;
 }
+.step-bar.s2b .number-two,
+.step-bar.s3a .number-two,
+.step-bar.s3b .number-two,
+.step-bar.s3c .number-two,
+.step-bar.s3d .number-two {
+  color: #eb5424;
+}
 .step-bar.s3a .step-animate .line.s2,
 .step-bar.s3b .step-animate .line.s2,
 .step-bar.s3c .step-animate .line.s2,
@@ -731,6 +771,9 @@ section {
 }
 .step-bar.s3d .step-animate .circle.s3 {
   stroke-dashoffset: 320;
+}
+.step-bar.s3d .number-three {
+  color: #eb5424;
 }
 .ripple {
   position: relative;
