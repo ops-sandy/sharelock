@@ -433,6 +433,9 @@ h5 {
 .app.browser .loading {
   background-position: center 126px;
 }
+.app.browser.a3 {
+  background: #fff;
+}
 .app.a1 {
   opacity: 1;
 }
