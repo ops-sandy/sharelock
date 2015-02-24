@@ -6,19 +6,19 @@
      viewBox="-177.1 650.3 256.7 52.7" enable-background="new -177.1 650.3 256.7 52.7" xml:space="preserve" width="257" height="53">
 <g id="g3987" transform="translate(9.8847596,715.98137)">
     
-        <path id="path3989" fill="none" stroke="#4A4A4A" stroke-width="2" d="
+        <path id="path3989" fill="none" stroke="#ccc" stroke-width="2" d="
         M-135.3-39.3c0,14-11.3,25.3-25.3,25.3s-25.3-11.3-25.3-25.3s11.3-25.3,25.3-25.3S-135.3-53.3-135.3-39.3z"/>
     
-        <path id="path3991" fill="none" stroke="#4A4A4A" stroke-width="2" d="
+        <path id="path3991" fill="none" stroke="#ccc" stroke-width="2" d="
         M-33.3-39.3c0,14-11.3,25.3-25.3,25.3s-25.3-11.3-25.3-25.3s11.3-25.3,25.3-25.3S-33.3-53.3-33.3-39.3z"/>
     
-        <path id="path3993" fill="none" stroke="#4A4A4A" stroke-width="2" d="
+        <path id="path3993" fill="none" stroke="#ccc" stroke-width="2" d="
         M68.7-39.3c0,14-11.3,25.3-25.3,25.3S18.1-25.3,18.1-39.3s11.3-25.3,25.3-25.3S68.7-53.3,68.7-39.3z"/>
     
-        <path id="path4011" inkscape:connector-curvature="0" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" d="
+        <path id="path4011" inkscape:connector-curvature="0" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" d="
         M-134.9-39.1h51.1"/>
 
-        <path id="path4015" inkscape:connector-curvature="0" fill="none" stroke="#4A4A4A" stroke-width="2" stroke-linecap="round" d="
+        <path id="path4015" inkscape:connector-curvature="0" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" d="
         M-32.9-39.1h51.1"/>
 </g>
 </svg>

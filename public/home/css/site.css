@@ -659,7 +659,7 @@ h5 {
 .arrow {
   width: 200px;
   height: 40px;
-  background-image: url("../img/orange-arrow.png");
+  background-image: url("../img/orange-arrow.svg");
   background-repeat: no-repeat;
   background-position: center;
   position: fixed;
@@ -707,7 +707,7 @@ h5 {
   float: left;
   text-align: center;
   font-size: 24px;
-  color: #4a4a4a;
+  color: #999;
   line-height: 2.1;
   transition: color 1.5s;
 }
