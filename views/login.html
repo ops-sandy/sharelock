@@ -22,15 +22,12 @@
         {% for provider in providers.preferred %}
           <a class="{{ provider }} waves-effect waves-light btn" href="#">SIGN IN WITH {{ provider_friendly_name[provider] }}</a>
         {% endfor %}
-      {% if (!allow_twitter) %} <div>Or use...</div> {% endif %}
+      {% else %}
+        <a class="facebook waves-effect waves-light btn" href="#">SIGN IN WITH FACEBOOK</a>
+        <a class="google-oauth2 waves-effect waves-light btn" href="#">SIGN IN WITH GOOGLE</a>
+        <a class="twitter waves-effect waves-light btn" href="#">SIGN IN WITH TWITTER</a>
+        <a class="windowslive waves-effect waves-light btn" href="#">SIGN IN WITH MICROSOFT ACCOUNT</a>
       {% endif %}
-      {% if (!allow_twitter) %}
-      <a class="facebook waves-effect waves-light btn" href="#">SIGN IN WITH FACEBOOK</a>
-      <a class="google-oauth2 waves-effect waves-light btn" href="#">SIGN IN WITH GOOGLE</a>
-      <a class="twitter waves-effect waves-light btn" href="#">SIGN IN WITH TWITTER</a>
-      <a class="windowslive waves-effect waves-light btn" href="#">SIGN IN WITH MICROSOFT ACCOUNT</a>
-      {% endif %}
-
 
     </div>
 </div>
