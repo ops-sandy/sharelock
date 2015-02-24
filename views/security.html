@@ -3,7 +3,16 @@
 {% block content %}
 <div id="content" class="card-panel">
 
+<h2>Security</h2>
 
-</div>
+<ul class="list">
+  <li>Urls are ephemeral, they are NOT stored anywhere (neither your secrets). Secrets only live encrypted in the URL.</li>
+
+  <li>Sharelock URLs can ONLY be accessed by the people who you shared to by means of login and email verification (as opposed to, let's say, Dropbox links which can be accessed by anyone who has the link).</li>
+
+  <li>Secrets are signed with HMAC SHA256 and encrypted with AES 256 CTR using keys that live on the Sharelock server</li>
+
+  <li>And finally, you can deploy your own Sharelock instance to [Heroku](heroku button link) (or others) in seconds (edited)</li>
+</ul>
 
 {% endblock %}
