@@ -1,8 +1,3 @@
-$(document).ready(function(){
-  $('.navbar a.menu').click(openMenu);
-  $('.menu-overlay a.close').click(closeMenu);
-});
-
 $(window).load(onload);
 
 function onload () {
@@ -13,14 +8,16 @@ function onload () {
     startHomeScenes();
     return false;
   });
+
+
+  $('a.download-link').click(function(){
+    $(this).toggleClass("opened");
+
+    $('.dropdown-download').toggleClass('visible');
+    return false;
+  });
+
+
+
 }
 
-function openMenu () {
-  $('.menu-overlay').fadeIn();
-  return false;
-}
-
-function closeMenu () {
-  $('.menu-overlay').fadeOut();
-  return false;
-}

@@ -28,7 +28,7 @@ function scene0 () {
     .add(TweenMax.from('.home', 1.5, {
         opacity: 0
     }))
-    .add(TweenMax.from('.main-footer, .navbar, .logo', 1, {
+    .add(TweenMax.from('.delayed', 1, {
         opacity: 0,
         delay: 1
     }))
