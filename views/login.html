@@ -20,7 +20,7 @@
     <div class="btns">
       {% if (providers.preferred.length > 0) %}
         {% for provider in providers.preferred %}
-          <a class="{{ provider }} waves-effect waves-light btn" href="#">SIGN IN WITH {{ provider_friendly_name[provider] }}</a>
+          <a class="{{ provider }} waves-effect waves-light btn" href="#" {% if (providers.preferred[0] === provider) %} style="margin-bottom: 50px" {% endif %}>SIGN IN WITH {{ provider_friendly_name[provider] }}</a>
         {% endfor %}
       {% else %}
         <a class="facebook waves-effect waves-light btn" href="#">SIGN IN WITH FACEBOOK</a>

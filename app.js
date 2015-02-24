@@ -385,12 +385,11 @@ function v1_get() {
 }
 
 var domain_provider_map = {
-    '@gmail.com': ['google-oauth2', 'facebook'],
+    '@gmail.com': ['google-oauth2', 'facebook', 'windowslive'],
     '@hotmail.com': ['windowslive', 'facebook'],
     '@live.com': ['windowslive', 'facebook'],
     '@outlook.com': ['windowslive', 'facebook'],
-    '@msn.com': ['windowslive', 'facebook'],
-    '@yahoo.com': ['yahoo', 'facebook']
+    '@msn.com': ['windowslive', 'facebook']
 };
 
 function get_provider_config(twitter, email_domains, provider) {
