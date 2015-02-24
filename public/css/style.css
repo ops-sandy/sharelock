@@ -65,11 +65,19 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
 }
 
 #panel-attachment .display-area.active {
-  margin: -60px;
+  margin: -20px;
   margin-top: 0;
-  padding: 60px;
+  padding: 40px 20px;
   background: #5C666F;
   color: white;
+}
+
+@media (min-width: 768px) {
+  #panel-attachment .display-area.active {
+    margin: -60px;
+    margin-top: 0;
+    padding: 60px;
+  }
 }
 
 #urlv {
@@ -317,12 +325,49 @@ img{
   content: "";
 }
 
+.log-in .btns a:before {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 10px;
+  left: 10px;
+  bottom: 0;
+  background: no-repeat 50% 50%;
+  content: "";
+  z-index: 1;
+}
+
 .log-in .btns a.google-oauth2 {
   background: #f44336;
 }
 
+.log-in .btns a.windowslive {
+  background: #034086;
+}
+
+.log-in .btns a.twitter {
+  background: #55acee;
+}
+
+.log-in .btns a.windowslive:after,
+.log-in .btns a.twitter:after  {
+  background: rgba(0,0,0,0.10) no-repeat 50% 50%;
+}
+
 .log-in .btns a.google-oauth2:after {
   background: rgba(0,0,0,0.10) url(../images/ico_googleplus.svg) no-repeat 50% 50%;
+}
+
+.log-in .btns a.windowslive:before {
+  background: url(../images/ico_msoft.svg) no-repeat 50% 50%;
+  background-size: cover;
+  width: 26px;
+  height: 26px;
+}
+
+.log-in .btns a.twitter:before {
+  background: url(../images/ico_twitter.svg) no-repeat 50% 50%;
+  background-size: cover;
 }
 
 .data h3 {
