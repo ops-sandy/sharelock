@@ -14,6 +14,7 @@ $(document).ready(function(){
     scenes['s9'] = scene9();
     scenes['s10'] = scene10();
     scenes['s11'] = scene11();
+    scenes['s12'] = scene12();
 });
 
 function startHomeScenes() {
@@ -481,7 +482,7 @@ function scene10 () {
 
 function scene11 () {
 
-    var timeline = new TimelineMax({ onComplete: homeScenesComplete });
+    var timeline = new TimelineMax({ onComplete: waitForVideo });
 
     timeline
         .to('.text.t4, .arrow', 1, {
@@ -528,6 +529,31 @@ function scene11 () {
 
 }
 
+function waitForVideo () {
+    // and then call
+    setTimeout(function () {
+        nextScene('s12')();
+    }, 4000);
+}
+
+function scene12 () {
+
+    var timeline = new TimelineMax({ onComplete: homeScenesComplete });
+
+    timeline
+        .to('.text.t5, .laptop', 1, {
+            opacity: 0
+        }, 0)
+        .from('.step-dw', 4, {
+            opacity: 0,
+            marginBottom: -100
+        }, 1);
+
+
+    timeline.pause();
+    return timeline;
+
+}
 function isMobile(){
     return window.innerWidth < 950;
 }
