@@ -1,46 +1,40 @@
 
-var controller;
-
-window.onload = function(){
-    setTimeout(function(){
-        window.scrollTo(0,0);
-    }, 0);
-}
+var scenes = {};
 
 $(document).ready(function(){
-
-    controller = new ScrollMagic();
-
     scene0();
-    scene1();
-    scene2();
-    scene3();
-    scene4();
-    scene5();
-    scene6();
-    scene7();
-    scene8();
-    scene9();
-    scene10();
-    scene11();
+    scenes['s1'] = scene1();
+    scenes['s2'] = scene2();
+    scenes['s3'] = scene3();
+    scenes['s4'] = scene4();
+    scenes['s5'] = scene5();
+    scenes['s6'] = scene6();
+    scenes['s7'] = scene7();
+    scenes['s8'] = scene8();
+    scenes['s9'] = scene9();
+    scenes['s10'] = scene10();
+    scenes['s11'] = scene11();
 });
 
-
-function scene0(){
-
-    var timeline = new TimelineMax()
-
-        .add(TweenMax.from('.home', 1.5, {
-            opacity: 0
-        }))
-
-        .add(TweenMax.from('.main-footer, .navbar, .logo', 1, {
-            opacity: 0,
-            delay: 1
-        }))
+function startHomeScenes() {
+    scenes['s1'].resume();
 }
 
-function scene1(){
+function scene0 () {
+
+    var timeline = new TimelineMax();
+
+    timeline
+    .add(TweenMax.from('.home', 1.5, {
+        opacity: 0
+    }))
+    .add(TweenMax.from('.delayed', 1, {
+        opacity: 0,
+        delay: 1
+    }))
+}
+
+function scene1 () {
 
     var tween_p1 = TweenMax.to('.phone.p1', 1, {
         marginLeft: -345
@@ -50,25 +44,24 @@ function scene1(){
         opacity: 0
     });
 
-    var phone_out = TweenMax.to('.phone.p1 .content.c1', 1, {
-        left: '-100%',
-        opacity: 0
-    });
-
     var phone_in = TweenMax.to('.phone.p1 .content.c2', 1, {
         left: 0,
         opacity: 1
     });
 
+    var phone_out = TweenMax.to('.phone.p1 .content.c1', 1, {
+        left: '-100%',
+        opacity: 0
+    });
 
-    var timeline = new TimelineMax()
+    var timeline = new TimelineMax({ onComplete: nextScene('s2') })
         .add(tween_p1)
         .add(tween_p2, 0)
         .add(phone_in, 0)
         .add(phone_out, 0)
 
     if(isMobile()){
-        
+
         timeline.to('.stores-1', 1, {
             opacity: 0
         })
@@ -94,7 +87,6 @@ function scene1(){
             display: 'block'
         });
 
-
         timeline.add(tween_text, 0)
         timeline.add(tween_stores_1, 0)
         timeline.add(tween_stores_2, 1)
@@ -113,47 +105,43 @@ function scene1(){
             marginTop: -150
         }, 2)
 
-    var scene = new ScrollScene({
-        duration: 1000
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene2(){
+function scene2 () {
 
-    tween_app = TweenMax.to('.phone.p1 .app.a1', 1,{
+    var tween_app = TweenMax.to('.phone.p1 .app.a1', 1,{
         marginTop: '-35%'
     });
 
-    tween_keyboard = TweenMax.from('.phone.p1 .keyboard', 1, {
+    var tween_keyboard = TweenMax.from('.phone.p1 .keyboard', 1, {
         marginBottom: -182
     })
 
-    typing = TweenMax.to('.phone.p1 .c2 .text-input', 2, {
+    var typing = TweenMax.to('.phone.p1 .c2 .text-input', 2, {
         text: "VISA 1234 3456 5678 6789"
     });
 
-    add_check = TweenMax.delayedCall(0, function(){
+    var add_check = TweenMax.delayedCall(0, function(){
         $('.phone.p1 .app.a1 .c2 .text-input').addClass('check');
         $('.step-bar').attr('class', 'step-bar s1b');
     });
 
-    rm_check = TweenMax.delayedCall(0, function(){
+    var rm_check = TweenMax.delayedCall(0, function(){
         $('.phone.p1 .app.a1 .text-input').removeClass('check');
         $('.step-bar').attr('class', 'step-bar');
     });
 
-    tween_app2 = TweenMax.to('.phone.p1 .app.a1', 1,{
+    var tween_app2 = TweenMax.to('.phone.p1 .app.a1', 1,{
         marginTop: 0
     });
 
-    tween_keyboard2 = TweenMax.to('.phone.p1 .keyboard', 1, {
+    var tween_keyboard2 = TweenMax.to('.phone.p1 .keyboard', 1, {
         marginBottom: -182
     })
 
-    var timeline = new TimelineMax()
+    var timeline = new TimelineMax({ onComplete: nextScene('s3') })
         .add(tween_app, 0)
         .add(tween_keyboard, 0)
         .add(rm_check, 0.99)
@@ -168,18 +156,13 @@ function scene2(){
             $('.phone.p1 .content.c2 .next').addClass('click');
         }), 4.5)
 
-    var scene = new ScrollScene({
-        duration: 1000,
-        offset: 1100
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene3(){
+function scene3 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s4') });
 
     timeline
         .to('.phone.p1 .content.c2', 1, {
@@ -237,18 +220,13 @@ function scene3(){
             $('.phone.p1 .content.c3 .next').addClass('click');
         }), 4.5);
 
-    var scene = new ScrollScene({
-        duration: 1000,
-        offset: 2200
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene4(){
+function scene4 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s5') });
 
     timeline
         .to('.phone.p1 .app.a1', 1, {
@@ -280,18 +258,13 @@ function scene4(){
             $('.step-bar').attr('class', 'step-bar s3a');
         }), 0.1);
 
-    var scene = new ScrollScene({
-        duration: 400,
-        offset: 3300
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene5(){
+function scene5 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s6') });
 
     timeline
         .add(TweenMax.delayedCall(0, function(){
@@ -348,18 +321,13 @@ function scene5(){
             $('.step-bar').attr('class', 'step-bar s3b');
         }), 1);
 
-    var scene = new ScrollScene({
-        duration: 1000,
-        offset: 4200
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene6(){
+function scene6 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s7') });
 
     timeline
         .to('.phone.p1 .app.a1', 1, {
@@ -383,18 +351,13 @@ function scene6(){
             $('.step-bar').attr('class', 'step-bar s3c');
         }), 0.1);
 
-    var scene = new ScrollScene({
-        duration: 400,
-        offset: 5300
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene7(){
+function scene7 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s8') });
 
     timeline
         .to('.phone.p1 .app.a3', 1, {
@@ -415,18 +378,13 @@ function scene7(){
             $('.step-bar').attr('class', 'step-bar s3d');
         }), 0.1);
 
-    var scene = new ScrollScene({
-        duration: 400,
-        offset: 6000
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene8(){
+function scene8 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s9') });
 
     if(!isMobile()){
         timeline
@@ -475,19 +433,13 @@ function scene8(){
         });
     }
 
-    var scene = new ScrollScene({
-        duration: 1000,
-        offset: 7000
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene9(){
+function scene9 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s10') });
 
     timeline
         .to('.phone.p3 .app.a1', 1, {
@@ -502,18 +454,13 @@ function scene9(){
             opacity: 1
         }, 0);
 
-    var scene = new ScrollScene({
-        duration: 400,
-        offset: 8400
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene10(){
+function scene10 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: nextScene('s11') });
 
     timeline
         .to('.phone.p3 .app.a2', 1, {
@@ -528,18 +475,13 @@ function scene10(){
             opacity: 1
         }, 0);
 
-    var scene = new ScrollScene({
-        duration: 400,
-        offset: 9400
-    })
-    .setTween(timeline)
-    .addTo(controller);
-
+    timeline.pause();
+    return timeline;
 }
 
-function scene11(){
+function scene11 () {
 
-    var timeline = new TimelineMax();
+    var timeline = new TimelineMax({ onComplete: homeScenesComplete });
 
     timeline
         .to('.text.t4, .arrow', 1, {
@@ -581,15 +523,21 @@ function scene11(){
             }, 2);
     }
 
-    var scene = new ScrollScene({
-        duration: 500,
-        offset: 10000
-    })
-    .setTween(timeline)
-    .addTo(controller);
+    timeline.pause();
+    return timeline;
 
 }
 
 function isMobile(){
     return window.innerWidth < 950;
+}
+
+function homeScenesComplete() {
+    console.log('scenes completed succesfully!');
+}
+
+function nextScene(scene) {
+    return function resumeScene() {
+        scenes[scene].resume();
+    }
 }

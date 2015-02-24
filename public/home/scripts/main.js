@@ -1,41 +1,23 @@
-$(document).ready(function(){
+$(window).load(onload);
 
-
-
-    $('.navbar a.menu').click(openMenu);
-    $('.menu-overlay a.close').click(closeMenu);
-
-
-
-
-});
-
-$(window).load(function() {
-
+function onload () {
   $('body').addClass('loaded');
 
-
   $('a.how-it-works').click(function(){
-
-
-      $(this).fadeOut('fast');
-      
-      $('body').delay( 100 ).animate({
-        scrollTop: $('body').get(0).scrollHeight
-      }, 60500);
-
-      return false;
+    $(this).fadeOut('fast');
+    startHomeScenes();
+    return false;
   });
 
-});
 
+  $('a.download-link').click(function(){
+    $(this).toggleClass("opened");
 
-function openMenu(){
-    $('.menu-overlay').fadeIn();
+    $('.dropdown-download').toggleClass('visible');
     return false;
+  });
+
+
+
 }
 
-function closeMenu(){
-    $('.menu-overlay').fadeOut();
-    return false;
-}
