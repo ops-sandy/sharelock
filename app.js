@@ -385,38 +385,29 @@ function v1_get() {
 }
 
 var domain_provider_map = {
-    '@gmail.com': 'google-oauth2',
-    '@hotmail.com': 'windowslive',
-    '@live.com': 'windowslive',
-    '@outlook.com': 'windowslive',
-    '@msn.com': 'windowslive',
-    '@yahoo.com': 'yahoo'
+    '@gmail.com': ['google-oauth2', 'facebook'],
+    '@hotmail.com': ['windowslive', 'facebook'],
+    '@live.com': ['windowslive', 'facebook'],
+    '@outlook.com': ['windowslive', 'facebook'],
+    '@msn.com': ['windowslive', 'facebook'],
+    '@yahoo.com': ['yahoo', 'facebook']
 };
 
 function get_provider_config(twitter, email_domains, provider) {
     var config = {
-        preferred: {},
-        other: []
+        preferred: []
     };
 
     if (twitter && provider !== 'twitter')
-        config.preferred['twitter'] = 1;
+        config.preferred.push('twitter');
 
     email_domains.forEach(function (domain) {
-        var pref = domain_provider_map[domain.toLowerCase()];
-        if (pref && pref !== provider)
-            config.preferred[pref] = 1;
+        if (domain_provider_map[domain.toLowerCase()]) {
+            config.preferred = config.preferred.concat(domain_provider_map[domain.toLowerCase()]);
+        }
     });
 
-    if (email_domains.length > 0) {
-        for (var other in provider_friendly_name) {
-            if (other !== provider && !config.preferred[other])
-                config.other.push(other);
-        }
-    }
-
-    config.preferred = Object.getOwnPropertyNames(config.preferred);
-
+    config.preferred = distinct(config.preferred);
     return config;
 }
 
@@ -437,6 +428,19 @@ function ensure_key(key_name) {
         };
     }
     return keys[key_name];
+}
+
+function distinct(source) {
+    var u = {}, a = [];
+   for(var i = 0, l = source.length; i < l; ++i){
+      if(u.hasOwnProperty(source[i])) {
+         continue;
+      }
+      a.push(source[i]);
+      u[source[i]] = 1;
+   }
+
+   return a;
 }
 
 module.exports = app;
