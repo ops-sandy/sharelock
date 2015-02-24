@@ -166,6 +166,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+        console.error(err);
         res.status(err.status || 500);
         res.render('500', {
             message: err.message,
@@ -365,7 +366,8 @@ function v1_get() {
                 allow_twitter: twitter,
                 allow_domains: email_domains,
                 provider: req.user ? (provider_friendly_name[req.user.provider] || req.user.provider) : undefined,
-                logout_url: '/logout?r=' + req.originalUrl
+                logout_url: '/logout?r=' + req.originalUrl,
+                provider_friendly_name: provider_friendly_name
             };
 
             req.session.bookmark = req.originalUrl;

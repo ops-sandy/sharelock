@@ -10,11 +10,20 @@
     The creator of the sharelock restricted access to the data to {% if (allow_twitter) %}<strong>select Twitter users</strong><% if (allow_domains.length > 0) %} and{% endif %}{% if (allow_domains.length > 0) %}<strong>select people with e-mails</strong> ending with <strong>{% if allow_domains.length == 2 %} {{allow_domains | join(' or ')}} {% else %} {{allow_domains | join(',')}} {% endif %}.</strong> Please choose an identity provider with which you registered a matching e-mail address. {% endif %}
     {% endif %}
     </p>
-    <h2>Sign In</h2>
+    <h2>Verify your identity</h2>
+    <div class="btns">
+      {% if (providers.preferred.length > 0) %}
+        {% for provider in providers.preferred %}
+          <a class="{{ provider }} waves-effect waves-light btn" href="#">SIGN IN WITH {{ provider_friendly_name[provider] }}</a>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <h2>Show more...</h2>
     <div class="btns">
       <a class="facebook waves-effect waves-light btn" href="#">SIGN IN WITH FACEBOOK</a>
-      <a class="google-plus waves-effect waves-light btn" href="#">SIGN IN WITH GOOGLE+</a>
+      <a class="google-oauth2 waves-effect waves-light btn" href="#">SIGN IN WITH GOOGLE</a>
       <a class="twitter waves-effect waves-light btn" href="#">SIGN IN WITH TWITTER+</a>
+      <a class="windowslive waves-effect waves-light btn" href="#">SIGN IN WITH MICROSOFT ACCOUNT</a>
     </div>
 </div>
 <!-- / content -->
@@ -39,7 +48,7 @@
     });
   });
 
-  $('.btns .google-plus').click(function(e) {
+  $('.btns .google-oauth2').click(function(e) {
     e.preventDefault();
 
     auth0.login({
@@ -52,6 +61,14 @@
 
     auth0.login({
       connection: 'twitter'
+    });
+  });
+
+  $('.btns .windowslive').click(function(e) {
+    e.preventDefault();
+
+    auth0.login({
+      connection: 'windowslive'
     });
   });
 </script>

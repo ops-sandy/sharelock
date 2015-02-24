@@ -306,11 +306,11 @@ img{
   content: "";
 }
 
-.log-in .btns a.google-plus {
+.log-in .btns a.google-oauth2 {
   background: #f44336;
 }
 
-.log-in .btns a.google-plus:after {
+.log-in .btns a.google-oauth2:after {
   background: rgba(0,0,0,0.10) url(../images/ico_googleplus.svg) no-repeat 50% 50%;
 }
 
