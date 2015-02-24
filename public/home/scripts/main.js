@@ -1,6 +1,7 @@
 $(window).load(onload);
 
 function onload () {
+  
   $('body').addClass('loaded');
 
   $('a.how-it-works').click(function(){
@@ -16,8 +17,6 @@ function onload () {
     $('.dropdown-download').toggleClass('visible');
     return false;
   });
-
-
 
 }
 
