@@ -503,14 +503,14 @@ function scene11 () {
             top: '20%',
             opacity: 0
         }, 1)
-        .from('.laptop', 2, {
+        .from('.laptop', 1, {
             opacity: 0,
             marginTop: -100
         }, 3);
 
     if(!isMobile()){
         timeline
-            .fromTo('.text.t5', 4, {
+            .fromTo('.text.t5', 2, {
                 marginTop: 0,
                 opacity: 0,
                 left: '10%'
@@ -521,7 +521,7 @@ function scene11 () {
             }, 2);
     }else{
         timeline
-            .fromTo('.text.t5', 4, {
+            .fromTo('.text.t5', 2, {
                 marginTop: 0,
                 opacity: 0,
             }, {
@@ -550,10 +550,15 @@ function scene12 () {
         .to('.text.t5, .laptop', 1, {
             opacity: 0
         }, 0)
-        .from('.step-dw', 4, {
+        .from('.step-dw .step-dw-left', 2, {
             opacity: 0,
             marginBottom: -100
-        }, 1);
+        }, 1)
+        .from('.step-dw .step-dw-right', 2, {
+            opacity: 0,
+            marginBottom: -100
+        }, 2);
+
 
 
     timeline.pause();

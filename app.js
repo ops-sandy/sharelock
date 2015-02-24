@@ -98,8 +98,16 @@ app.get('/home', function(req,res,next){
     res.render('home.html');
 })
 
+app.get('/tos', function(req,res,next){
+    res.render('tos.html');
+})
+
 app.get('/about', function(req,res,next){
     res.render('about.html');
+})
+
+app.get('/security', function(req,res,next){
+    res.render('security.html');
 })
 
 app.get('/privacy', function(req,res,next){
