@@ -3,7 +3,7 @@
 {% block content %}
 <div id="content" class="">
   <div class="data card-panel">
-
+      <h5>Create Sharelock</h5>
       <p class="inputs-intro">Type your secret content (e.g: a credit card number, a password, SSN, etc.) and then enter either a single e-mail (hey@example.com), a full e-mail domain (@example.com) or a twitter handle (@auth0) of the person(s) you want to share the secret with. Only them will be able to access the decrypted content after they verify their identity.</p>
 
      <div class="input-field">
@@ -71,12 +71,16 @@
 
         <div class="display-area">
           <div id="url" style="display:none;">
+            <h3>SHARELOCKED URL</h3>
+
             <div>
               <a id="urlv" href="" style="word-wrap: break-word;"></a>
             </div>
             <p>Give this URL to the person(s) you want to share the data with. The URL can be sent through any public channels like e-mail, IRC or GitHub repositories since the information is encrypted. The people you selected must authenticate themselves before being able to see the data.</p>
           </div>
-          <a id="copy" class="copy-link desktop-only" href="javascript:;" style="display:none;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="/images/ico_scale.svg" alt=""></span></a>
+          <div class="action-buttons">
+            <a id="copy" class="action-link desktop-only" href="javascript:;" style="display:none;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="/images/ico_scale.svg" alt=""></span></a>
+          </div>
           <p id="error" class="bg-danger" style="display:none;"></p>
         </div>
       </div>
