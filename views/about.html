@@ -3,10 +3,14 @@
 {% block content %}
 <div id="content" class="card-panel about-page inner-padding">
   <h2>About</h2>
-  <p>We created this tool out of our own needs. We are constantly exchanging data and we take security very seriously. We don't feel confortable exchanging secret data through chat or e-mail, so we created sharelock. The idea is simple, the server encrypts and sign the secret data and gives you back a URL that is scoped to the people you shared it to. Then whoever gets that URL, in order to decrypt that content, first need to login. That's where we use Auth0. If the identity is verified (either e-mail, domain or twitter account), then the secret data is decrypted and shown. Since certain browsers have URL length limitations, there is a max of data you can share of 500 chars</p>
+  <p>Our story is simple. We created Sharelock because we wanted a way to share secret data securely. We’re constantly exchanging bits of confidential information and, because we take security very seriously, we didn’t feel comfortable sharing that information through normal channels like email or chat. </p>
 
+  <p>So, Sharelock was born. It provides you with a simple and secure way to share secrets with people you know. It’s easy. You enter a secret and a list of people that should be allowed to access that secret. Sharelock encrypts and signs this information and sends you back a URL. </p>
+
+  <p>You send that URL out any way you’d like - publicly or privately - the channel does not need to be secure, as the Sharelock itself is already encrypted. Your recipient clicks on the URL and is required to authenticate using Auth0. Sharelock checks to see if the authenticated recipient is on the list of people you intended to share your secret with. If everything checks out, the data is decrypted and your recipient receives the secret! </p>
   <a href="https://auth0.com" target="_blank"><img src="/images/auth0.png"/></a>
-  <p>We hope you enjoy and use this tool as we do. Feel free to <a href="https://auth0.com/signup">create an account with Auth0</a> and forget about authentication, authorization and single sign on. </p>
+  
+  <p>We hope you will use and enjoy Sharelock as much as we do. When you have a moment, stop by Auth0 and set up a free account so you can forget about all of your authentication, authorization and single sign on worries. </p>
 </div>
 <!-- / content -->
 {% endblock %}
