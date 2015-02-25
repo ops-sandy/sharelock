@@ -526,6 +526,13 @@ a.zeroclipboard-is-hover{
   display: none;
 }
 
+.spinner-red,
+.spinner-green,
+.spinner-blue,
+.spinner-yellow {
+  border-color: #eb5424;
+}
+
 /* Footer
 ------------------------------------------------------------------------------*/
 
