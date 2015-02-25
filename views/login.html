@@ -7,7 +7,7 @@
       You are logged in as <strong>{{ provider }}</strong> user <strong>{{ user.displayName }}</strong>{% if (email) %} with e-mail address <strong>{{ email }}</strong>{% endif %}
     {% endif %}
     {% if (allow_twitter || allow_domains.length > 0) %}
-    The creator of the sharelock restricted access to the data to 
+    The creator of this sharelock restricted access to the data to 
       {% if (allow_twitter) %}
         <strong>select Twitter users</strong>
         {% if (allow_domains.length > 0) %} and {% endif %}
