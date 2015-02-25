@@ -4,22 +4,23 @@
 <div id="content" class="">
   <div class="data card-panel">
       <h5>Create Sharelock</h5>
-      <p class="inputs-intro">Type your secret content (e.g: a credit card number, a password, SSN, etc.) and then enter either a single e-mail (hey@example.com), a full e-mail domain (@example.com) or a twitter handle (@auth0) of the person(s) you want to share the secret with. Only them will be able to access the decrypted content after they verify their identity.</p>
+      <p class="inputs-intro">Securely share your data. It’s easy! Enter your secret  (a credit card number, a password, a SSN, etc.), then provide a list of people who should be allowed access to that secret. You can enter their email address, Twitter handle or a full email domain. Sharelock.io encrypts and signs this information and sends you a secure URL, which is called a Sharelock. You can then share that URL however you’d like - publicly or privately. Only those people who you authorized will be able to access the decrypted content after they verify their identity. Viola! Secrets shared securely.  
+</p>
 
      <div class="input-field">
-       <label for="data">TYPE YOUR SECRET</label>
+       <label for="data">YOUR SECRET</label>
        <!-- placeholder="Passwords, keys, URLs, any text up to 500 characters." -->
        <textarea id="data" class="materialize-textarea" rows="2" maxlength="500"></textarea>
        <span class="help-text">
-        Passwords, keys, URLs or any text up to 500 characters.
+        Any secret (passwords, keys, URL’s, etc.) between 1 and 500 characters
        </span>
      </div>
      <div class="input-field col s12">
-       <label for="acl">WHO TO SHARE WITH</label>
+       <label for="acl">WHO GETS ACCESS?</label>
        <!-- placeholder="Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)" -->
        <textarea id="acl" class="materialize-textarea" rows="2" maxlength="200"></textarea>
        <span class="help-text">
-         Email addresses (e.g. john@example.com), Twitter handles (e.g. @johnexample), email domain names (e.g. @example.com)
+         Enter one or more email addresses (jd@example.com), Twitter handles (@jdexample) or email domain names (@example.com).
        </span>
       </div>
 
