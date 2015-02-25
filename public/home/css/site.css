@@ -729,9 +729,11 @@ h5 {
 }
 .step-bar .step-animate .circle.s2 {
   -webkit-transform: rotate(180deg) translate(117px, 79px);
+  transform: rotate(180deg) translate(117px, 79px);
 }
 .step-bar .step-animate .circle.s3 {
   -webkit-transform: rotate(180deg) translate(-87px, 79px);
+  transform: rotate(180deg) translate(-87px, 79px);
 }
 .step-bar .step-animate .line {
   stroke-dasharray: 52 52;
@@ -1011,6 +1013,7 @@ h5 {
     left: 50%;
     bottom: auto;
     right: auto;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 100%;
   }
