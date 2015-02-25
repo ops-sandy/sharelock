@@ -509,7 +509,7 @@ function scene11 () {
             }, {
                 opacity: 1,
                 marginTop: -100,
-                left: '10%'
+                left: '15%'
             }, 2);
     }else{
         timeline
