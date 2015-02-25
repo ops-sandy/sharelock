@@ -538,21 +538,24 @@ a.zeroclipboard-is-hover{
 
 #footer {
   clear: both;
-  padding: 0 50px 20px 50px;
   overflow: hidden;
   line-height: 28px;
+  position: fixed;
+  bottom: 30px;
+  left: 50px;
+  font-size: 12px;
+}
+
+#footer a{
+  margin-right: 20px;
+  color: #888;
 }
 
 #footer .design {
-  float: left;
-  font-size: 14px;
-  color: #888;
   font-weight: 100;
   line-height: 17px;
   margin-top: 5px;
-  position: fixed;
-  bottom: 50px;
-  left: 50px;
+
 
 }
 
@@ -562,18 +565,18 @@ a.zeroclipboard-is-hover{
   top: 6px;
 }
 
-#footer .social {
+.social {
   font-weight: 100;
   float: right;
   font-size: 14px;
   color: #888;
 
   position: fixed;
-  bottom: 50px;
+  bottom: 30px;
   right: 50px;
 }
 
-#footer .social a {
+.social a {
   display: inline-block;
   background: url(../images/ico_social.svg) no-repeat;
   height: 28px;
@@ -584,11 +587,11 @@ a.zeroclipboard-is-hover{
   border-radius: 50px;
 }
 
-#footer .social a:hover {
+.social a:hover {
   background-image: url(../images/ico_social_hover.svg);
 }
 
-#footer .social a.facebook {
+.social a.facebook {
   background-position: -28px 0;
 }
 
@@ -623,6 +626,19 @@ a.zeroclipboard-is-hover{
 
 /* Media
 ------------------------------------------------------------------------------*/
+@media screen and (max-width: 1200px) {
+
+  #footer, .social{
+    position: static;
+    padding: 20px;
+  }
+
+  #footer{
+    float: left;
+  }
+
+
+}
 
 @media screen and (max-width: 767px) {
 
@@ -650,6 +666,8 @@ a.zeroclipboard-is-hover{
   .card-panel{
     padding: 0px;
   }
+
+
 
   #content {
     box-shadow: none;
