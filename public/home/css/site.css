@@ -34,6 +34,7 @@ h5 {
 ==============================*/
 .share-on {
   position: fixed;
+  z-index: 10000;
   bottom: 40px;
   right: 50px;
   font-size: 13px;
@@ -167,6 +168,14 @@ h5 {
 /*==================================
 =            Final Step            =
 ==================================*/
+.step-dw {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
 .step-dw .step-dw-half {
   position: fixed;
   text-align: center;
@@ -348,14 +357,10 @@ h5 {
   margin-left: 100px;
   opacity: 0;
 }
-
-.text strong {
-  font-weight: 700;
-}
-
 .text.t1 {
   opacity: 1;
-  z-index: 10000;
+  z-index: 100;
+  margin-top: -200px;
 }
 .text.t1 .how-it-works {
   padding: 9px 20px 10px 20px;
@@ -383,10 +388,12 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
+
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
+
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -450,6 +457,7 @@ h5 {
 .app.browser .browser-address {
   width: 100%;
   height: auto;
+  display: block;
 }
 .app.browser .header {
   height: 200px;
@@ -579,7 +587,7 @@ h5 {
   color: #000;
 }
 .app .content .float-buttons .skyblue {
-  background-color: #87dffe;
+  background-color: #44c7f4;
 }
 .app .content .float-buttons a {
   margin-top: 0;
@@ -1023,12 +1031,13 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1037,12 +1046,13 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1051,12 +1061,13 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1065,12 +1076,13 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1079,12 +1091,13 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1093,12 +1106,28 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+}
+@-ms-keyframes ripple {
+  0% {
+    width: 0%;
+    height: 0;
+    opacity: 0.3;
+  }
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1107,12 +1136,13 @@ h5 {
   }
 }
 @keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;

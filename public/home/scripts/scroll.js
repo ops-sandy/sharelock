@@ -79,23 +79,14 @@ function scene1 () {
             left: '62%'
         });
 
-        var tween_stores_1 = TweenMax.to('.stores-1', 1, {
-            opacity: 0
-        });
-
-
-        var tween_stores_2 = TweenMax.to('.stores-2', 1, {
-            display: 'block'
-        });
 
         timeline.add(tween_text, 0)
-        timeline.add(tween_stores_1, 0)
-        timeline.add(tween_stores_2, 1)
     }
 
     timeline
         .to('.text.t1', 1, {
             marginTop: -200,
+            display: 'none',
             opacity: 0
         }, 2)
         .fromTo('.text.t2', 1, {
