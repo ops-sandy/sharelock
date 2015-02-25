@@ -33,7 +33,7 @@ h5 {
 .share-on {
   position: fixed;
   z-index: 10000;
-  bottom: 40px;
+  bottom: 30px;
   right: 50px;
   font-size: 13px;
   color: #5e9fca;
@@ -146,7 +146,7 @@ h5 {
 ==============================*/
 .main-footer {
   position: fixed;
-  bottom: 40px;
+  bottom: 30px;
   left: 50px;
   font-size: 13px;
   z-index: 110;
@@ -346,7 +346,7 @@ h5 {
   left: 50%;
   width: 800px;
   height: 400px;
-  margin-left: -100px;
+  margin-left: -160px;
   margin-top: -200px;
   background-image: url("../img/laptop.png");
   background-position: center;
