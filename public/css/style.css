@@ -389,9 +389,9 @@ img{
 }
 
 .data .text {
-  font-size: 36px;
+  font-size: 20px;
   color: #000000;
-  line-height: 43px;
+  line-height: 30px;
   word-wrap: break-word;
   margin-bottom: 0;
 }
