@@ -124,6 +124,8 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
   color: white;
 }
 
+
+
 .data #panel-attachment h3 {
   color: white;
   margin-bottom: 10px;
@@ -135,6 +137,10 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
     margin-top: 0;
     padding: 60px;
     border-radius: 3px;
+  }
+
+  #panel-attachment .display-area.active.non-radius {
+    border-radius: none;
   }
 }
 
