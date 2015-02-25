@@ -376,6 +376,10 @@ img{
   margin-bottom: 30px
 }
 
+.create-sharelock{
+  margin-bottom: 30px;
+}
+
 .inputs-intro {
   margin-bottom: 60px;
 }
@@ -386,10 +390,8 @@ img{
 
 .log-in p{
   line-height: 1.8;
-<<<<<<< HEAD
   padding-bottom: 30px;
-=======
->>>>>>> 6e7f5fc663d55d7f3bd2d6eb1c87eae02f02ba1a
+
 }
 
 .log-in p strong {
