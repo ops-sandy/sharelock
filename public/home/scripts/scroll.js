@@ -121,7 +121,7 @@ function scene2 () {
     })
 
     var typing = TweenMax.to('.phone.p1 .c2 .text-input', 2, {
-        text: "hey Bob, my CC: 4237 2843 3423"
+        text: "hey Eugenio, my CC: 4237 2843 3423"
     });
 
     var add_check = TweenMax.delayedCall(0, function(){
@@ -192,7 +192,7 @@ function scene3 () {
             marginBottom: 0
         }, 1)
         .to('.phone.p1 .c3 .text-input', 2, {
-            text: "bob.patinho@gmail.com"
+            text: "eugeniopace@auth0.com"
         }, 2)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a1 .c3 .text-input').addClass('check');

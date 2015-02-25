@@ -348,6 +348,11 @@ h5 {
   margin-left: 100px;
   opacity: 0;
 }
+
+.text strong {
+  font-weight: 700;
+}
+
 .text.t1 {
   opacity: 1;
   z-index: 10000;
