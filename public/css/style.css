@@ -626,7 +626,7 @@ a.zeroclipboard-is-hover{
 
 /* Media
 ------------------------------------------------------------------------------*/
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1500px) {
 
   #footer, .social{
     position: static;
