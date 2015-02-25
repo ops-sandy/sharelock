@@ -26,13 +26,13 @@ function scene0 () {
     var timeline = new TimelineMax();
 
     timeline
-    .add(TweenMax.from('.home', 1.5, {
+    .add(TweenMax.from('.home', 1, {
         opacity: 0
-    }))
-    .add(TweenMax.from('.delayed', 1, {
+    }), 0)
+    .add(TweenMax.from('.delayed', 0.5, {
         opacity: 0,
         delay: 1
-    }))
+    }), 0)
 }
 
 function scene1 () {
@@ -414,7 +414,7 @@ function scene8 () {
                 marginLeft: -345,
                 top: '50%',
                 left: '24%',
-                marginTop: -350
+                marginTop: -320
             })
             .to('.arrow', 1, {
                 opacity: 1

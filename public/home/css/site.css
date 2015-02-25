@@ -360,12 +360,10 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
-
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -846,9 +844,26 @@ h5 {
   background-color: #fff;
 }
 @media (max-width: 950px) {
+  .navbar {
+    top: 14px;
+    right: 14px;
+    z-index: 10001;
+  }
+  .navbar .dropdown-download {
+    background: #fff;
+    width: 312px;
+    padding: 0;
+    top: 34px;
+  }
+  .navbar .dropdown-download a {
+    width: 100px;
+  }
   .logo {
     top: 15px;
     left: 15px;
+  }
+  .arrow {
+    top: 53%;
   }
   .poweredby {
     display: none;
@@ -888,14 +903,40 @@ h5 {
     -webkit-transform: scale(0.6);
     margin-left: -293px;
     z-index: 200;
+    top: 52%;
+  }
+  .laptop {
+    top: 70%;
   }
   .text {
-    top: 170px;
+    top: 35%;
     left: 0;
     margin: 0;
     margin-top: -100px;
     padding: 20px;
-    width: auto;
+    width: 100%;
+    text-align: center;
+  }
+  .text p {
+    display: none;
+  }
+  .text h2 {
+    margin: 0;
+    font-size: 25px;
+  }
+  .text .t1-links {
+    display: block;
+  }
+  .text .t1-links .how-it-works {
+    max-width: 152px;
+  }
+  .text .t1-links .how-it-works,
+  .text .t1-links .fork-from {
+    display: block;
+    margin: 0 auto;
+  }
+  .text.t1 {
+    top: 28%;
   }
   .text.t5 {
     left: 0;
@@ -911,6 +952,7 @@ h5 {
   }
   .step-bar {
     margin-left: -128px;
+    top: 45%;
   }
   .step-bar .store {
     margin: 0;
@@ -928,15 +970,18 @@ h5 {
     margin-left: -400px;
     margin-top: -300px;
   }
+  .share-on,
+  .main-footer {
+    display: none;
+  }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -945,13 +990,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -960,13 +1004,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -975,13 +1018,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -990,13 +1032,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1005,28 +1046,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-ms-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1035,13 +1060,12 @@ h5 {
   }
 }
 @keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
