@@ -4,14 +4,14 @@
 <div id="content" class="">
   <div class="data card-panel">
 
-      <p class="inputs-intro">Type your secret content (like a credit card number, a password, SSN, etc.) and then enter either a single e-mail, a full e-mail domain or twitter account of the people you want to share this with. Only them will be able to access the decrypted content after they verify their identity.</p>
+      <p class="inputs-intro">Type your secret content (e.g: a credit card number, a password, SSN, etc.) and then enter either a single e-mail (hey@example.com), a full e-mail domain (@example.com) or a twitter handle (@auth0) of the person(s) you want to share the secret with. Only them will be able to access the decrypted content after they verify their identity.</p>
 
      <div class="input-field">
        <label for="data">TYPE YOUR SECRET</label>
        <!-- placeholder="Passwords, keys, URLs, any text up to 500 characters." -->
        <textarea id="data" class="materialize-textarea" rows="2" maxlength="500"></textarea>
        <span class="help-text">
-        Passwords, keys, URLs, any text up to 500 characters.
+        Passwords, keys, URLs or any text up to 500 characters.
        </span>
      </div>
      <div class="input-field col s12">
@@ -74,7 +74,7 @@
             <div>
               <a id="urlv" href="" style="word-wrap: break-word;"></a>
             </div>
-            <p>Pass this URL to the people you want to share the data with. The URL can be sent through public channels like e-mail, IRC, or GitHub repositories. People you selected must authenticate themselves before accessing the data.</p>
+            <p>Give this URL to the person(s) you want to share the data with. The URL can be sent through any public channels like e-mail, IRC or GitHub repositories since the information is encrypted. The people you selected must authenticate themselves before being able to see the data.</p>
           </div>
           <a id="copy" class="copy-link desktop-only" href="javascript:;" style="display:none;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="/images/ico_scale.svg" alt=""></span></a>
           <p id="error" class="bg-danger" style="display:none;"></p>
