@@ -202,14 +202,18 @@ h1,h2,h3,h4,h5
   .step-dw-link
     display: inline-block
     color: #A9B2BB;
-    margin:20px
-    img 
-      max-height: 60px;
-      
-    span 
-      display: block;
-      margin-top: 10px;
-      font-size: 13px;
+    margin: 0;
+    width: 32%;
+    min-height: 113px;
+    vertical-align: top;
+    
+    img
+      height: 60px
+    
+    span
+      display: block
+      margin-top: 10px
+      font-size: 14px
       
   p 
     line-height: 1.8
@@ -1003,6 +1007,37 @@ h1,h2,h3,h4,h5
     -webkit-transform: scale(0.5);
     margin-left: -400px;
     margin-top: -300px;
+  }
+  
+  .step-dw {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    
+    .step-dw-half {
+      position: relative;
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+      left: auto
+      right: auto
+      
+      h4 {
+        margin-bottom: 30px
+      }
+      
+      p {
+        display: none
+      }
+      
+      .step-dw-link {
+        img {
+          height: 50px
+        }
+      }
+    }
   }
   
   .share-on, .main-footer {

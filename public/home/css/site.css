@@ -183,15 +183,18 @@ h5 {
 .step-dw .step-dw-link {
   display: inline-block;
   color: #a9b2bb;
-  margin: 20px;
+  margin: 0;
+  width: 32%;
+  min-height: 113px;
+  vertical-align: top;
 }
 .step-dw .step-dw-link img {
-  max-height: 60px;
+  height: 60px;
 }
 .step-dw .step-dw-link span {
   display: block;
   margin-top: 10px;
-  font-size: 13px;
+  font-size: 14px;
 }
 .step-dw p {
   line-height: 1.8;
@@ -969,6 +972,30 @@ h5 {
     -webkit-transform: scale(0.5);
     margin-left: -400px;
     margin-top: -300px;
+  }
+  .step-dw {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+  .step-dw .step-dw-half {
+    position: relative;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    left: auto;
+    right: auto;
+  }
+  .step-dw .step-dw-half h4 {
+    margin-bottom: 30px;
+  }
+  .step-dw .step-dw-half p {
+    display: none;
+  }
+  .step-dw .step-dw-half .step-dw-link img {
+    height: 50px;
   }
   .share-on,
   .main-footer {
