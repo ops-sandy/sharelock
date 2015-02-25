@@ -5,7 +5,6 @@ body {
   background-color: #fff;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  height: 6000px;
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   color: #5c666f;
@@ -18,7 +17,6 @@ a {
   text-decoration: none;
 }
 section {
-  height: 13000px;
   position: relative;
 }
 h1,
@@ -34,8 +32,13 @@ h5 {
 ==============================*/
 .share-on {
   position: fixed;
+<<<<<<< HEAD
   z-index: 9999;
   bottom: 40px;
+=======
+  z-index: 10000;
+  bottom: 30px;
+>>>>>>> d0360d77a3d8e51341b8f7c89b3985b5f3b72649
   right: 50px;
   font-size: 13px;
   color: #5e9fca;
@@ -64,6 +67,7 @@ h5 {
   position: fixed;
   top: 50px;
   left: 50px;
+  z-index: 100000;
 }
 .navbar {
   position: fixed;
@@ -96,6 +100,7 @@ h5 {
   position: absolute;
   right: -10px;
   border-radius: 3px;
+  background: #fff;
   top: 40px;
   padding: 10px 0;
   z-index: 9999;
@@ -147,10 +152,14 @@ h5 {
 ==============================*/
 .main-footer {
   position: fixed;
-  bottom: 40px;
+  bottom: 30px;
   left: 50px;
   font-size: 13px;
+<<<<<<< HEAD
   z-index: 9999;
+=======
+  z-index: 110;
+>>>>>>> d0360d77a3d8e51341b8f7c89b3985b5f3b72649
 }
 .main-footer a {
   color: #999;
@@ -344,7 +353,7 @@ h5 {
   left: 50%;
   width: 800px;
   height: 400px;
-  margin-left: -100px;
+  margin-left: -160px;
   margin-top: -200px;
   background-image: url("../img/laptop.png");
   background-position: center;
@@ -391,10 +400,12 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
+
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
+
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -1036,12 +1047,13 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1050,12 +1062,13 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1064,12 +1077,13 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1078,12 +1092,13 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1092,12 +1107,13 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1106,12 +1122,28 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+}
+@-ms-keyframes ripple {
+  0% {
+    width: 0%;
+    height: 0;
+    opacity: 0.3;
+  }
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1120,12 +1152,13 @@ h5 {
   }
 }
 @keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;

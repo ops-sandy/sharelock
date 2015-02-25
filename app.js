@@ -93,10 +93,7 @@ app.use(cookieParser());
 app.use(session({ secret: process.env.COOKIE_SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
-// Use this one instead for urls without trailing `/`
-// img sources should be rewritten to absolute paths in this case
-// app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
+app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
 
 
 app.get('/home', function(req,res,next){

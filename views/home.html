@@ -27,6 +27,15 @@
       <meta property="og:image:height" content="315">
     {% endblock %}
 
+    {% block twittercard %}
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:site" content="@sharelock">
+      <meta name="twitter:creator" content="@auth0">
+      <meta name="twitter:title" content="Sharelock">
+      <meta name="twitter:description" content="Sharelock allows you to share data easily and securely. Simply type a secret and the e-mail or twitter handle of the person(s) you want to share this with and an encrypted link (URL) will be generated.">
+      <meta name="twitter:image:src" content="https://sharelock.io/share/facebook-1200-630.png">
+    {% endblock %}
+
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="/home/materialize/css/materialize.min.css" />
@@ -40,7 +49,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png" />
     <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png" />
     <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="/images/home/img/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png" />
   </head>
   <body>
@@ -54,16 +63,16 @@
         <a href="#" class="download-link">Download <i></i></a>
 
         <div class="dropdown-download">
-          <a href="https://cdn.auth0.com/sharelock-osx/Sharelock-1.0.0_3.dmg">
+          <a target="_blank" href="https://cdn.auth0.com/sharelock-osx/Sharelock-1.0.0_3.dmg">
             <img src="/home/img/icon-mac.svg">
             <span>Mac</span>
           </a>
-          <a href="#">
+          <a target="_blank" href="https://play.google.com/store/apps/details?id=com.auth0.sharelock&hl=en">
             <img src="/home/img/icon-android.svg">
             <span>Android</span>
           </a>
 
-          <a href="https://github.com/auth0/sharelock">
+          <a target="_blank" href="https://github.com/auth0/sharelock">
             <img src="/home/img/icon-github.svg">
             <span>Source</span>
           </a>
@@ -77,11 +86,11 @@
       <img src='/home/img/logo.svg'>
   </a>
 
-  <a href="https://twitter.com/home?status=Share%20secret%20data%20on%20encrypted%20links%20with%20the%20people%20you%20want%20https://sharelock.io" target="_new" class="share-on delayed">Share on <img src="img/icon-twitter.svg"></a>
+  <a href="https://twitter.com/home?status=Share%20secret%20data%20on%20encrypted%20links%20with%20the%20people%20you%20want%20https://sharelock.io" target="_new" class="share-on delayed">Share on <img src="/home/img/icon-twitter.svg"></a>
 
   <footer class="main-footer delayed">
 
-    <a href='https://auth0.com' target='_new' class='poweredby'>Crafted by  <img src='img/poweredby.svg'></a>
+    <a href='https://auth0.com' target='_new' class='poweredby'>Crafted by  <img src='/home/img/poweredby.svg'></a>
 
     <a href="/about">About</a>
     <a href="/security">Security</a>
@@ -137,7 +146,7 @@
               <div class='app a1'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.svg'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.svg'>
                       <a  class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>
@@ -288,7 +297,7 @@
               <div class='app a1'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.svg'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.svg'>
                       <a href='#' class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>
@@ -317,10 +326,10 @@
 
               <div class='app browser a1'>
 
-                  <img src='img/browser-bar.png' class='browser-address'>
+                  <img src='/home/img/browser-bar.png' class='browser-address'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.png'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.png'>
                       <a href='#' class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>
@@ -345,7 +354,7 @@
                   ===============
                   -->
 
-                  <img src='img/browser-bar.png' class='browser-address'>
+                  <img src='/home/img/browser-bar.png' class='browser-address'>
 
                   <div class='loading'>
                       <div class='loading-text'>
@@ -399,10 +408,10 @@
 
               <div class='app browser a3'>
 
-                  <img src='img/browser-bar.png' class='browser-address'>
+                  <img src='/home/img/browser-bar.png' class='browser-address'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.png'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.png'>
                       <a href='#' class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>
@@ -426,8 +435,10 @@
       <div class='text t1'>
         <h2>Securely share data</h2>
         <p>
-            Sharelock allows you to share data easily and securely. Simply <strong>type a secret</strong> and the e-mail or twitter handle of the person(s) you want to share this with and an <strong>encrypted link (URL) will be generated</strong>. While the URL can be shared with anyone, intended recipients will have to <strong>prove their identity</strong> by logging in using their Google, Facebook, Microsoft or Twitter account.
+            Sharelock allows you to share data easily and securely. Simply <strong>type a secret</strong> and the e-mail or twitter handle of the person(s) you want to share this with and an <strong>encrypted link (URL) will be generated</strong>. 
         </p>
+
+        <p>While the URL can be shared with anyone, intended recipients will have to <strong>prove their identity</strong> by logging in using their Google, Facebook, Microsoft or Twitter account.</p>
 
         <p class="t1-links">
           <a href="#" class=" how-it-works">How it works <i class=""></i></a>
@@ -468,11 +479,11 @@
         <div class="step-dw-half step-dw-left">
           <h4>Use it</h4>
           <p>Create Sharelocks from a native Mac OS app, an Android app or the Web app.</p>
-          <a href="https://cdn.auth0.com/sharelock-osx/Sharelock-1.0.0_3.dmg" class="step-dw-link">
+          <a target="_blank" href="https://cdn.auth0.com/sharelock-osx/Sharelock-1.0.0_3.dmg" class="step-dw-link">
             <img src="/home/img/icon-mac.svg">
             <span>On a Mac</span>
           </a>
-          <a href="#" class="step-dw-link">
+          <a target="_blank" href="https://play.google.com/store/apps/details?id=com.auth0.sharelock&hl=en" class="step-dw-link">
             <img src="/home/img/icon-android.svg">
             <span>On Android</span>
           </a>
@@ -485,7 +496,7 @@
 
         <div class="step-dw-half step-dw-right">
           <h4>Fork it</h4>
-          <p>Sharelock is <strong>completely open source</strong>. Fork it, <a href="">deploy your own</a>, contribute :)</p>
+          <p>Sharelock is <strong>completely open source</strong>. Fork it, <a href="https://heroku.com/deploy?template=https://github.com/auth0/sharelock">deploy your own</a>, contribute :)</p>
 
           <a href="https://github.com/auth0/sharelock-osx" class="step-dw-link">
             <img src="/home/img/icon-mac.svg">
