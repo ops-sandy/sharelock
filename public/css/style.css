@@ -92,7 +92,13 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
   text-align: right;
   text-transform: uppercase;
   font-size: 12px;
-  display: block;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  #copy {
+    display: block;
+  }
 }
 
 .circle-ico {
@@ -276,6 +282,10 @@ img{
   margin-bottom: 30px
 }
 
+.inputs-intro {
+  margin-bottom: 60px;
+}
+
 .log-in {
   padding: 100px 120px;
 }
@@ -383,9 +393,9 @@ img{
 }
 
 .data .text {
-  font-size: 36px;
+  font-size: 20px;
   color: #000000;
-  line-height: 43px;
+  line-height: 30px;
   word-wrap: break-word;
   margin-bottom: 0;
 }
@@ -515,7 +525,7 @@ a.zeroclipboard-is-hover{
 #footer .design {
   float: left;
   font-size: 14px;
-  color: #000000;
+  color: #888;
   font-weight: 100;
   line-height: 17px;
   margin-top: 5px;
@@ -535,7 +545,7 @@ a.zeroclipboard-is-hover{
   font-weight: 100;
   float: right;
   font-size: 14px;
-  color: #000000;
+  color: #888;
 
   position: fixed;
   bottom: 50px;

@@ -202,14 +202,18 @@ h1,h2,h3,h4,h5
   .step-dw-link
     display: inline-block
     color: #A9B2BB;
-    margin:20px
-    img 
-      max-height: 60px;
-      
-    span 
-      display: block;
-      margin-top: 10px;
-      font-size: 13px;
+    margin: 0;
+    width: 32%;
+    min-height: 113px;
+    vertical-align: top;
+    
+    img
+      height: 60px
+    
+    span
+      display: block
+      margin-top: 10px
+      font-size: 14px
       
   p 
     line-height: 1.8
@@ -876,9 +880,28 @@ h1,h2,h3,h4,h5
   background-color: #fff;
 }
 @media (max-width: 950px) {
+  .navbar {
+    top: 14px
+    right: 14px
+    z-index: 10001
+    
+    .dropdown-download {
+      background: white
+      width: 312px
+      padding: 0
+      top: 34px
+      
+      a {
+        width: 100px
+      }
+    }
+  }
   .logo {
     top: 15px;
     left: 15px;
+  }
+  .arrow {
+    top: 53%
   }
   .poweredby {
     display: none;
@@ -918,14 +941,40 @@ h1,h2,h3,h4,h5
     -webkit-transform: scale(0.6);
     margin-left: -293px;
     z-index: 200;
+    top: 52%
+  }
+  .laptop {
+    top: 70%
   }
   .text {
-    top: 170px;
+    top: 35%;
     left: 0;
     margin: 0;
     margin-top: -100px;
     padding: 20px;
-    width: auto;
+    width: 100%;
+    text-align: center
+  }
+  .text p {
+    display: none
+  }
+  .text h2 {
+    margin: 0
+    font-size: 25px
+  }
+  .text .t1-links {
+    display: block
+  }
+  .text .t1-links .how-it-works {
+    max-width: 152px
+  }
+  .text .t1-links .how-it-works, .text .t1-links .fork-from {
+    display: block
+    margin: 0 auto
+  }
+  
+  .text.t1 {
+    top: 28%
   }
   .text.t5 {
     left: 0;
@@ -941,6 +990,7 @@ h1,h2,h3,h4,h5
   }
   .step-bar {
     margin-left: -128px;
+    top: 45%
   }
   .step-bar .store {
     margin: 0;
@@ -957,6 +1007,41 @@ h1,h2,h3,h4,h5
     -webkit-transform: scale(0.5);
     margin-left: -400px;
     margin-top: -300px;
+  }
+  
+  .step-dw {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    
+    .step-dw-half {
+      position: relative;
+      max-width: 100%;
+      width: 100%;
+      margin: 0;
+      left: auto
+      right: auto
+      
+      h4 {
+        margin-bottom: 30px
+      }
+      
+      p {
+        display: none
+      }
+      
+      .step-dw-link {
+        img {
+          height: 50px
+        }
+      }
+    }
+  }
+  
+  .share-on, .main-footer {
+    display: none
   }
 }
 @-moz-keyframes ripple {

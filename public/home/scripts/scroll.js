@@ -26,13 +26,13 @@ function scene0 () {
     var timeline = new TimelineMax();
 
     timeline
-    .add(TweenMax.from('.home', 1.5, {
+    .add(TweenMax.from('.home', 1, {
         opacity: 0
-    }))
-    .add(TweenMax.from('.delayed', 1, {
+    }), 0)
+    .add(TweenMax.from('.delayed', 0.5, {
         opacity: 0,
         delay: 1
-    }))
+    }), 0)
 }
 
 function scene1 () {
@@ -121,7 +121,7 @@ function scene2 () {
     })
 
     var typing = TweenMax.to('.phone.p1 .c2 .text-input', 2, {
-        text: "VISA 1234 3456 5678 6789"
+        text: "hey Bob, my CC: 4237 2843 3423"
     });
 
     var add_check = TweenMax.delayedCall(0, function(){
@@ -192,7 +192,7 @@ function scene3 () {
             marginBottom: 0
         }, 1)
         .to('.phone.p1 .c3 .text-input', 2, {
-            text: "hello@evilrabb.it"
+            text: "bob.patinho@gmail.com"
         }, 2)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a1 .c3 .text-input').addClass('check');
@@ -414,7 +414,7 @@ function scene8 () {
                 marginLeft: -345,
                 top: '50%',
                 left: '24%',
-                marginTop: -350
+                marginTop: -320
             })
             .to('.arrow', 1, {
                 opacity: 1
