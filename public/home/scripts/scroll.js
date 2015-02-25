@@ -283,36 +283,36 @@ function scene5 () {
                 left: '100%',
                 opacity: 0
             });
-        }), 0.1)
+        }), 1.5)
         .to('.phone.p1 .app.a2', 1, {
             left: '-100%',
             opacity: 0
-        }, 0.1)
+        }, 1.5)
         .to('.phone.p1 .app.a1', 1, {
             left: 0,
             opacity: 1
-        }, 0.1)
+        }, 1.5)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .content.c1 .ripple.share').removeClass('click');
-        }), 1)
+        }), 2.8)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .content.c1 .ripple.share').addClass('click');
-        }), 1.1)
-        .to('.phone.p1 .app.a1 .share-menu', 1.2, {
+        }), 2.8)
+        .to('.phone.p1 .app.a1 .share-menu', 1, {
             bottom: 0
-        })
+        }, 3.3)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a1 .share-menu .whatsapp').removeClass('click');
-        }), 2)
+        }), 4.3)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a1 .share-menu .whatsapp').addClass('click');
-        }), 2)
+        }), 4.3)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3a');
-        }), 0.9)
+        }), 4.3)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3b');
-        }), 1);
+        }), 4.3);
 
     timeline.pause();
     return timeline;
@@ -325,10 +325,10 @@ function scene6 () {
     timeline
         .to('.phone.p1 .app.a1', 1.5, {
             opacity: 0
-        }, 0)
+        }, 0.8)
         .to('.phone.p1 .screen', 1, {
             backgroundColor: "#273636"
-        }, 0)
+        }, 0.8)
         .fromTo('.phone.p1 .app.a3', 1, {
             left: 0,
             transform: 'scale(0.8)',
@@ -336,19 +336,19 @@ function scene6 () {
         }, {
             transform: 'scale(1)',
             opacity: 1
-        }, 0)
+        }, 0.8)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a3 .ripple.contact').removeClass('click');
-        }), 1)
+        }), 2.5)
         .add(TweenMax.delayedCall(0, function(){
             $('.phone.p1 .app.a3 .ripple.contact').addClass('click');
-        }), 1.1)
+        }), 2.5)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3b');
-        }), 0)
+        }), 2.5)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3c');
-        }), 0.1);
+        }), 2.5);
 
     timeline.pause();
     return timeline;
@@ -361,7 +361,7 @@ function scene7 () {
     timeline
         .to('.phone.p1 .app.a3', 1, {
             opacity: 0
-        }, 0)
+        }, 0.8)
         .fromTo('.phone.p1 .app.a4', 1, {
             left: 0,
             transform: 'scale(0.8)',
@@ -369,13 +369,13 @@ function scene7 () {
         }, {
             transform: 'scale(1)',
             opacity: 1
-        }, 0)
+        }, 0.8)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3c');
-        }), 0)
+        }), 0.8)
         .add(TweenMax.delayedCall(0, function(){
             $('.step-bar').attr('class', 'step-bar s3d');
-        }), 0.1);
+        }), 0.8);
 
     timeline.pause();
     return timeline;
@@ -421,10 +421,10 @@ function scene8 () {
     }, 0)
     .add(TweenMax.delayedCall(0, function(){
         $('.phone.p3 .app .login.fb').removeClass('click');
-    }), 2.9)
+    }), 1)
     .add(TweenMax.delayedCall(0, function(){
         $('.phone.p3 .app .login.fb').addClass('click');
-    }), 3);
+    }), 1);
 
     if(isMobile()){
         timeline.to('.stores', 1, {
@@ -444,14 +444,14 @@ function scene9 () {
         .to('.phone.p3 .app.a1', 1, {
             left: '-100%',
             opacity: 0
-        }, 0)
+        }, 1)
         .fromTo('.phone.p3 .app.a2', 1, {
             left: '100%',
             opacity: 0
         }, {
             left: 0,
             opacity: 1
-        }, 0);
+        }, 1);
 
     timeline.pause();
     return timeline;
@@ -465,14 +465,14 @@ function scene10 () {
         .to('.phone.p3 .app.a2', 1, {
             left: '-100%',
             opacity: 0
-        }, 0)
+        }, 1)
         .fromTo('.phone.p3 .app.a3', 1, {
             left: '100%',
             opacity: 0
         }, {
             left: 0,
             opacity: 1
-        }, 0);
+        }, 1);
 
     timeline.pause();
     return timeline;
