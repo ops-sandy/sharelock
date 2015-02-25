@@ -489,11 +489,13 @@ function scene11 () {
         }, 0)
         .to('.phone.p1', 1.5, {
             top: '20%',
-            opacity: 0
+            opacity: 0,
+            display: 'none'
         }, 0.5)
         .to('.phone.p3', 1, {
             top: '20%',
-            opacity: 0
+            opacity: 0,
+            display: 'none'
         }, 1)
         .from('.laptop', 1, {
             opacity: 0,
@@ -544,11 +546,13 @@ function scene12 () {
         }, 0)
         .from('.step-dw .step-dw-left', 2, {
             opacity: 0,
-            marginBottom: -100
+            marginBottom: -100,
+            display: 'none'
         }, 1)
         .from('.step-dw .step-dw-right', 2, {
             opacity: 0,
-            marginBottom: -100
+            marginBottom: -100,
+            display: 'none'
         }, 2);
 
 

@@ -36,7 +36,7 @@ h5 {
 ==============================*/
 .share-on {
   position: fixed;
-  z-index: 10000;
+  z-index: 9999;
   bottom: 30px;
   right: 50px;
   font-size: 13px;
@@ -73,7 +73,7 @@ h5 {
   top: 45px;
   right: 50px;
   list-style: none;
-  z-index: 600;
+  z-index: 9999;
   font-size: 13px;
 }
 .navbar li {
@@ -102,6 +102,7 @@ h5 {
   background: #fff;
   top: 40px;
   padding: 10px 0;
+  z-index: 9999;
   position: absolute;
   border: 1px solid rgba(26,53,71,0.12);
   box-shadow: 0 1px 2px rgba(26,53,71,0.1);
@@ -153,7 +154,7 @@ h5 {
   bottom: 30px;
   left: 50px;
   font-size: 13px;
-  z-index: 110;
+  z-index: 9999;
 }
 .main-footer a {
   color: #999;
@@ -178,7 +179,6 @@ h5 {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10;
 }
 .step-dw .step-dw-half {
   position: fixed;
@@ -267,21 +267,21 @@ h5 {
   top: 50%;
   margin-left: -453px;
   margin-top: -273px;
-  z-index: 100;
+  z-index: 1001;
 }
 .phone.p2 {
   left: 50%;
   top: 50%;
   margin-left: -683px;
   margin-top: -273px;
-  z-index: 50;
   transform: scale(0.8);
   -webkit-transform: scale(0.8);
+  z-index: 1000;
 }
 .phone.p3 {
   background-image: url("../img/htc-shadow.png");
   left: 50%;
-  top: 50%;
+  top: 46%;
   margin-top: -200px;
   margin-left: -320px;
   transform: scale(0.8);
@@ -368,7 +368,7 @@ h5 {
 }
 .text.t1 {
   opacity: 1;
-  z-index: 100;
+  z-index: 1001;
   margin-top: -200px;
 }
 .text.t1 .how-it-works {
@@ -397,12 +397,10 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
-
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -709,7 +707,7 @@ h5 {
   background-position: center;
   position: fixed;
   top: 50%;
-  left: 40%;
+  left: 41%;
   margin-left: -146px;
   opacity: 0;
 }
@@ -893,10 +891,8 @@ h5 {
   .navbar {
     top: 14px;
     right: 14px;
-    z-index: 10001;
   }
   .navbar .dropdown-download {
-    background: #fff;
     width: 312px;
     padding: 0;
     top: 34px;
@@ -910,6 +906,7 @@ h5 {
   }
   .arrow {
     top: 53%;
+    left: 40%;
   }
   .poweredby {
     display: none;
@@ -948,11 +945,12 @@ h5 {
     transform: scale(0.6);
     -webkit-transform: scale(0.6);
     margin-left: -293px;
-    z-index: 200;
     top: 52%;
+    z-index: 1002;
   }
   .laptop {
     top: 70%;
+    left: 54%;
   }
   .text {
     top: 70px;
@@ -970,6 +968,7 @@ h5 {
     display: none;
   }
   .text h2 {
+    background: #fff;
     margin: 0;
     font-size: 25px;
   }
@@ -1046,13 +1045,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1061,13 +1059,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1076,13 +1073,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1091,13 +1087,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1106,13 +1101,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1121,28 +1115,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-ms-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1151,13 +1129,12 @@ h5 {
   }
 }
 @keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
