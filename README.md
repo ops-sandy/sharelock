@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/auth0/sharelock/master/public/share/facebook-1200-630.png" />
+<img src="https://raw.githubusercontent.com/auth0/sharelock/master/public/share/facebook-1200-630.png?cached" />
 
 Sharelock: securely share data
 ===
