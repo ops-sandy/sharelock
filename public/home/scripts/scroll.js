@@ -420,11 +420,11 @@ function scene8 () {
         opacity: 0
     }, 0)
     .add(TweenMax.delayedCall(0, function(){
-        $('.phone.p3 .app .login.fb').removeClass('click');
-    }), 1)
+        $('.phone.p3 .app.browser.a1 .login.gplus').removeClass('click');
+    }), 4)
     .add(TweenMax.delayedCall(0, function(){
-        $('.phone.p3 .app .login.fb').addClass('click');
-    }), 1);
+        $('.phone.p3 .app.browser.a1 .login.gplus').addClass('click');
+    }), 4);
 
     if(isMobile()){
         timeline.to('.stores', 1, {
@@ -487,12 +487,12 @@ function scene11 () {
             marginTop: -200,
             opacity: 0
         }, 0)
-        .to('.phone.p1', 1.5, {
+        .to('.phone.p1', 1, {
             top: '20%',
             opacity: 0,
             display: 'none'
         }, 0.5)
-        .to('.phone.p3', 1, {
+        .to('.phone.p3', 0.5, {
             top: '20%',
             opacity: 0,
             display: 'none'
