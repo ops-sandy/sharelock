@@ -30,7 +30,7 @@ Read more about [how it works](https://github.com/auth0/sharelock/wiki#how-it-wo
 ## Security
 
 * Urls are ephemeral, they are **NOT stored anywhere** (neither your secrets). The content you share lives encrypted in the URL.
-* The **decrypted content** can ONLY be accessed by the people that you shared shared the data with by means of **login and email verification** (as opposed to, let's say, Dropbox links which can be accessed by anyone who has the link).
+* The **decrypted content** can ONLY be accessed by the people that you shared the data with by means of **login and email verification** (as opposed to, let's say, Dropbox links which can be accessed by anyone who has the link).
 * Secrets are signed with **HMAC SHA256** and encrypted with **AES 256 CTR** using keys that live on the Sharelock server
 * We host sharelock.io public pro bono but we are not in the business of holding your secret content, that's why we built this OSS. If you want to have your own signing key and encryption key you can do that by deploying your own Sharelock instance to [Heroku](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Fauth0%2Fsharelock) in seconds (or any other hosting that provides nodejs support)
 
