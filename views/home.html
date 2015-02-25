@@ -1,9 +1,40 @@
 <!doctype html>
 <html class="no-js" lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sharelock by Auth0</title>
+    <!-- Metas -->
+    <meta charset="utf-8">
+    <title>Sharelock</title>
+    <meta name="description" content="Sharelock allows you to share data easily and securely. Simply type a secret and the e-mail or twitter handle of the person(s) you want to share this with and an encrypted link (URL) will be generated.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+    <link rel="canonical" href="https://sharelock.io/home">
+
+    {% block opengraph %}
+      <meta property="og:title" content="Sharelock">
+      <!-- Following property allows for title= "og:title | og:site_name" display on fb cards -->
+      <!-- <meta property="og:site_name" content="Home"> -->
+      <meta property="og:description" content="Sharelock allows you to share data easily and securely. Simply type a secret and the e-mail or twitter handle of the person(s) you want to share this with and an encrypted link (URL) will be generated.">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:url" content="https://sharelock.io/home">
+
+      <meta property="og:image" content="https://sharelock.io/share/facebook-1200-630.png">
+      <meta property="og:image:type" content="image/png">
+      <meta property="og:image:width" content="1200">
+      <meta property="og:image:height" content="630">
+
+      <meta property="og:image" content="https://sharelock.io/share/facebook-600-315.png">
+      <meta property="og:image:type" content="image/png">
+      <meta property="og:image:width" content="600">
+      <meta property="og:image:height" content="315">
+    {% endblock %}
+
+    {% block twittercard %}
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:site" content="@sharelock">
+      <meta name="twitter:creator" content="@auth0">
+      <meta name="twitter:title" content="Sharelock">
+      <meta name="twitter:description" content="Sharelock allows you to share data easily and securely. Simply type a secret and the e-mail or twitter handle of the person(s) you want to share this with and an encrypted link (URL) will be generated.">
+      <meta name="twitter:image:src" content="https://sharelock.io/share/facebook-1200-630.png">
+    {% endblock %}
 
     <link href='//fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet' type='text/css'>
 
@@ -55,11 +86,11 @@
       <img src='/home/img/logo.svg'>
   </a>
 
-  <a href="https://twitter.com/home?status=Share%20secret%20data%20on%20encrypted%20links%20with%20the%20people%20you%20want%20https://sharelock.io" target="_new" class="share-on delayed">Share on <img src="img/icon-twitter.svg"></a>
+  <a href="https://twitter.com/home?status=Share%20secret%20data%20on%20encrypted%20links%20with%20the%20people%20you%20want%20https://sharelock.io" target="_new" class="share-on delayed">Share on <img src="/home/img/icon-twitter.svg"></a>
 
   <footer class="main-footer delayed">
 
-    <a href='https://auth0.com' target='_new' class='poweredby'>Crafted by  <img src='img/poweredby.svg'></a>
+    <a href='https://auth0.com' target='_new' class='poweredby'>Crafted by  <img src='/home/img/poweredby.svg'></a>
 
     <a href="/about">About</a>
     <a href="/security">Security</a>
@@ -78,16 +109,16 @@
       xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
       viewBox="-177.1 650.3 256.7 52.7" enable-background="new -177.1 650.3 256.7 52.7" xml:space="preserve">
       <g id="g3987" transform="translate(9.8847596,715.98137)">
-          
+
         <path id="path3989" class="circle s1" fill="none" stroke="#EB5424" stroke-width="2" d="
         M-135.3-39.3c0,14-11.3,25.3-25.3,25.3s-25.3-11.3-25.3-25.3s11.3-25.3,25.3-25.3S-135.3-53.3-135.3-39.3z"/>
-    
+
         <path id="path3991" class="circle s2" fill="none" stroke="#EB5424" stroke-width="2" d="
         M-33.3-39.3c0,14-11.3,25.3-25.3,25.3s-25.3-11.3-25.3-25.3s11.3-25.3,25.3-25.3S-33.3-53.3-33.3-39.3z"/>
-    
+
         <path id="path3993" class="circle s3" fill="none" stroke="#EB5424" stroke-width="2" d="
         M68.7-39.3c0,14-11.3,25.3-25.3,25.3S18.1-25.3,18.1-39.3s11.3-25.3,25.3-25.3S68.7-53.3,68.7-39.3z"/>
-    
+
         <path id="path4011" class="line s1" inkscape:connector-curvature="0" fill="none" stroke="#EB5424" stroke-width="2" stroke-linecap="round" d="
         M-134.9-39.1h51.1"/>
 
@@ -115,7 +146,7 @@
               <div class='app a1'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.svg'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.svg'>
                       <a  class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>
@@ -165,7 +196,7 @@
                   <div class='content c3'>
                       <div class='field'>
                           <span class='label'>WHO TO SHARE WITH</span>
-                          <div class='text-input'></div>                          
+                          <div class='text-input'></div>
                       </div>
                       <div class='button-bar'>
                           <a href='#' class='next ripple'>
@@ -266,7 +297,7 @@
               <div class='app a1'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.svg'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.svg'>
                       <a href='#' class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>
@@ -295,10 +326,10 @@
 
               <div class='app browser a1'>
 
-                  <img src='img/browser-bar.png' class='browser-address'>
+                  <img src='/home/img/browser-bar.png' class='browser-address'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.png'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.png'>
                       <a href='#' class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>
@@ -323,7 +354,7 @@
                   ===============
                   -->
 
-                  <img src='img/browser-bar.png' class='browser-address'>
+                  <img src='/home/img/browser-bar.png' class='browser-address'>
 
                   <div class='loading'>
                       <div class='loading-text'>
@@ -377,10 +408,10 @@
 
               <div class='app browser a3'>
 
-                  <img src='img/browser-bar.png' class='browser-address'>
+                  <img src='/home/img/browser-bar.png' class='browser-address'>
 
                   <div class='header'>
-                      <img class='mobile-logo' src='img/mobile-logo.png'>
+                      <img class='mobile-logo' src='/home/img/mobile-logo.png'>
                       <a href='#' class='menu-button'></a>
                       <span class='title'>securely share data</span>
                   </div>

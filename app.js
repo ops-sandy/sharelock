@@ -52,8 +52,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'html');
 app.engine('html', swig.renderFile);
 
-app.set('view cache', false);
-swig.setDefaults({ cache: false });
+if ('development' === app.get('env')) {
+    app.set('view cache', false);
+    swig.setDefaults({ cache: false });
+}
 
 app.set('trust proxy', true);
 
@@ -91,7 +93,7 @@ app.use(cookieParser());
 app.use(session({ secret: process.env.COOKIE_SECRET, resave: false, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
 
 
 app.get('/home', function(req,res,next){
