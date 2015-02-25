@@ -11,10 +11,8 @@
 
   <!-- OpenGraph -->
   {% block opengraph %}
-    {% block metatitle %}
+    <meta property="og:type" content="website">
     <meta property="og:title" content="Sharelock">
-    {% endblock %}
-
     <!-- Following property allows for title= "og:title | og:site_name" display on fb cards -->
     <!-- <meta property="og:site_name" content="Home"> -->
     <meta property="og:description" content="Sharelock allows you to share data easily and securely. Simply type a secret and the e-mail or twitter handle of the person(s) you want to share this with and an encrypted link (URL) will be generated.">
@@ -30,6 +28,7 @@
     <meta property="og:image:type" content="image/png">
     <meta property="og:image:width" content="600">
     <meta property="og:image:height" content="315">
+    <meta property="fb:app_id" content="430651237093519">
   {% endblock %}
 
   <!-- Twitter -->
