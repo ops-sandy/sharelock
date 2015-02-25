@@ -64,6 +64,7 @@ h5 {
   position: fixed;
   top: 50px;
   left: 50px;
+  z-index: 100000;
 }
 .navbar {
   position: fixed;
