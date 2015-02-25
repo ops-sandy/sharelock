@@ -28,6 +28,15 @@
     <meta property="og:image:height" content="315">
   {% endblock %}
 
+  {% block twittercard %}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sharelock">
+    <meta name="twitter:creator" content="@auth0">
+    <meta name="twitter:title" content="Sharelock">
+    <meta name="twitter:description" content="Sharelock allows you to share data easily and securely. Simply type a secret and the e-mail or twitter handle of the person(s) you want to share this with and an encrypted link (URL) will be generated.">
+    <meta name="twitter:image:src" content="https://sharelock.io/share/facebook-1200-630.png">
+  {% endblock %}
+
   <link rel="stylesheet" media="all" href="/css/normalize.css">
   <link rel="stylesheet" media="all" href="/css/materialize.min.css">
   <link rel="stylesheet" media="all" href="/css/style.css">
