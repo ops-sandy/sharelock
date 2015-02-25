@@ -98,12 +98,22 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
 .data .try-app h3 {
   color: white;
 }
+
+.try-app.try-app-inverted h3 {
+  color: #EB5424;
+  margin-bottom: 30px;
+}
+
 .try-app a {
   color: white;
   text-align: center;
   display: inline-block;
   width: 40px;
   margin: 10px 25px;
+}
+
+.try-app.try-app-inverted a {
+  color: #888;
 }
 
 #panel-attachment .display-area.active {
@@ -113,6 +123,8 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
   background: #5C666F;
   color: white;
 }
+
+
 
 .data #panel-attachment h3 {
   color: white;
@@ -125,6 +137,10 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
     margin-top: 0;
     padding: 60px;
     border-radius: 3px;
+  }
+
+  #panel-attachment .display-area.active.non-radius {
+    border-radius: none;
   }
 }
 

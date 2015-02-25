@@ -1,106 +1,45 @@
-<img src="https://raw.githubusercontent.com/auth0/sharelock/master/public/share/facebook-1200-630.png" />
+<img src="https://raw.githubusercontent.com/auth0/sharelock/master/public/share/facebook-1200-630.png?cached" />
 
 Sharelock: securely share data
 ===
 
-Sharelock is a web service created by [Auth0](https://auth0.com) and hosted *pro publico bono* at https://sharelock.io. It lets you simply and securely share secret information with people you trust. You can also host your own version of Sharelock using code from this repository. 
+Sharelock is an open source web service created by [Auth0](https://auth0.com) and hosted *pro publico bono* at https://sharelock.io. It lets you simply and securely share secret information with people you trust. You can also host your own version of Sharelock. The server and the apps are all open source.
 
-Secret data you provide is encrypted, and only people you specify can access it. Sharelock restricts access to your data by requiring recipients to authenticate themselves first. If their proven identity matches your expectations, they will be allowed to view the secret. You can specify people who should have access to the secret using their e-mail addresses, e-mail address domains, or Twitter handles. 
+## Apps
 
-![sharelockio](https://cloud.githubusercontent.com/assets/822369/6075236/8073adf6-ad83-11e4-9dc0-9006b61c3934.png)
+* Web: 
+  * App: <https://sharelock.io/new> 
+  * Source Code: <https://github.com/auth0/sharelock>
+* Mac OS: 
+  * App: <https://cdn.auth0.com/sharelock-osx/Sharelock-1.dmg>
+  * Source Code: <https://github.com/auth0/sharelock-osx>
+* Android App
+  * App: <https://play.google.com/store/apps/details?id=com.auth0.sharelock&hl=en>
+  * Source Code: <https://github.com/auth0/sharelock-android>
 
-Sharelock service does not store your secret data. Your secret data is stored in an encrypted and signed form in a rather long URL we call a "sharelock". It is up to you how you transmit the sharelock URL to your intended recipients: you can send it by e-mail, tweet it, or publish it in The New York Times. Regardless who intercepts your sharelock in transmission, only the people you specified will be able to access the secret within it. 
+## Host your own Sharelock server
 
-# Host your own
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Fauth0%2Fsharelock)
 
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
+The https://sharelock.io service Auth0 provides controls signing and encryption keys that protect your secret data. If you want to be in control of singing and encryption keys, you must host your own version of the Sharelock service. The apps have support to change the endpoint you hit
 
-The https://sharelock.io service Auth0 provides controls signing and encryption keys that protect your secret data. If you want to be in control of singing and encryption keys, you must host your own version of the Sharelock service. 
+![](https://www.dropbox.com/s/7y0d6u5kmdz01ew/Screenshot%202015-02-25%2017.17.40.png?dl=1)
 
-# Getting started
+Read more about [how it works](https://github.com/auth0/sharelock/wiki#how-it-works)
 
-## Hosting
+## Security
 
-Sharelock service is an HTTP service that exposes both web APIs and the web application UI. The service sets up an HTTP listener. To make sure your deployment is secure, you must host it behind an HTTPS terminating proxy, for example in Heroku or Windows Azure Web Sites. 
+* Urls are ephemeral, they are **NOT stored anywhere** (neither your secrets). The content you share lives encrypted in the URL.
+* The **decrypted content** can ONLY be accessed by the people that you shared shared the data with by means of **login and email verification** (as opposed to, let's say, Dropbox links which can be accessed by anyone who has the link).
+* Secrets are signed with **HMAC SHA256** and encrypted with **AES 256 CTR** using keys that live on the Sharelock server
+* We host sharelock.io public pro bono but we are not in the business of holding your secret content, that's why we built this OSS. If you want to have your own signing key and encryption key you can do that by deploying your own Sharelock instance to [Heroku](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Fauth0%2Fsharelock) in seconds (or any other hosting that provides nodejs support)
 
-## Auth0 application
+## Motivation
 
-Sharelock service uses [Auth0](https://auth0.com) to authenticate recipients of a sharelock. You must create an account with Auth0, and register an application. In that process, you will be given three pieces of information, which you will need to host your own Sharelock service:
+We created this tool out of our own needs. We are constantly exchanging data and we take security very seriously. We don't feel confortable exchanging secret data through chat or e-mail, so we created sharelock. The idea is simple, the server encrypts and sign the secret data and gives you back a URL that is scoped to the people you shared it to. Then whoever gets that URL, in order to decrypt that content, first need to login. That's where we use Auth0. If the identity is verified (either e-mail, domain or twitter account), then the secret data is decrypted and shown. Since certain browsers have URL length limitations, there is a max of data you can share of 500 chars
 
-* Auth0 domain (e.g. *example27.auth0.com*)  
-* Auth0 client ID
-* Auth0 client secret
+## Feedback
 
-Furthermore, your application must be configured to enable the following *connections* (connections represent identity providers):
-
-* Facebook  
-* GitHub  
-* Google-OAuth2  
-* Twitter  
-* Windows Live  
-* Yahoo  
-
-Lastly, in your application settings at Auth0, remember to specify the callback URL of your Sharelock service. The specific callback URL depends on where you have decided to host your service. For example, it may look like this:
-
-```
-http://localhost:3000/callback,https://sharelock.io/callback
-```
-
-NOTE: the *http://localhost:3000/callback* URL is useful during development. 
-
-## 
-
-Starting the service is simple: 
-
-```
-node server.js
-```
-
-The service requires several environment variables to be set (all of them are required unless specified otherwise):
-
-
-| Environment variable | Value |
-| ------------- | ----------- |
-| AUTH0_DOMAIN | The Auth0 domain obtained from [Auth0](https://auth0.com) |
-| AUTH0_CLIENT_ID | The Auth0 client ID obtained from [Auth0](https://auth0.com) |
-| AUTH0_CLIENT_SECRET| The Auth0 client secret obtained from [Auth0](https://auth0.com) |
-| AUTH0_CALLBACK | The callback URL specified when creating the [Auth0](https://auth0.com) application. In production it may look like *https://sharelock.io/callback*. In development it may be *http://localhost:3000/callback*. |
-| SIGNATURE_KEY_1 | A secret key that will be used to sign your sharelock. You can generate one with `openssl rand 32 -hex`. |
-| ENCRYPTION_KEY_1 | A secret key that will be used to encrypt your sharelock. You can generate one with `openssl rand 32 -hex`. |
-| CURRENT_KEY | Specify `1`. More on this below. |
-| COOKIE_SECRET | A secret key to protect web application UI HTTP cookies with. You can generate one with `openssl rand 32 -hex`. |
-| FORCE_HTTPS | Specify 1 to redirect all HTTP requests to corresponding HTTPS endpoints. It is recommended to use `1` for production deployment. The value of `0` is useful during development when there is no HTTPS terminating proxy. |
-| CURRENT_KEY | Specify `1`. More on this below. |
-| GA_PROPERTY_ID | Optional. Specify the Google Analytics property ID to hook up Google Analytics to the web UI. |
-| PORT | Optional. Specify the port to listen on. Specific hosting environments like Heroku or Windows Azure Web Sites will provide this envronment property for you. If not specified (e.g. during development), the default value is *3000*. |
-
-During development, you can provide all these environment variables through the `.env` file at the root of your enlistment.
-
-## Key management
-
-Sharelocks created by the service are signed and encrypted with a pair of keys (one for signing, another for encryption). These need to be 256 bit keys and are best generated with:
-
-```
-openssl rand 32 -hex
-```
-
-The Sharelock service supports decrypting and signature verification with any number of historical signing and encryption key pairs. This allows you to revoke a specific key pair in case it had been compromised. Each signing and encryption key pair is specified with a pair of environment variables: 
-
-```
-SIGNATURE_KEY_{N}={hex_encoded_signature_key}
-ENCRYPTION_KEY_{N}={hex_encoded_encruption_key}
-```
-
-Where *{N}* is an arbitrary literal (but we recommend using integers for brevity).
-
-At any point in time, Sharelock service uses *one* of these key pairs to sign and encrypt newly created sharelocks. This key pair is specified with the environment variable: 
-
-```
-CURRENT_KEY={N}
-```
-
-# Feedback
-
-At [Auth0](https://auth0.com), we welcome feedback and collaboration. You kow where to file issues and how to submit pull requests. You can contact us [here](https://auth0.com/support). 
+At [Auth0](https://auth0.com), we welcome feedback and collaboration. You know where to file issues and how to submit pull requests. You can contact us [here](https://auth0.com/support). 
 
 This project is licensed under MIT.

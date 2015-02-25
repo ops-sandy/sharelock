@@ -26,6 +26,11 @@ h4,
 h5 {
   color: #000;
 }
+.app *,
+.app .content a {
+  user-select: none !important;
+  cursor: default !important;
+}
 /*-----  End of General  ------*/
 /*==============================
 =            Header            =
@@ -347,7 +352,7 @@ h5 {
   width: 800px;
   height: 400px;
   margin-left: -160px;
-  margin-top: -200px;
+  margin-top: -180px;
   background-image: url("../img/laptop.png");
   background-position: center;
   background-size: contain;
@@ -393,10 +398,12 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
+
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
+
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -1041,12 +1048,13 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1055,12 +1063,13 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1069,12 +1078,13 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1083,12 +1093,13 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1097,12 +1108,13 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1111,12 +1123,28 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+    margin-left: -100px;
+    margin-top: -100px;
+  }
+}
+@-ms-keyframes ripple {
+  0% {
+    width: 0%;
+    height: 0;
+    opacity: 0.3;
+  }
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1125,12 +1153,13 @@ h5 {
   }
 }
 @keyframes ripple {
-  from {
+  0% {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-  to {
+
+  100% {
     width: 200px;
     height: 200px;
     opacity: 0;
