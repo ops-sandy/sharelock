@@ -1,4 +1,4 @@
-<img src="https://cloudup.com/cWxE-5ugA5P+" />
+<img src="https://cloudup.com/cEhtHLQp1uU+" />
 
 Sharelock: securely share data
 ===
