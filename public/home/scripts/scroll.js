@@ -546,12 +546,10 @@ function scene12 () {
         }, 0)
         .from('.step-dw .step-dw-left', 2, {
             opacity: 0,
-            marginBottom: -100,
             display: 'none'
         }, 1)
         .from('.step-dw .step-dw-right', 2, {
             opacity: 0,
-            marginBottom: -100,
             display: 'none'
         }, 2);
 

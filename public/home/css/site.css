@@ -370,7 +370,7 @@ h5 {
 .text.t1 {
   opacity: 1;
   z-index: 1001;
-  margin-top: -200px;
+  margin-top: -150px;
 }
 .text.t1 .how-it-works {
   padding: 9px 20px 10px 20px;
@@ -398,12 +398,10 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
-
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -1024,6 +1022,7 @@ h5 {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     width: 100%;
+    min-height: 388px;
   }
   .step-dw .step-dw-half {
     position: relative;
@@ -1048,13 +1047,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1063,13 +1061,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1078,13 +1075,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1093,13 +1089,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1108,13 +1103,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1123,28 +1117,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-ms-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1153,13 +1131,12 @@ h5 {
   }
 }
 @keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
