@@ -9,8 +9,13 @@
       <a id="copy-link-mobile" class="copy-link scale waves-effect waves-light btn" href="#"></a>
       <a class="plus waves-effect waves-light btn hide" href="#"></a>
     </div>
-    <p class="text">{{data | replace('\n', '<br />', 'g') }}</p>
-
+    <p class="text secret-data">{{data | replace('\n', '<br />', 'g') }}</p>
+    
+    <div id="panel-attachment" class="desktop-only">
+      <div class="display-area sm active">
+        <a id="copy" data-clipboard-text="{{data | replace('\n', '<br />', 'g') }}" class="copy-link" href="javascript:;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="/images/ico_scale.svg" alt=""></span></a>
+      </div>
+    </div>
   </div>
 </div>
 <!-- / content -->
@@ -20,8 +25,13 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/zeroclipboard/2.2.0/ZeroClipboard.min.js"></script>
 <script type="text/javascript">
 $(function () {
-  var copy_client = new ZeroClipboard(document.getElementById('copy-link'));
-  var copy_client2 = new ZeroClipboard(document.getElementById('copy-link-mobile'));
+  var copy_client = new ZeroClipboard(document.getElementById('copy'));
+
+  copy_client.on( "ready", function( readyEvent ) {
+    copy_client.on( "aftercopy", function( event ) {
+      $(event.target).find('.copy_text').text('Copied');
+    } );
+  } );
 
   $('.link.sharelock').attr('href', location.href);
   $('.link.sharelock').text(location.href);
