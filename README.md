@@ -21,7 +21,7 @@ Sharelock is an open source web service hosted at https://sharelock.io. It lets 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2Fauth0%2Fsharelock)
 
-The https://sharelock.io service controls signing and encryption keys that protect your secret data. If you want to be in control of singing and encryption keys, you must host your own version of the Sharelock service. The apps have support to change the endpoint you hit
+The https://sharelock.io service controls signing and encryption keys that protect your secret data. If you want to be in control of signing and encryption keys, you must host your own version of the Sharelock service. The apps have support to change the endpoint you hit
 
 ![](https://www.dropbox.com/s/7y0d6u5kmdz01ew/Screenshot%202015-02-25%2017.17.40.png?dl=1)
 
