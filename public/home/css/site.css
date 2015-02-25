@@ -26,9 +26,10 @@ h4,
 h5 {
   color: #000;
 }
-.app .content,
+.app *,
 .app .content a {
-  user-select: none;
+  user-select: none !important;
+  cursor: default !important;
 }
 /*-----  End of General  ------*/
 /*==============================
