@@ -66,6 +66,44 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
 
 .data .text.secret-data {
   font-size: 20px;
+  margin-top: 30px;
+  word-wrap: break-word;
+}
+
+#new_sharelock {
+  position: absolute;
+  right: 20px;
+  top: 125px;
+  background-color: #44C7F4;
+}
+
+@media (min-width: 768px) {
+  #new_sharelock {
+    right: -80px;
+    top: 25px;
+  }
+}
+.try-app {
+  text-align: center;
+}
+
+.try-app img {
+  width: 30px;
+}
+.try-app span {
+  display: block;
+  font-size: 12px;
+}
+
+.data .try-app h3 {
+  color: white;
+}
+.try-app a {
+  color: white;
+  text-align: center;
+  display: inline-block;
+  width: 40px;
+  margin: 10px 25px;
 }
 
 #panel-attachment .display-area.active {
@@ -76,10 +114,9 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
   color: white;
 }
 
-#panel-attachment .display-area.active.sm {
-  margin-top: 60px;
-  padding: 10px 20px;
-  padding-bottom: 20px;
+.data #panel-attachment h3 {
+  color: white;
+  margin-bottom: 10px;
 }
 
 @media (min-width: 768px) {
@@ -87,6 +124,7 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
     margin: -60px;
     margin-top: 0;
     padding: 60px;
+    border-radius: 3px;
   }
 }
 
@@ -95,14 +133,32 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
   color: #CACACA;
 }
 
-#copy {
-  padding-top: 20px;
+.action-link {
   color: white;
   outline: none;
-  text-align: right;
   text-transform: uppercase;
   font-size: 12px;
-  display: block;
+  display: inline-block;
+}
+
+.action-link.place-top {
+  position: absolute;
+  top: 60px;
+  width: 160px;
+  right: 60px;
+  text-align: right;
+}
+
+.action-link.action-link-inverted {
+  color: #999;
+}
+
+.action-link.action-link-inverted .circle-ico {
+  background: #5C666F;
+}
+
+.action-buttons {
+  text-align: right;
 }
 
 .desktop-only {
@@ -142,6 +198,14 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
 .preloader-wrapper.big.active {
   width: 40px;
   height: 40px;
+}
+
+.card-panel {
+  position: relative;
+}
+
+.card-panel-secondary {
+  padding-top: 0;
 }
 
 .card-panel h2:first-child{
@@ -645,6 +709,7 @@ a.zeroclipboard-is-hover{
   #header h1 {
     opacity: 1;
     margin: 100px 0 0 0;
+    font-size: 16px;
   }
 
   .card-panel{
@@ -704,6 +769,7 @@ a.zeroclipboard-is-hover{
     padding-bottom: 50px;
     line-height: 19px;
     display: block;
+    word-wrap: break-word;
   }
 
   .mobile-con p {

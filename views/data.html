@@ -2,19 +2,43 @@
 
 {% block content %}
 <div id="content" class="">
+  <a href="/new" id="new_sharelock" class="btn-floating btn-large waves-effect waves-light"><i class="mdi-content-add"></i></a>
+
   <div class="data card-panel">
     <h3>YOUR SECRET DATA</h3>
+
     <div class="mobile-con">
       <p>{{ data | replace('\n', '<br />', 'g') }}</p>
       <a id="copy-link-mobile" class="copy-link scale waves-effect waves-light btn" href="#"></a>
       <a class="plus waves-effect waves-light btn hide" href="#"></a>
     </div>
     <p class="text secret-data">{{data | replace('\n', '<br />', 'g') }}</p>
+
+    <a id="copy" data-clipboard-text="{{data | replace('\n', '<br />', 'g') }}" class="action-link action-link-inverted place-top desktop-only" href="javascript:;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="/images/ico_scale.svg" alt=""></span></a>  
+
     
-    <div id="panel-attachment" class="desktop-only">
-      <div class="display-area sm active">
-        <a id="copy" data-clipboard-text="{{data | replace('\n', '<br />', 'g') }}" class="copy-link" href="javascript:;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="/images/ico_scale.svg" alt=""></span></a>
-      </div>
+    
+  </div>
+
+  <div class="data card-panel card-panel-secondary">
+    <div id="panel-attachment">
+      <div class="display-area active">
+
+        <div class="try-app">
+          <h3>TRY THE APP ON</h3>
+
+          <a href="https://cdn.auth0.com/sharelock-osx/Sharelock-1.0.0_3.dmg">
+            <img src="/home/img/icon-mac.svg">
+            <span>Mac</span>
+          </a>
+
+          <a href="#">
+            <img src="/home/img/icon-android.svg">
+            <span>Android</span>
+          </a>
+        </div>
+        
+        </div>
     </div>
   </div>
 </div>
