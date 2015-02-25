@@ -1,7 +1,7 @@
-<img src="https://cloudup.com/cEhtHLQp1uU+" />
-
 Sharelock: securely share data
 ===
+
+<img src="https://cloudup.com/cEhtHLQp1uU+" />
 
 Sharelock is a web service created by [Auth0](https://auth0.com) and hosted *pro publico bono* at https://sharelock.io. It lets you simply and securely share secret information with people you trust. You can also host your own version of Sharelock using code from this repository. 
 
