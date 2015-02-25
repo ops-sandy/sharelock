@@ -406,7 +406,7 @@ function scene8 () {
                 marginLeft: -345,
                 top: '50%',
                 left: '24%',
-                marginTop: -320
+                marginTop: -310
             })
             .to('.arrow', 1, {
                 opacity: 1
