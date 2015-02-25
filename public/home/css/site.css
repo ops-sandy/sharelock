@@ -5,7 +5,6 @@ body {
   background-color: #fff;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  height: 6000px;
   -webkit-font-smoothing: antialiased;
   opacity: 0;
   color: #5c666f;
@@ -18,7 +17,6 @@ a {
   text-decoration: none;
 }
 section {
-  height: 13000px;
   position: relative;
 }
 h1,
