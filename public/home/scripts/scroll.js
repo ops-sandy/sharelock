@@ -42,6 +42,7 @@ function scene1 () {
     });
 
     var tween_p2 = TweenMax.to('.phone.p2', 1, {
+        display: 'none',
         opacity: 0
     });
 
@@ -94,7 +95,7 @@ function scene1 () {
             opacity: 0
         }, {
             opacity: 1,
-            marginTop: -150
+            marginTop: -90
         }, 2)
 
     timeline.pause();
@@ -174,7 +175,7 @@ function scene3 () {
             opacity: 0
         }, {
             opacity: 1,
-            marginTop: -150
+            marginTop: -100
         }, 0)
         .to('.phone.p1 .app.a1', 1,{
             marginTop: '-35%'
@@ -504,7 +505,7 @@ function scene11 () {
             .fromTo('.text.t5', 2, {
                 marginTop: 0,
                 opacity: 0,
-                left: '10%'
+                left: '15%'
             }, {
                 opacity: 1,
                 marginTop: -100,

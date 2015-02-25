@@ -183,11 +183,16 @@ h5 {
   top: 50%;
   margin-top: -150px;
 }
+.step-dw .step-dw-half p {
+  max-width: 400px;
+  margin: 20px auto;
+  display: block;
+}
 .step-dw .step-dw-left {
-  left: 13%;
+  left: 16%;
 }
 .step-dw .step-dw-right {
-  right: 13%;
+  right: 16%;
 }
 .step-dw .step-dw-link {
   display: inline-block;
@@ -398,6 +403,9 @@ h5 {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
   }
+}
+.t2 {
+  margin-top: -90px;
 }
 .text.t5 {
   left: 15%;
