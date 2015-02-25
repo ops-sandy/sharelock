@@ -94,10 +94,14 @@ app.use(session({ secret: process.env.COOKIE_SECRET, resave: false, saveUninitia
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public'), { index: false, redirect: false }));
+app.use(contextualLocals);
 
+app.get('/', function (req, res, next) {
+    res.render('home.html');
+});
 
 app.get('/home', function(req,res,next){
-    res.render('home.html');
+    res.redirect('/');
 })
 
 app.get('/download', function(req,res,next){
@@ -142,10 +146,6 @@ app.get('/logout',
         req.session.destroy();
         res.redirect(req.query.r || '/');
     });
-
-app.get('/', function (req, res, next) {
-    res.render('landing');
-});
 
 app.get('/new', function (req, res, next) {
     res.render('new');
@@ -446,6 +446,16 @@ function distinct(source) {
    }
 
    return a;
+}
+
+function contextualLocals(req, res, next) {
+    res.locals = res.locals || {};
+    res.locals.context = res.locals.context || {};
+    res.locals.context.protocol = req.protocol;
+    res.locals.context.path = req.path;
+    res.locals.context.url = req.url;
+    res.locals.context.hostname = req.hostname;
+    next();
 }
 
 module.exports = app;
