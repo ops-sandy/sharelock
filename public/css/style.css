@@ -98,12 +98,22 @@ input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, inp
 .data .try-app h3 {
   color: white;
 }
+
+.try-app.try-app-inverted h3 {
+  color: #EB5424;
+  margin-bottom: 30px;
+}
+
 .try-app a {
   color: white;
   text-align: center;
   display: inline-block;
   width: 40px;
   margin: 10px 25px;
+}
+
+.try-app.try-app-inverted a {
+  color: #888;
 }
 
 #panel-attachment .display-area.active {

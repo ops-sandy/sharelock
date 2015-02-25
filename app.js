@@ -100,6 +100,10 @@ app.get('/home', function(req,res,next){
     res.render('home.html');
 })
 
+app.get('/download', function(req,res,next){
+    res.render('download.html');
+})
+
 app.get('/tos', function(req,res,next){
     res.render('tos.html');
 })
