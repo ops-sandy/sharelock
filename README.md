@@ -25,6 +25,8 @@ The https://sharelock.io service Auth0 provides controls signing and encryption 
 
 ![](https://www.dropbox.com/s/7y0d6u5kmdz01ew/Screenshot%202015-02-25%2017.17.40.png?dl=1)
 
+Read more about [how it works](https://github.com/auth0/sharelock/wiki#how-it-works)
+
 ## Motivation
 
 We created this tool out of our own needs. We are constantly exchanging data and we take security very seriously. We don't feel confortable exchanging secret data through chat or e-mail, so we created sharelock. The idea is simple, the server encrypts and sign the secret data and gives you back a URL that is scoped to the people you shared it to. Then whoever gets that URL, in order to decrypt that content, first need to login. That's where we use Auth0. If the identity is verified (either e-mail, domain or twitter account), then the secret data is decrypted and shown. Since certain browsers have URL length limitations, there is a max of data you can share of 500 chars
