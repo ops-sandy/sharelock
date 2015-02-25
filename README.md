@@ -43,5 +43,6 @@ So, Sharelock was born. It provides you with a simple and secure way to share se
 
 We welcome feedback and collaboration. You know where to file issues and how to submit pull requests. You can contact us [here](https://auth0.com/support).
 
-Crafted by [Auth0](https://auth0.com). 
 This project is licensed under MIT.
+
+Crafted by [Auth0](https://auth0.com)
