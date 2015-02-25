@@ -32,13 +32,8 @@ h5 {
 ==============================*/
 .share-on {
   position: fixed;
-<<<<<<< HEAD
   z-index: 9999;
-  bottom: 40px;
-=======
-  z-index: 10000;
   bottom: 30px;
->>>>>>> d0360d77a3d8e51341b8f7c89b3985b5f3b72649
   right: 50px;
   font-size: 13px;
   color: #5e9fca;
@@ -155,11 +150,7 @@ h5 {
   bottom: 30px;
   left: 50px;
   font-size: 13px;
-<<<<<<< HEAD
   z-index: 9999;
-=======
-  z-index: 110;
->>>>>>> d0360d77a3d8e51341b8f7c89b3985b5f3b72649
 }
 .main-footer a {
   color: #999;
@@ -272,6 +263,7 @@ h5 {
   top: 50%;
   margin-left: -453px;
   margin-top: -273px;
+  z-index: 1001;
 }
 .phone.p2 {
   left: 50%;
@@ -280,11 +272,12 @@ h5 {
   margin-top: -273px;
   transform: scale(0.8);
   -webkit-transform: scale(0.8);
+  z-index: 1000;
 }
 .phone.p3 {
   background-image: url("../img/htc-shadow.png");
   left: 50%;
-  top: 50%;
+  top: 46%;
   margin-top: -200px;
   margin-left: -320px;
   transform: scale(0.8);
@@ -371,7 +364,7 @@ h5 {
 }
 .text.t1 {
   opacity: 1;
-  z-index: 100;
+  z-index: 1001;
   margin-top: -200px;
 }
 .text.t1 .how-it-works {
@@ -400,12 +393,10 @@ h5 {
     -webkit-transform: translateX(0);
     transform: translateX(0);
   }
-
   40% {
     -webkit-transform: translateX(-6px);
     transform: translateX(-6px);
   }
-
   60% {
     -webkit-transform: translateX(-3px);
     transform: translateX(-3px);
@@ -712,7 +703,7 @@ h5 {
   background-position: center;
   position: fixed;
   top: 50%;
-  left: 40%;
+  left: 41%;
   margin-left: -146px;
   opacity: 0;
 }
@@ -898,7 +889,6 @@ h5 {
     right: 14px;
   }
   .navbar .dropdown-download {
-    background: #fff;
     width: 312px;
     padding: 0;
     top: 34px;
@@ -912,6 +902,7 @@ h5 {
   }
   .arrow {
     top: 53%;
+    left: 40%;
   }
   .poweredby {
     display: none;
@@ -951,9 +942,11 @@ h5 {
     -webkit-transform: scale(0.6);
     margin-left: -293px;
     top: 52%;
+    z-index: 1002;
   }
   .laptop {
     top: 70%;
+    left: 54%;
   }
   .text {
     top: 70px;
@@ -971,6 +964,7 @@ h5 {
     display: none;
   }
   .text h2 {
+    background: #fff;
     margin: 0;
     font-size: 25px;
   }
@@ -1047,13 +1041,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1062,13 +1055,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1077,13 +1069,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1092,13 +1083,12 @@ h5 {
   }
 }
 @-moz-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1107,13 +1097,12 @@ h5 {
   }
 }
 @-webkit-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1122,28 +1111,12 @@ h5 {
   }
 }
 @-o-keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
-    width: 200px;
-    height: 200px;
-    opacity: 0;
-    margin-left: -100px;
-    margin-top: -100px;
-  }
-}
-@-ms-keyframes ripple {
-  0% {
-    width: 0%;
-    height: 0;
-    opacity: 0.3;
-  }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
@@ -1152,13 +1125,12 @@ h5 {
   }
 }
 @keyframes ripple {
-  0% {
+  from {
     width: 0%;
     height: 0;
     opacity: 0.3;
   }
-
-  100% {
+  to {
     width: 200px;
     height: 200px;
     opacity: 0;
