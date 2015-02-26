@@ -189,7 +189,7 @@ $(function () {
   function create_payload() {
     var payload = {
       d: $('#data').val().trim(),
-      a: $('#acl').val().trim()
+      a: $('#acl').val().trim().toLowerCase()
     }
     return (payload.d.length > 0 && payload.a.length > 0) ? payload : null;
   }
