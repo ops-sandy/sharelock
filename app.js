@@ -200,14 +200,6 @@ app.use(function(err, req, res, next) {
     });
 });
 
-function normalize_gmail(email) {
-    // Gmail emails don't allow @'s in name, so only one will be present
-    var split = email.split('@');
-    var name = split[0];
-    var domain = split[1];
-    return name.toLowerCase().replace(/\./g, '') + '@' + domain;
-}
-
 function current_create() {
 
     // current signature, encryption keys, and version
@@ -256,17 +248,6 @@ function current_create() {
                 resource.a.push({
                     k: 'd',
                     v: token
-                });
-                continue;
-            }
-
-            gmail_token = normalize_gmail(token);
-            match = gmail_token.match('^[a-z0-9](\.?[a-z0-9]){5,}@g(oogle)?mail\.com$');
-            if (match) {
-                // gmail
-                resource.a.push({
-                    k: 'g',
-                    v: gmail_token
                 });
                 continue;
             }
@@ -361,36 +342,23 @@ function v1_get() {
         var email_domains = {};
         for (var i in resource.a) {
             var acl = resource.a[i];
-            if (acl.k === 'g') {
-                if (email && normalize_gmail(email) === acl.v) {
+            if (acl.k === 'e') {
+                if (email === acl.v)
                     allowed = true;
-                } else {
+                else
                     email_domains[acl.v.substring(acl.v.indexOf('@'))] = 1;
-                }
-            }
-            else if (acl.k === 'e') {
-                if (email === acl.v) {
-                    allowed = true;
-                }
-                else {
-                    email_domains[acl.v.substring(acl.v.indexOf('@'))] = 1;
-                }
             }
             else if (acl.k === 'd') {
-                if (email && email.indexOf(acl.v, email.length - acl.v.length) !== -1) {
+                if (email && email.indexOf(acl.v, email.length - acl.v.length) !== -1)
                     allowed = true;
-                }
-                else {
+                else
                     email_domains[acl.v] = 1;
-                }
             }
             else if (acl.k === 't') {
-                if (req.user && req.user.provider === 'twitter' && req.user._json.screen_name === acl.v) {
+                if (req.user && req.user.provider === 'twitter' && req.user._json.screen_name === acl.v)
                     allowed = true;
-                }
-                else {
+                else
                     twitter = true;
-                }
             }
 
             if (allowed) break;
@@ -427,10 +395,8 @@ function v1_get() {
     };
 }
 
-var gmail_providers = ['google-oauth2', 'facebook', 'windowslive'];
 var domain_provider_map = {
-    '@googlemail.com': gmail_providers,
-    '@gmail.com': gmail_providers,
+    '@gmail.com': ['google-oauth2', 'facebook', 'windowslive'],
     '@hotmail.com': ['windowslive', 'facebook'],
     '@live.com': ['windowslive', 'facebook'],
     '@outlook.com': ['windowslive', 'facebook'],
