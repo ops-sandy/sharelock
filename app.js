@@ -9,7 +9,8 @@ var express = require('express')
     , Auth0Strategy = require('passport-auth0')
     , logger = require('./logger')
     , crypto = require('crypto')
-    , base64url = require('base64url');
+    , base64url = require('base64url')
+    , cryptiles = require('cryptiles');
 
 var keys = {};
 
@@ -316,7 +317,7 @@ function v1_get() {
             tokens[1] = new Buffer(base64url.toBase64(tokens[1]), 'base64'); // encrypted data
             tokens[2] = new Buffer(base64url.toBase64(tokens[2]), 'base64'); // iv
             var signature = crypto.createHmac('sha256', request_keys.signature_key).update(tokens[1]).update(tokens[2]).digest('base64');
-            if (signature !== tokens[0])
+            if (!cryptiles.fixedTimeComparison(signature, tokens[0]))
                 throw null;
         }
         catch (e) {
