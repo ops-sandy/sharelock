@@ -385,7 +385,7 @@ function v1_get() {
                 }
             }
             else if (acl.k === 't') {
-                if (req.user && req.user.provider === 'twitter' && req.user._json.screen_name === acl.v) {
+                if (req.user && req.user.provider === 'twitter' && req.user._json.screen_name.toLowerCase() === acl.v)
                     allowed = true;
                 }
                 else {
