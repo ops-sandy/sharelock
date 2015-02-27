@@ -392,7 +392,7 @@ h1,h2,h3,h4,h5
   
 .text.t1 
   opacity: 1;
-  z-index: 1001;
+  z-index: 1002;
   margin-top: -150px
   
   span.or
@@ -1112,6 +1112,40 @@ h1,h2,h3,h4,h5
     display: none
   }
 }
+
+// Iphone 5 and other Android devices fix
+
+@media (max-height: 460px) {
+  .step-bar {
+    top: 214px
+  }
+  
+  .arrow {
+    top: 258px
+  }
+  
+  .phone.p1 {
+    top: 55px
+  }
+
+  .phone.p2 {
+    top: 50px
+  }
+  
+  .laptop {
+    top: 360px
+  }
+
+  .text {
+    top: 48px
+    
+    .t1-links {
+      margin-top: 20px
+    }
+  }
+}
+
+
 @-moz-keyframes ripple {
   from {
     width: 0%;

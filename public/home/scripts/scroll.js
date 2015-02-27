@@ -404,9 +404,8 @@ function scene8 () {
             .to('.phone.p1', 1, {
                 transform: 'scale(0.5)',
                 marginLeft: -345,
-                top: '50%',
                 left: '24%',
-                marginTop: -310
+                marginTop: -100
             })
             .to('.arrow', 1, {
                 opacity: 1
