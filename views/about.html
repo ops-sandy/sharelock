@@ -3,14 +3,19 @@
 {% block content %}
 <div id="content" class="card-panel about-page inner-padding">
   <h2>About</h2>
-  <p>Our story is simple. We created Sharelock because we wanted a way to share secret data securely. We’re constantly exchanging bits of confidential information and, because we take security very seriously, we didn’t feel comfortable sharing that information through normal channels like email or chat. </p>
-
-  <p>So, Sharelock was born. It provides you with a simple and secure way to share secrets with people you know. It’s easy. You enter a secret and a list of people that should be allowed to access that secret. Sharelock encrypts and signs this information and sends you back a URL. </p>
-
-  <p>You send that URL out any way you’d like - publicly or privately - the channel does not need to be secure, as the Sharelock itself is already encrypted. Your recipient clicks on the URL and is required to authenticate using Auth0. Sharelock checks to see if the authenticated recipient is on the list of people you intended to share your secret with. If everything checks out, the data is decrypted and your recipient receives the secret! </p>
-  <a href="https://auth0.com" target="_blank"><img src="/images/auth0.png"/></a>
   
-  <p>We hope you will use and enjoy Sharelock as much as we do. When you have a moment, stop by Auth0 and set up a free account so you can forget about all of your authentication, authorization and single sign on worries. </p>
+
+<p>Sharelock.io is an OSS project that provides you with a simple and secure way to share secrets. It’s easy:</p>
+<ul class="list">
+  <li>Enter your secret and a list of emails or twitter handles for people that can access your secret. Sharelock.io encrypts all this and presents you a URL, which is called a sharelock. The URL incorporates your encrypted secret, and it’s the only place it exists.</li>
+  <li>Send the sharelock using any public or private channel you choose (e.g., email, Twitter, Slack, IRC, public GitHub pages, etc.). The channel does not need to be secure, as the sharelock itself is already encrypted.</li>
+
+  <li>Your recipient browses to the sharelock URL; if they can authenticate themselves to any of the email addresses or twitter handles you specified, they can see the secret.   The project is currently written so authentication is done via Auth0, but feel free to modify the <a target="_blank" href="https://github.com/auth0/sharelock">OSS source code</a> (MIT licensed) to use any alternative you desire.</li>
+
+</ul>
+
+<p>Sharelock is brought to you with love by <a href="https://auth0.com">Auth0</a>.</p>
+
 </div>
 <!-- / content -->
 {% endblock %}
