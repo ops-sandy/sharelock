@@ -140,10 +140,10 @@ $(function () {
       }
 
       var payload = create_payload();
-      if (!payload) 
+      if (!payload)
         return;
-      
-      if (last_preview_payload 
+
+      if (last_preview_payload
         && last_preview_payload.a === payload.a
         && last_preview_payload.d === payload.d)
           return;
@@ -208,7 +208,9 @@ $(function () {
       $(event.target).find('.copy_text').text('Copied');
     } );
   } );
-  $('#data').focus();
+  setTimeout(function() {
+    $('#data').focus();
+  },0);
 });
 </script>
 {% endblock %}
