@@ -69,7 +69,11 @@ input[type=text]:focus:not([readonly]) + label, input[type=password]:focus:not([
 .data .text.secret-data {
   font-size: 20px;
   margin-top: 30px;
+}
+
+.data .text.secret-data, .mobile-con .secret-data-mobile {
   word-wrap: break-word;
+  white-space: pre;
 }
 
 #new_sharelock {

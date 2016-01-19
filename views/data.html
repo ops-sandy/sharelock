@@ -8,11 +8,11 @@
     <h3>YOUR SECRET DATA</h3>
 
     <div class="mobile-con">
-      <p>{{ data | replace('\n', '<br />', 'g') }}</p>
+      <p class="secret-data-mobile">{{data}}</p>
       <a id="copy-link-mobile" class="copy-link scale waves-effect waves-light btn" href="#"></a>
       <a class="plus waves-effect waves-light btn hide" href="#"></a>
     </div>
-    <p class="text secret-data">{{data | replace('\n', '<br />', 'g') }}</p>
+    <p class="text secret-data">{{data}}</p>
 
     <a id="copy" data-clipboard-text="{{data}}" class="action-link action-link-inverted place-top desktop-only" href="javascript:;"><span class="copy_text">Copy to clipboard</span> <span class="circle-ico"><img src="/images/ico_scale.svg" alt=""></span></a>  
 
