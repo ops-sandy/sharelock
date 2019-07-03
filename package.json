@@ -40,7 +40,7 @@
     "passport-auth0": "^0.5.0",
     "serve-favicon": "~2.4.5",
     "swig": "^1.4.2",
-    "snyk": "^1.73.0"
+    "snyk": "^1.189.0"
   },
   "homepage": "http://github.com/auth0/sharelock",
   "repository": {
